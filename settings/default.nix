@@ -40,7 +40,7 @@ in
     };
     font = {
       name = "RobotoMono Nerd Font";
-      size = 12;
+      size = 11;
     };
     iconTheme = {
       package = gruvbox-icons;
