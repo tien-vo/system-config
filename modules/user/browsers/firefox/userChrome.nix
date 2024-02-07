@@ -1,0 +1,10 @@
+"
+#TabsToolbar
+{
+    visibility: collapse;
+}
+#sidebar-header
+{
+    display: none;
+}
+"

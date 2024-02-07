@@ -1,0 +1,22 @@
+[pyprland]
+plugins = [
+    "scratchpads"
+]
+
+[scratchpads.term]
+command = "alacritty --class alacritty-dropterm"
+class = "alacritty-dropterm"
+animation = "fromTop"
+unfocus = "hide"
+lazy = true
+margin = 125
+size = "75% 75%"
+
+[scratchpads.vifm]
+command = "alacritty --class vifm-dropterm -e vifm"
+class = "vifm-dropterm"
+animation = "fromTop"
+unfocus = "hide"
+lazy = true
+margin = 125
+size = "75% 75%"
