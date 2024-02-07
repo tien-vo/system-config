@@ -18,7 +18,6 @@ in
     "${src}/modules/user/shells/zsh"
 
     "${src}/modules/user/console/git"
-    "${src}/modules/user/console/vifm"
     "${src}/modules/user/console/neovim"
     "${src}/modules/user/console/alacritty"
     "${src}/modules/user/console/autojump"
@@ -27,7 +26,10 @@ in
     "${src}/modules/user/status-bars/waybar"
     "${src}/modules/user/launchers/fuzzel"
 
-    "${src}/modules/user/browsers/firefox"
+    "${src}/modules/user/browsers/web/firefox"
+    "${src}/modules/user/browsers/file/zathura"
+    "${src}/modules/user/browsers/file/thunar"
+    "${src}/modules/user/browsers/file/vifm"
 
     "${src}/modules/user/theme"
 
@@ -43,7 +45,6 @@ in
     pkgs.wlogout
     pkgs.wl-clipboard
     pkgs.brightnessctl
-    pkgs.xfce.thunar
     pkgs.swayimg
     pkgs.htop
     pkgs.neofetch
