@@ -22,6 +22,7 @@ in
     "${src}/modules/user/console/git"
     "${src}/modules/user/console/neovim"
     "${src}/modules/user/console/alacritty"
+    "${src}/modules/user/console/micromamba"
     "${src}/modules/user/console/autojump"
 
     "${src}/modules/user/window-managers/hyprland"
