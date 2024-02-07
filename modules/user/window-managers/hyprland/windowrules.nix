@@ -17,24 +17,31 @@
 
     # Multi-media
     "workspace 4, class:^(Slack)(.*)$"
-    "workspace 4, class:^(discord)(.*)$"
-    "workspace 4, class:^(zoom)(.*)$"
     "float, class:^(Slack)(.*)$"
+
+    "workspace 4, class:^(discord)(.*)$"
     "float, class:^(discord)(.*)$"
+
+    "workspace 4, class:^(zoom)(.*)$"
     "float, class:^(zoom)(.*)$"
 
     # Clients & daemon
-    "workspace 5, class:^(Cisco AnyConnect Secure Mobility Client)(.*)$"
-    "workspace 5, class:^(com.cisco.anyconnect.gui)(.*)$"
-    "workspace 6, class:^(blueman-manager)(.*)$"
-    "workspace 6, class:^(org.cryptomator.launcher.Cryptomator\$MainApp)(.*)$"
-    "workspace 6, class:^(nz.co.mega.megasync)(.*)$"
+    "workspace 5, class:^(blueman-manager)(.*)$"
     "float, class:^(blueman-manager)(.*)$"
-    "float, class:^(nm-connection-editor)(.*)$"
-    "float, class:^(com.cisco.anyconnect.gui)(.*)$"
+
+    "workspace 5, class:^(Cisco AnyConnect Secure Mobility Client)(.*)$"
     "float, class:^(Cisco AnyConnect Secure Mobility Client)(.*)$"
-    "float, class:^(org.cryptomator.launcher.Cryptomator\$MainApp)(.*)$"
-    "float, class:^(nz.co.mega.megasync)(.*)$"
+
+    "workspace 5, class:^(com.cisco.anyconnect.gui)(.*)$"
+    "float, class:^(com.cisco.anyconnect.gui)(.*)$"
+
+    "workspace 5, class:^(MEGAsync)(.*)$"
+    "float, class:^(MEGAsync)(.*)$"
+
+    "workspace 5, title:^(Cryptomator)(.*)$"
+    "float, title:^(Cryptomator)(.*)$"
+
+    "float, class:^(nm-connection-editor)(.*)$"
 
     # Free-floating
     "float, class:^(swayimg)(.*)$"

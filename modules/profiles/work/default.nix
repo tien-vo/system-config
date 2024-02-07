@@ -7,6 +7,7 @@ in
     "${src}/modules/user/toolkits/nix"
     "${src}/modules/user/toolkits/gtk"
     "${src}/modules/user/toolkits/xdg"
+    "${src}/modules/user/toolkits/cryptomator"
 
     "${src}/modules/user/hardware/network"
     "${src}/modules/user/hardware/bluetooth"
