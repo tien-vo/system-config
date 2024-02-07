@@ -16,3 +16,7 @@ user_pref("extensions.zotfile.subfolderFormat", "/%a");
 
 user_pref("extensions.zutilo.itemmenu.modifyAttachments", "Zutilo");
 user_pref("extensions.zutilo.itemmenu.showAttachments", "Zutilo");
+
+user_pref("extensions.zotero.sortCreatorAsString", true);
+user_pref("extensions.zotero.secondarySort.title", "year");
+user_pref("extensions.zotero.secondarySort.firstCreator", "year");
