@@ -38,8 +38,8 @@
     "workspace 5, class:^(MEGAsync)(.*)$"
     "float, class:^(MEGAsync)(.*)$"
 
-    "workspace 5, title:^(Cryptomator)(.*)$"
-    "float, title:^(Cryptomator)(.*)$"
+    "workspace 5, class:^(org.cryptomator.launcher.Cryptomator\\$MainApp)(.*)$"
+    "float, class:^(org.cryptomator.launcher.Cryptomator\\$MainApp)(.*)$"
 
     "float, class:^(nm-connection-editor)(.*)$"
 
