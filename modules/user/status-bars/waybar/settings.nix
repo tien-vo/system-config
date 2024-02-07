@@ -22,7 +22,7 @@ in
       "cpu"
       "memory"
       "temperature"
-      "battery"
+      "upower"
       "custom/powermenu"
     ];
     tray = {
