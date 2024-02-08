@@ -22,7 +22,7 @@ in
       outer = 8;
     };
     border = {
-      size = 1;
+      size = 2;
       radius = 6;
       active_color = {
         top = "d8a657";

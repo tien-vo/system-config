@@ -1,4 +1,19 @@
-{ ... }:
+{ pkgs, ... }:
+let
+  inherit (pkgs) writeShellScriptBin bash;
+  script = writeShellScriptBin ("move-workspace-to-monitor") (
+    ''
+    active_monitor=$(hyprctl monitors -j | jq '.[] | select(.focused == true).id')
+    passive_monitor=$(hyprctl monitors -j | jq '.[] | select(.focused == false).id')
+    active_workspace=$(hyprctl monitors -j | jq '.[] | select(.focused == true).activeWorkspace.id')
+    passive_workspace=$(hyprctl monitors -j | jq '.[] | select(.focused == false).activeWorkspace.id')
+    
+    hyprctl dispatch movecurrentworkspacetomonitor "$passive_monitor"
+    hyprctl dispatch workspace "$active_workspace"
+    hyprctl dispatch focusmonitor "$passive_monitor"
+    ''
+  );
+in
 {
   config.wayland.windowManager.hyprland.settings = {
     bind = [
@@ -45,6 +60,7 @@
       "SUPER_SHIFT, 8, movetoworkspace, 8"
       "SUPER_SHIFT, 9, movetoworkspace, 9"
       "SUPER_SHIFT, 0, movetoworkspace, 10"
+      "SUPER, X, exec, ${bash}/bin/bash ${script}/bin/move-workspace-to-monitor"
     ];
     bindm = [
       "SUPER, mouse:272, movewindow"
