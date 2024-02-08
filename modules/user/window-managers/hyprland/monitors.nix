@@ -1,11 +1,13 @@
 { pkgs, settings, ... }:
 let
   inherit (builtins) toString;
-  inherit (settings.screen) scaling;
+  fw13 = settings.monitors.framework13;
+  sceptre = settings.monitors.sceptre;
 in
 {
   config.wayland.windowManager.hyprland.settings.monitor = [
-    "eDP-1, 2256x1504@60, 0x0, ${toString(scaling)}"
+    "desc:${fw13.name}, ${fw13.resolution}, 0x0, ${toString(fw13.screenScaling)}"
+    "desc:${sceptre.name}, ${sceptre.resolution}, auto, ${toString(sceptre.screenScaling)}"
   ];
 
   config.wayland.windowManager.hyprland.settings.xwayland = {
@@ -13,13 +15,8 @@ in
   };
 
   config.wayland.windowManager.hyprland.settings.env = [
-    "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-    "QT_ENABLE_HIGHDPI_SCALING,1"
-    "GDK_SCALE,${toString(scaling)}"
+    #  "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+    #  "QT_ENABLE_HIGHDPI_SCALING,1"
+    #  "GDK_SCALE,${toString(scaling)}"
   ];
-
-  #  config.dconf.settings = {
-  #    "org/gnome/desktop/interface".scaling-factor = scaling;
-  #    "org/gnome/mutter".experimental-features = "['scale-monitor-framebuffer']";
-  #  };
 }
