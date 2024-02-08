@@ -2,8 +2,8 @@
 let
   inherit (settings.screen) scaling;
 
-  userjs = import(./userjs.nix)(args);
-  userChrome = import(./userChrome.nix)(args);
+  userjs = import (./userjs.nix) (args);
+  userChrome = import (./userChrome.nix) (args);
 in
 {
   config.xdg.dataFile."zotero/.keep".text = "";

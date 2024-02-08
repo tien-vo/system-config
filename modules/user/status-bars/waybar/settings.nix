@@ -1,6 +1,10 @@
 { settings, ... }:
 let
+  inherit (builtins) ceil;
   inherit (settings.window) gap border;
+  inherit (settings.theme.font) size;
+
+  iconSize = ceil (1.1 * size * 1.6);
 in
 {
   config.programs.waybar.settings.mainBar = {
@@ -26,6 +30,7 @@ in
       "custom/powermenu"
     ];
     tray = {
+      icon-size = iconSize;
       spacing = 4;
     };
     "hyprland/workspaces" = {
@@ -80,6 +85,7 @@ in
       format-icons = [ "" "" "" ];
     };
     upower = {
+      icon-size = iconSize;
       hide-if-empty = true;
       format = "{percentage}";
       tooltip = false;

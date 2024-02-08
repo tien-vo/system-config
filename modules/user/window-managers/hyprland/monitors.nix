@@ -12,9 +12,9 @@ in
   };
 
   config.wayland.windowManager.hyprland.settings.env = [
-      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-      "QT_ENABLE_HIGHDPI_SCALING,1"
-      "GDK_SCALE,${scaling}"
+    "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+    "QT_ENABLE_HIGHDPI_SCALING,1"
+    "GDK_SCALE,${scaling}"
   ];
 
   #  config.dconf.settings = {

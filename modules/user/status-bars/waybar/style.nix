@@ -9,6 +9,7 @@ let
   twoOuterGap = toString (2 * gap.outer);
   borderSize = toString (border.size);
   borderRadius = toString (border.radius);
+
   iconSize = toString (ceil (1.1 * size));
 in
 {
@@ -41,8 +42,7 @@ in
         padding: 0px ${outerGap}px;
     }
 
-    #workspaces,
-    #tray {
+    #workspaces {
         font-size: ${iconSize}pt;
     }
     #workspaces button {
