@@ -1,6 +1,8 @@
 { config, pkgs, settings, ... } @ args:
 let
+  inherit (builtins) toString;
   inherit (settings.screen) scaling;
+  inherit (config.xdg) configHome;
 
   userjs = import (./userjs.nix) (args);
   userChrome = import (./userChrome.nix) (args);
@@ -13,7 +15,7 @@ in
   config.xdg.desktopEntries.zotero = {
     name = "Zotero";
     genericName = "Reference manager";
-    exec = "env GDK_DPI_SCALE=${scaling} zotero --profile ${config.xdg.configHome}/zotero";
+    exec = "env GDK_DPI_SCALE=${toString(scaling)} zotero --profile ${configHome}/zotero";
   };
 
   config.home.packages = [

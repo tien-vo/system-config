@@ -14,7 +14,7 @@ in
   inherit src arch pkgs;
   nixVersion = "23.11";
   screen = {
-    scaling = "1.6";
+    scaling = 1.6;
   };
   window = {
     gap = {

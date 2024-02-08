@@ -1,10 +1,11 @@
 { pkgs, settings, ... }:
 let
+  inherit (builtins) toString;
   inherit (settings.screen) scaling;
 in
 {
   config.wayland.windowManager.hyprland.settings.monitor = [
-    "eDP-1, 2256x1504@60, 0x0, ${scaling}"
+    "eDP-1, 2256x1504@60, 0x0, ${toString(scaling)}"
   ];
 
   config.wayland.windowManager.hyprland.settings.xwayland = {
@@ -14,7 +15,7 @@ in
   config.wayland.windowManager.hyprland.settings.env = [
     "QT_AUTO_SCREEN_SCALE_FACTOR,1"
     "QT_ENABLE_HIGHDPI_SCALING,1"
-    "GDK_SCALE,${scaling}"
+    "GDK_SCALE,${toString(scaling)}"
   ];
 
   #  config.dconf.settings = {
