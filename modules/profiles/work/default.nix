@@ -52,8 +52,7 @@ in
     pkgs.htop
     pkgs.neofetch
     pkgs.dex
-    pkgs.slack
-    pkgs.element-desktop
+    pkgs.gnumake
   ];
 
   config.home.sessionVariables = {
