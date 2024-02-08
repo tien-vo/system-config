@@ -1,7 +1,7 @@
 { settings, ... }:
 let
   inherit (builtins) ceil;
-  inherit (settings.window) gap border;
+  inherit (settings.window) gap;
   inherit (settings.theme.font) size;
 
   iconSize = ceil (1.1 * size * 1.6);

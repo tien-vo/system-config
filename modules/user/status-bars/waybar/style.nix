@@ -23,8 +23,8 @@ in
 
     #waybar {
         background: @insensitive_base_color;
-        border: ${borderSize}pt solid #${border.active_color.top};
-        border-radius: ${borderRadius}pt;
+        border: ${borderSize}px solid #${border.active_color.top};
+        border-radius: ${borderRadius}px;
     }
 
     #clock,
