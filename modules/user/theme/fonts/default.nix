@@ -2,6 +2,7 @@
 let
   fonts = [
     "RobotoMono"
+    "FiraMono"
     "Inconsolata"
     "InconsolataGo"
     "DejaVuSansMono"

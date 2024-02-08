@@ -50,7 +50,7 @@ in
       name = "Gruvbox-Dark-BL";
     };
     font = {
-      name = "InconsolataGo Nerd Font";
+      name = "FiraMono Nerd Font";
       size = 14;
     };
     iconTheme = {
