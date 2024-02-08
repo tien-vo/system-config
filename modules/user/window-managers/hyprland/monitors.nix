@@ -11,12 +11,11 @@ in
     force_zero_scaling = true;
   };
 
-  #  config.wayland.windowManager.hyprland.settings.env = [
-  #      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-  #      "QT_ENABLE_HIGHDPI_SCALING,1"
-  #      "GDK_SCALE,${scaling}"
-  #      "GDK_DPI_SCALE,${scaling}"
-  #  ];
+  config.wayland.windowManager.hyprland.settings.env = [
+      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+      "QT_ENABLE_HIGHDPI_SCALING,1"
+      "GDK_SCALE,${scaling}"
+  ];
 
   #  config.dconf.settings = {
   #    "org/gnome/desktop/interface".scaling-factor = scaling;

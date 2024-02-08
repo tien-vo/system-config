@@ -39,7 +39,7 @@ in
       name = "Gruvbox-Dark-BL";
     };
     font = {
-      name = "RobotoMono Nerd Font";
+      name = "InconsolataGo Nerd Font";
       size = 11;
     };
     iconTheme = {

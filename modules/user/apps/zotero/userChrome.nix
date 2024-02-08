@@ -1,3 +1,8 @@
+{ config, pkgs, settings, ... }:
+let
+in pkgs.writeTextFile({
+    name="userChrome.css";
+    text = ''
 * {border: 0 !important; }
 
 /*change background color and text color of zotero toolbar and menubar*/
@@ -278,21 +283,21 @@ border-radius: 0px 0px 0 0 !important; }
 
 /*define color of item type field*/
 #item-type-menu { -moz-appearance: none;
-	color: white !important;
-	height: 1.5em !important;
-	min-height: 1.5em !important;
-	padding: 0 0 0 2px !important;
-	margin: 1px 5px 0 1px !important;
-	max-height: 1.5em !important;
-	border: 1px solid transparent;
-	background-color: transparent; }
+  color: white !important;
+  height: 1.5em !important;
+  min-height: 1.5em !important;
+  padding: 0 0 0 2px !important;
+  margin: 1px 5px 0 1px !important;
+  max-height: 1.5em !important;
+  border: 1px solid transparent;
+  background-color: transparent; }
 
 #item-type-menu:hover {	color: black !important; 
 background: #BBCEF1 !important; }
 
 /*define color of date-field-status*/
 #zotero-date-field-status { color: #ffffff !important;
-	padding: 0 10px 0 1px !important; }
+  padding: 0 10px 0 1px !important; }
 
 /*preferences dialog*/
 #zotero-prefpane-general, #zotero-prefpane-sync, #zotero-prefpane-export, #zotero-prefpane-advanced-keys-tab, #wordProcessors, #zotero-quickCopy-format, #sync-reset-form, #zotero-export-options { color: black !important;
@@ -309,7 +314,7 @@ background: #323234 !important; }
 /*about dialog*/
 #aboutcontent {	background: #474749 !important;
   color: white !important;
-	padding: 10px; }
+  padding: 10px; }
 
 #version { color: white !important; }
 
@@ -346,3 +351,5 @@ border-left: 3px solid darkgrey;
 color: white (255, 248, 248); }
 
 #zotero-note-window blockquote p { text-indent: 0; }
+    '';
+})
