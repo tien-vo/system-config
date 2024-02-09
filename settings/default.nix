@@ -51,7 +51,7 @@ in
     };
     font = {
       name = "FiraMono Nerd Font";
-      size = 12;
+      size = 10;
     };
     iconTheme = {
       package = gruvbox-icons;
