@@ -4,11 +4,12 @@ let
 in
 {
   imports = [
-    "${src}/modules/user/toolkits/nix"
-    "${src}/modules/user/toolkits/gtk"
-    "${src}/modules/user/toolkits/xdg"
-    "${src}/modules/user/toolkits/ssh"
-    "${src}/modules/user/toolkits/cryptomator"
+    "${src}/modules/user/tools/nix"
+    "${src}/modules/user/tools/gtk"
+    "${src}/modules/user/tools/xdg"
+    "${src}/modules/user/tools/ssh"
+    "${src}/modules/user/tools/cryptomator"
+    "${src}/modules/user/tools/micromamba"
 
     "${src}/modules/user/hardware/network"
     "${src}/modules/user/hardware/bluetooth"
