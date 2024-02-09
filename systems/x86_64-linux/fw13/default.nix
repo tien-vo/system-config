@@ -9,10 +9,7 @@ in
     inputs.hardware.nixosModules.framework-13-7040-amd
     "${src}/modules/system/tools/nix"
     "${src}/modules/system/shells/zsh"
-
-    "${src}/modules/system/hardware/audio"
-    "${src}/modules/system/hardware/bluetooth"
-
+    "${src}/modules/system/hardware"
     "${src}/modules/system/window-managers/hyprland"
   ];
 
@@ -45,12 +42,5 @@ in
     pkgs.git
     pkgs.vim
     pkgs.wget
-    pkgs.dmidecode
   ];
-
-  config.services = {
-    openssh.enable = true;
-    fwupd.enable = true;
-    upower.enable = true;
-  };
 }

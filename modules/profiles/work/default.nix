@@ -33,6 +33,8 @@ in
     "${src}/modules/user/browsers/file/thunar"
     "${src}/modules/user/browsers/file/vifm"
 
+    "${src}/modules/user/devenv"
+
     "${src}/modules/user/theme"
 
     "${src}/modules/user/apps/zotero"

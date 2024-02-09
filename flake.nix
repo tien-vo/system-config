@@ -18,6 +18,9 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
+    devenv = {
+      url = "github:cachix/devenv/latest";
+    };
   };
 
   outputs = inputs:
