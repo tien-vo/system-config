@@ -4,8 +4,9 @@
     enable = true;
     userName = "tvo";
     userEmail = "tvo.work@proton.me";
-    extraConfig.init = {
-      defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      pull.rebase = true;
     };
   };
 }
