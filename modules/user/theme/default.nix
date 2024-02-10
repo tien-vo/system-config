@@ -3,5 +3,6 @@
   imports = [
     ./fonts
     ./icons
+    ./gtk
   ];
 }

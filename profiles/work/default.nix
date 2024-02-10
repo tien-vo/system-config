@@ -5,11 +5,9 @@ in
 {
   imports = [
     "${src}/modules/user/tools/nix"
-    "${src}/modules/user/tools/gtk"
     "${src}/modules/user/tools/xdg"
     "${src}/modules/user/tools/ssh"
     "${src}/modules/user/tools/cryptomator"
-    "${src}/modules/user/tools/micromamba"
 
     "${src}/modules/user/hardware/network"
     "${src}/modules/user/hardware/bluetooth"
@@ -18,12 +16,15 @@ in
     "${src}/modules/user/daemon/mako"
     "${src}/modules/user/daemon/swww"
 
+    "${src}/modules/user/devenv"
+    "${src}/modules/user/devenv/git"
+    "${src}/modules/user/devenv/micromamba"
+
     "${src}/modules/user/shells/zsh"
 
-    "${src}/modules/user/console/git"
     "${src}/modules/user/console/neovim"
-    "${src}/modules/user/console/alacritty"
     "${src}/modules/user/console/autojump"
+    "${src}/modules/user/console/alacritty"
 
     "${src}/modules/user/window-managers/hyprland"
     "${src}/modules/user/status-bars/waybar"
@@ -53,7 +54,6 @@ in
     pkgs.htop
     pkgs.neofetch
     pkgs.dex
-    pkgs.gnumake
   ];
 
   config.home.sessionVariables = {

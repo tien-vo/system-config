@@ -3,7 +3,7 @@ let
   inherit (settings) src nixVersion;
 in
 {
-  imports = [ "${src}/modules/profiles/work" ];
+  imports = [ "${src}/profiles/work" ];
   config.home = {
     stateVersion = nixVersion;
     username = "tvo";
