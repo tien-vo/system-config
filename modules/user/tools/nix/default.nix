@@ -7,4 +7,7 @@
   config.nixpkgs.config = {
     allowUnfree = true;
   };
+  config.home.packages = [
+    pkgs.nix-index
+  ];
 }

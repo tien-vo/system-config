@@ -3,8 +3,9 @@ let
   prefix = "https://addons.mozilla.org/firefox/downloads/latest";
   addonList = map (name: "${prefix}/${name}/latest.xpi") ([
     "ublock-origin"
-    "bitwarden-password-manager"
     "sidebery"
+    "gruvbox-material"
+    "bitwarden-password-manager"
   ]);
 in
 {
