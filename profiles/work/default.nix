@@ -7,7 +7,6 @@ in
     "${src}/modules/user/tools/nix"
     "${src}/modules/user/tools/xdg"
     "${src}/modules/user/tools/ssh"
-    "${src}/modules/user/tools/cryptomator"
 
     "${src}/modules/user/hardware/network"
     "${src}/modules/user/hardware/bluetooth"
@@ -20,25 +19,21 @@ in
     "${src}/modules/user/devenv/git"
     "${src}/modules/user/devenv/micromamba"
 
-    "${src}/modules/user/shells/zsh"
-
+    "${src}/modules/user/console/shell/zsh"
     "${src}/modules/user/console/neovim"
     "${src}/modules/user/console/autojump"
     "${src}/modules/user/console/alacritty"
 
-    "${src}/modules/user/window-managers/hyprland"
-    "${src}/modules/user/status-bars/waybar"
-    "${src}/modules/user/launchers/fuzzel"
-
-    "${src}/modules/user/browsers/web/firefox"
-    "${src}/modules/user/browsers/file/zathura"
-    "${src}/modules/user/browsers/file/thunar"
-    "${src}/modules/user/browsers/file/vifm"
-
     "${src}/modules/user/theme"
+    "${src}/modules/user/window-manager/wayland/hyprland"
 
-    "${src}/modules/user/apps/zotero"
-    "${src}/modules/user/apps/megasync"
+    "${src}/modules/user/app/web-browser/firefox"
+    "${src}/modules/user/app/file-manager/vifm"
+    "${src}/modules/user/app/file-manager/thunar"
+    "${src}/modules/user/app/file-manager/zathura"
+    "${src}/modules/user/app/research-tool/zotero"
+    "${src}/modules/user/app/cloud-service/megasync"
+    "${src}/modules/user/app/cloud-service/cryptomator"
   ];
 
   config.home.packages = [
@@ -55,8 +50,4 @@ in
     pkgs.neofetch
     pkgs.dex
   ];
-
-  config.home.sessionVariables = {
-    BROWSER = "firefox";
-  };
 }

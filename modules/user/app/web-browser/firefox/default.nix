@@ -12,4 +12,7 @@
       extraConfig = import (./userjs.nix);
     };
   };
+  config.home.sessionVariables = {
+    BROWSER = "firefox";
+  };
 }
