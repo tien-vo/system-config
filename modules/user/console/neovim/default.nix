@@ -1,5 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, settings, ... }:
+let
+  inherit (settings) src;
+in
 {
+  imports = [
+    "${src}/modules/user/devenv/tectonic"
+  ];
   config.programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -13,8 +19,4 @@
     source = ./config;
     recursive = true;
   };
-  config.home.packages = [
-    pkgs.tectonic
-    pkgs.entr
-  ];
 }
