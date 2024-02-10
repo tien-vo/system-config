@@ -1,0 +1,91 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-bottom": 0,
+    "modules-left": [
+        "clock",
+        "hyprland/workspaces",
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "custom/updates",
+        "memory",
+        "temperature",
+        "cpu",
+        "wireplumber",
+        "upower",
+        "idle_inhibitor",
+        "tray",
+        "custom/powermenu",
+    ],
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "󰲠",
+            "2": "󰲢",
+            "3": "󰲤",
+            "4": "󰲦",
+            "5": "󰲨",
+            "6": "󰲪",
+            "7": "󰲬",
+            "8": "󰲮",
+            "9": "󰲰",
+            "10": "󰿬",
+        },
+        "sort-by-number": true,
+        "active-only": false,
+    },
+    "temperature": {
+        "format": "{icon} {temperatureC}°C",
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80,
+        "format-icons": ["", "", "", "", ""]
+    },
+    "memory": {
+        "format": "󰍛 {used:0.1f}G/{total:0.1f}G",
+        "tooltip": "false"
+    },
+    "cpu": {
+        "interval": 1,
+        "format": " {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {usage}%",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    },
+    "custom/powermenu": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "exec wlogout -p layer-shell",
+    },
+    "custom/updates": {
+        "format": " {}",
+        "interval": 3600,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": ["", "", ""]
+    },
+    "clock": {
+        "format": "  {:%A, %B %e %H:%M:%S}",
+        "interval": 1,
+    },
+    "upower": {
+        "icon-size": 20,
+        "hide-if-empty": true,
+        "format": "{percentage} {time}",
+        "tooltip": false,
+    },
+}

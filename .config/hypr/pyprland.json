@@ -1,0 +1,30 @@
+{
+    "pyprland": {
+        "plugins": [
+            "scratchpads"
+        ]
+    },
+    "scratchpads": {
+        "term": {
+            "command": "alacritty --class alacritty-dropterm",
+            "animation": "fromTop",
+            "unfocus": "hide",
+            "lazy": true,
+            "margin": 150
+        },
+        "vifm": {
+            "command": "alacritty --class vifm-dropterm -e vifmrun",
+            "animation": "fromTop",
+            "unfocus": "hide",
+            "lazy": true,
+            "margin": 150
+        },
+        "spotify": {
+            "command": "/usr/bin/spotify",
+            "animation": "fromTop",
+            "unfocus": "hide",
+            "lazy": true,
+            "margin": 150
+        }
+    }
+}

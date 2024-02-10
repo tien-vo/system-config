@@ -1,0 +1,56 @@
+#+
+#   Configurations for interactive shells
+#-
+
+# ---- Prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+source "$HOME/.config/zsh/p10k.zsh"
+
+# ---- Initialization
+# OMZ
+[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
+source "$ZSH/oh-my-zsh.sh"
+[[ -s "/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme" ]] && \
+    source "/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme"
+[[ -s "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
+    source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# autojump
+[[ -s "/etc/profile.d/autojump.sh" ]] && source "/etc/profile.d/autojump.sh"
+# CDF binaries
+[[ -s "$HOME/Apps/cdf_3.8.1/bin/definitions.B" ]] && . "$HOME/Apps/cdf_3.8.1/bin/definitions.B"
+# IDL binaries
+[[ -s "$HOME/Apps/idl_8.9.0/idl/bin/idl_setup.bash" ]] && . "$HOME/Apps/idl_8.9.0/idl/bin/idl_setup.bash"
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE="/usr/bin/micromamba";
+export MAMBA_ROOT_PREFIX="/home/tvo/.local/share/mamba";
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    if [ -f "/home/tvo/.local/share/mamba/etc/profile.d/micromamba.sh" ]; then
+        . "/home/tvo/.local/share/mamba/etc/profile.d/micromamba.sh"
+    else
+        export  PATH="/home/tvo/.local/share/mamba/bin:$PATH"  # extra space after export prevents interference from conda init
+    fi
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+# ---- Interactive
+# ZSH plugins
+plugins=()
+bindkey -v
+bindkey "^ " autosuggest-accept
+# Completion
+autoload -Uz compinit -d "$ZSH_COMPDUMP" && compinit -d "$ZSH_COMPDUMP"
+
+# ---- Aliases
+alias ls="eza -h --icons=auto --sort=name --group-directories-first"
+alias zload="source $HOME/.zshrc"
+alias zconf="$EDITOR $HOME/.zshrc"
+alias yarn="yarn --use-yarnrc '$XDG_CONFIG_HOME/yarn/config'"
+alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"

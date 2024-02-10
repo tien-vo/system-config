@@ -1,0 +1,247 @@
+#+
+#   i3 config file
+#   Author: Tien Vo
+#-
+
+# ---- Autostart programs
+exec_always $HOME/.config/i3/scripts/autostart.sh
+
+
+# ---- Constants, configs, and default apps
+set $A              Mod1
+set $M              Mod4
+set $S              Shift
+set $C              Ctrl
+set $ROFI_CONFIG    ~/.config/rofi/config.rasi
+set $TERMINAL       alacritty
+set $BROWSER        firefox
+set $FILEMANAGER    thunar
+set $EMAIL          betterbird
+set $VCTL           $HOME/.local/bin/tvo-volumectl
+set $BCTL           $HOME/.local/bin/tvo-brightnessctl
+set $PCTL           $HOME/.local/bin/tvo-polybarctl
+set $SPOTIFY        $HOME/.local/bin/tvo-launch-spotify
+set $VIFM           $HOME/.local/bin/vifmrun
+
+
+# ---- Theme colors & fonts
+font pango:iosevka 12
+
+# Last value is fallback
+set_from_resource   $foreground     i3wm.foreground     #ebdbb2
+set_from_resource   $background     i3wm.background     #1d2021
+set_from_resource   $primary        i3wm.active         #ebdbb2
+set_from_resource   $accent         i3wm.inactive       #1d2021
+
+# The following follows: <colorclass> <border> <background> <text> <indicator> <child_border>
+client.focused      $primary #1d2021 $primary $primary $primary $primary
+client.unfocused    $accent  #1d2021 $accent  #1d2021  $accent  $accent
+client.background   $background
+
+
+# ---- Appearance
+default_border              pixel           2
+default_floating_border     normal
+for_window [class="^.*"]    border pixel    2
+hide_edge_borders           none
+gaps                        inner           12
+gaps                        outer           2
+
+
+# ---- Control
+focus_follows_mouse             no
+workspace_auto_back_and_forth   no
+
+# Use Mouse+$M to drag floating windows to their wanted position
+floating_modifier   $M
+
+# Change window focus
+bindsym             $M+h        focus       left
+bindsym             $M+j        focus       down
+bindsym             $M+k        focus       up
+bindsym             $M+l        focus       right
+
+# Move focused window
+bindsym             $M+$S+h     move        left
+bindsym             $M+$S+j     move        down
+bindsym             $M+$S+k     move        up
+bindsym             $M+$S+l     move        right
+
+# Fullscreen
+bindsym             $A+F11      fullscreen  toggle
+
+# Split mode
+bindsym             $A+h        split h
+bindsym             $A+v        split v
+
+# Floating
+bindsym             $A+f        floating    toggle
+
+# Change focus between floating/tiling
+bindsym             $A+t        focus       mode_toggle
+
+# Resize
+mode "resize" {
+    bindsym h       resize shrink width 5 px or 5 ppt
+    bindsym j       resize grow height 5 px or 5 ppt
+    bindsym k       resize shrink height 5 px or 5 ppt
+    bindsym l       resize grow width 5 px or 5 ppt
+    bindsym Return  mode "default"
+    bindsym Escape  mode "default"
+}
+bindsym             $A+s        mode        "resize"
+
+# ---- Shortkeys
+# Program launcher
+bindsym             $M+r        exec --no-startup-id    rofi -no-lazy-grab -show drun -modi drun -theme $ROFI_CONFIG
+
+# Terminal
+bindsym             $M+Return   exec                    $TERMINAl
+
+# Browser
+bindsym             $M+b        exec                    $BROWSER
+
+# File manager
+bindsym             $M+n        exec                    $FILEMANAGER
+
+# Start email client
+bindsym             $M+e        exec                    $EMAIL
+
+# Kill focused window
+bindsym             $M+c        kill
+bindsym             $M+$S+c     --release exec --no-startup-id kkill
+
+# Reload the configuration file
+bindsym             $A+r        reload
+bindsym             $A+$S+r     restart
+
+# Launch clearine
+bindsym             $A+m        exec                    clearine
+
+# Print screen
+bindsym             $M+Print    --release exec --no-startup-id xfce4-screenshooter -c -r
+bindsym             $M+$S+Print --release exec --no-startup-id xfce4-screenshooter
+
+
+# ---- System control
+# Sound control
+bindsym XF86AudioRaiseVolume        exec $VCTL up 5
+bindsym XF86AudioLowerVolume        exec $VCTL down 5
+bindsym XF86AudioMute               exec $VCTL mute
+# Brightness control
+bindsym XF86MonBrightnessUp         exec $BCTL i 5
+bindsym XF86MonBrightnessDown       exec $BCTL d 5
+bindsym XF86ScreenSaver             exec $BCTL set 5
+# Temperature control
+bindsym $C+XF86MonBrightnessUp      exec $BCTL redshift i 100
+bindsym $C+XF86MonBrightnessDown    exec $BCTL redshift d 100
+bindsym $C+XF86ScreenSaver          exec $BCTL redshift toggle
+
+
+# ---- Workspaces
+set     $WS_TERMINAL    "10"
+set     $WS_BROWSER     "1"
+set     $WS_FILEMANAGER "2"
+set     $WS_DOCUMENT    "3"
+set     $WS_MEDIA       "4"
+set     $WS_MATH        "5"
+
+
+# Switch to workspace
+bindsym $M+1            workspace                       $WS_BROWSER
+bindsym $M+2            workspace                       $WS_FILEMANAGER
+bindsym $M+3            workspace                       $WS_DOCUMENT
+bindsym $M+4            workspace                       $WS_MEDIA
+bindsym $M+5            workspace                       $WS_MATH
+bindsym $M+6            workspace                       "6"
+bindsym $M+7            workspace                       "7"
+bindsym $M+8            workspace                       "8"
+bindsym $M+9            workspace                       "9"
+bindsym $M+0            workspace                       $WS_TERMINAL
+bindsym $M+x move workspace to output next
+
+# Move to workspace with focused container
+bindsym $M+$S+1         move container to workspace     $WS_BROWSER;        workspace $WS_BROWSER
+bindsym $M+$S+2         move container to workspace     $WS_FILEMANAGER;    workspace $WS_FILEMANAGER
+bindsym $M+$S+3         move container to workspace     $WS_DOCUMENT;       workspace $WS_DOCUMENT
+bindsym $M+$S+4         move container to workspace     $WS_MEDIA;          workspace $WS_MEDIA
+bindsym $M+$S+5         move container to workspace     $WS_MATH;           workspace $WS_MATH
+bindsym $M+$S+6         move container to workspace     "6";                workspace "6"
+bindsym $M+$S+7         move container to workspace     "7";                workspace "7"
+bindsym $M+$S+8         move container to workspace     "8";                workspace "8"
+bindsym $M+$S+9         move container to workspace     "9";                workspace "9"
+bindsym $M+$S+0         move container to workspace     $WS_TERMINAL;       workspace $WS_TERMINAL
+
+# Open applications in specific workspaces
+assign      [class="Alacritty"]                         $WS_TERMINAL
+assign      [class="Zathura"]                           $WS_TERMINAL
+assign      [class="floorp"]                            $WS_BROWSER
+assign      [class="firefox"]                           $WS_BROWSER
+assign      [class="Nemo"]                              $WS_FILEMANAGER
+assign      [class="Thunar"]                            $WS_FILEMANAGER
+assign      [class="Mathematica"]                       $WS_MATH
+assign      [class="MATLAB"]                            $WS_MATH
+assign      [class="zoom"]                              $WS_MEDIA
+assign      [class="Slack"]                             $WS_MEDIA
+assign      [class="Element"]                           $WS_MEDIA
+assign      [class="Gitter"]                            $WS_MEDIA
+assign      [class="thunderbird"]                       $WS_MEDIA
+assign      [class="obsidian"]                          $WS_DOCUMENT
+assign      [class="Evince"]                            $WS_DOCUMENT
+assign      [class="okular"]                            $WS_DOCUMENT
+assign      [class="Mendeley Desktop"]                  $WS_DOCUMENT
+assign      [class="Zotero"]                            $WS_DOCUMENT
+assign      [class="Zeal"]                              $WS_DOCUMENT
+assign      [class="VirtualBox Manager"]                $WS_MEDIA
+assign      [class="Com.cisco.anyconnect.gui"]          "6"
+
+# Focus when opened
+for_window  [class="^.*"]                               focus
+
+# Floating windows
+for_window  [class="matplotlib"]                        floating enable
+for_window  [class="Matplotlib"]                        floating enable
+for_window  [class="Blueman-manager"]                   floating enable
+for_window  [title="IDL*"]                              floating enable
+for_window  [class="tplot window"]                      floating enable
+for_window  [class="Caffeine"]                          floating enable
+for_window  [class="Zoom"]                              floating enable
+for_window  [class="Nm-connection-editor"]              floating enable
+for_window  [class="VirtualBox Manager"]                floating enable
+for_window  [class="vlc"]                               floating enable
+for_window  [class="Viewnior"]                          floating enable
+for_window  [class="Thunderbird"]                       floating enable
+for_window  [class="Com.cisco.anyconnect.gui"]          floating enable
+for_window  [class="Cisco*"]                            floating enable
+for_window  [class="zoom"]                              floating enable
+for_window  [class="Xfce4-power-manager-settings"]      floating enable
+for_window  [class="KeePassXC"]                         floating enable
+for_window  [class="Bitwarden"]                         floating enable
+for_window  [class="EVA"]                               floating enable
+for_window  [class="XTPLOT"]                            floating enable
+
+
+# ---- Scratchpads
+for_window [class="dropdown_*"] floating enable
+for_window [class="dropdown_*"] sticky enable
+for_window [class="dropdown_*"] move scratchpad
+for_window [class="dropdown_*"] move position center
+for_window [class="dropdown_*"] resize set 75ppt 75ppt
+for_window [class="dropdown_*"] border pixel 2
+
+# Terminal
+exec --no-startup-id $TERMINAL -t "dropdown_terminal" --class "dropdown_terminal"
+bindsym $M+space [class="dropdown_terminal"] scratchpad show; [class="dropdown_terminal"] move position center
+bindsym $M+$S+space exec $TERMINAL -t "dropdown_terminal" --class "dropdown_terminal"
+
+# Spotify (don't start up automatically)
+for_window [class="Spotify"] move scratchpad
+for_window [class="Spotify"] resize set 1800 950
+for_window [class="Spotify"] border pixel 6
+bindsym $M+m [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+bindsym $M+$S+m exec sh $HOME/.config/i3/scripts/spotify.sh
+
+# VIFM
+exec --no-startup-id $TERMINAL -t "dropdown_vifm" --class "dropdown_vifm" -e vifmrun
+bindsym $M+v [class="dropdown_vifm"] scratchpad show; [class="dropdown_vifm"] move position center
+bindsym $M+$S+v exec $TERMINAL -t "dropdown_vifm" --class "dropdown_vifm" -e vifmrun

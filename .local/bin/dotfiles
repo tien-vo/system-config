@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#+
+# This script is to be run via curl:
+#   curl -fsSL https://gitlab.com/tien-vo/dotfiles/-/raw/main/.local/bin/dotfiles | bash -s -- install
+#-
+
+REPO="git@gitlab.com:tien-vo/dotfiles.git"
+DOT_DIR="$HOME/.local/share/dotfiles"
+DOT_BACKUP_DIR="$HOME/.local/share/dotfiles.backup"
+STDERR="/tmp/dotfiles.err"
+
+function _dotfiles {
+    /usr/bin/git --git-dir="$DOT_DIR/" --work-tree="$HOME" "$@"
+}
+
+case "$1" in
+    install)
+        [ -d "$DOT_DIR.old" ] && rm -rf "$DOT_DIR.old"
+        [ -d "$DOT_DIR" ] && mv "$DOT_DIR" "$DOT_DIR.old"
+
+        git clone --bare $REPO $DOT_DIR
+        _dotfiles checkout 2> "$STDERR"
+        if [ -s "$STDERR" ]; then
+            mkdir -p $DOT_BACKUP_DIR
+            _dotfiles checkout 2>&1 \
+                | grep -P '^\s+[\w.]' \
+                | awk {'print $1'} \
+                | xargs -I{} sh -c 'rsync -aph --mkpath --remove-source-files "$1/{}" "$2/{}"' -- "$HOME" "$DOT_BACKUP_DIR"
+            _dotfiles checkout
+            rm "$STDERR"
+        fi;
+        _dotfiles config --local status.showUntrackedFiles no
+        ;;
+    *)
+        _dotfiles config --local status.showUntrackedFiles no
+        _dotfiles "$@"
+        ;;
+esac

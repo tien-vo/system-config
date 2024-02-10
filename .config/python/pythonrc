@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import atexit
+import readline
+import sys
+from pathlib import Path
+
+# ---- Manually define tab comletion and remove default history writing hook
+readline.parse_and_bind("tab: complete")
+if hasattr(sys, "__interactivehook__"):
+    del sys.__interactivehook__
+
+# ---- XDG-compliant histfile location
+hist_file = Path.home() / ".local" / "state" / "python" / "history"
+try:
+    hist_file.touch(exist_ok=True)
+except FileNotFoundError:
+    hist_file.parent.mkdir(parents=True, exist_ok=True)
+
+readline.read_history_file(hist_file)
+# Don't store an obscene amount of history
+readline.set_history_length(5000)
+# Write to history file on exit
+atexit.register(readline.write_history_file, hist_file)

@@ -1,0 +1,67 @@
+#!/usr/bin/zsh
+#+
+#   Generic configurations (for all shells)
+#-
+
+# ---- System configurations
+export LANG="en_US.UTF-8"
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+# Path
+export PATH="$HOME/.local/bin:$PATH"
+export MANPATH="/usr/local/man:$MANPATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+export GSETTINGS_SCHEMA_DIR="$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
+# Default programs
+export EDITOR="nvim"
+export BROWSER="librewolf"
+export TERM="xterm-256color"
+export READER="evince"
+
+# ---- Keep HOME clean
+export GOPATH="$XDG_DATA_HOME/go"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export NUGET_PACKAGES="$XDG_DATA_HOME/nuget"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"  # Applied in python 3.13
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+export PYTHONUSERBASE="$XDG_DATA_HOME/python"
+export MATHEMATICA_USERBASE="$XDG_CONFIG_HOME/mathematica"
+
+# ---- Application-specific configurations
+# ZSH
+skip_global_compinit=1
+export ZSH="/usr/share/oh-my-zsh/"
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+export HISTFILE="$ZSH_CACHE_DIR/zsh_history"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST-$ZSH_VERSION"
+export HISTSIZE=10000
+export SAVEHIST=10000
+# Firefox
+export MOZ_DBUS_REMOTE=1
+export MOZ_ENABLE_WAYLAND=1
+# Cisco
+export PATH="/opt/cisco/anyconnect/bin:$PATH"
+export LD_LIBRARY_PATH="/opt/cisco/anyconnect/lib:$LD_LIBRARY_PATH"
+# IDL
+export SPEDAS_DATA_DIR="$HOME/.local/share/spedas"
+export ROOT_DATA_DIR="$HOME/.local/share/spedas"
+export IDL_PATH="<IDL_DEFAULT>"
+export IDL_PATH="$IDL_PATH:+$HOME/Apps/spedas_be"
+# TEX
+export TEXMFHOME="$HOME/.config/texmf"
+# VPIC
+export PATH="$HOME/Apps/vpic/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/Apps/vpic/lib:$LD_LIBRARY_PATH"
+# Mathematica
+export PATH="$HOME/Apps/mathematica_13.2.0/bin:$PATH"
+# ALPS
+export PATH="$HOME/Apps/alps/bin:$PATH"
+# Wine
+export WINEPREFIX="$XDG_DATA_HOME/wine"
+# Dotfiles
+export DOTFILES="$HOME/.config/dotfiles"

@@ -1,0 +1,35 @@
+{
+  "name": "Custom snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": ["cpp"],
+        "path": "./cpp.json"
+      },
+      {
+        "language": ["python"],
+        "path": "./python.json"
+      },
+      {
+        "language": ["tex", "plaintex"],
+        "path": "./tex.json"
+      },
+      {
+        "language": ["julia"],
+        "path": "./julia.json"
+      },
+      {
+        "language": ["bib"],
+        "path": "./bib.json"
+      },
+      {
+        "language": ["c"],
+        "path": "./c.json"
+      },
+      {
+        "language": ["lua"],
+        "path": "./lua.json"
+      }
+    ]
+  }
+}
