@@ -49,5 +49,7 @@ in
     pkgs.htop
     pkgs.neofetch
     pkgs.dex
+    pkgs.file
+    pkgs.dig
   ];
 }
