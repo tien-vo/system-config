@@ -27,8 +27,6 @@ in
     "${src}/modules/user/theme"
     "${src}/modules/user/window-manager/wayland/hyprland"
 
-    "${src}/modules/user/app/personal-information-manager/thunderbird"
-    "${src}/modules/user/app/personal-information-manager/protonmail-bridge"
     "${src}/modules/user/app/web-browser/firefox"
     "${src}/modules/user/app/file-manager/vifm"
     "${src}/modules/user/app/file-manager/thunar"
