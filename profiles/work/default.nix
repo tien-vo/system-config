@@ -27,6 +27,7 @@ in
     "${src}/modules/user/theme"
     "${src}/modules/user/window-manager/wayland/hyprland"
 
+    "${src}/modules/user/app/multi-media"
     "${src}/modules/user/app/web-browser/firefox"
     "${src}/modules/user/app/file-manager/vifm"
     "${src}/modules/user/app/file-manager/thunar"
@@ -37,6 +38,7 @@ in
   ];
 
   config.home.packages = [
+    pkgs.xdg-utils
     pkgs.unzip
     pkgs.wl-clipboard
     pkgs.swayimg

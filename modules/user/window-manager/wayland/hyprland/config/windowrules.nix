@@ -25,6 +25,9 @@
     "workspace 4, class:^(zoom)(.*)$"
     "float, class:^(zoom)(.*)$"
 
+    "workspace 4, class:^(Element)(.*)$"
+    "float, class:^(Element)(.*)$"
+
     # Clients & daemon
     "workspace 5, class:^(blueman-manager)(.*)$"
     "float, class:^(blueman-manager)(.*)$"

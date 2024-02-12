@@ -25,4 +25,8 @@
       tree = "${pkgs.eza}/bin/eza --color=auto --tree";
     };
   };
+
+  config.home.packages = [
+    pkgs.eza
+  ];
 }
