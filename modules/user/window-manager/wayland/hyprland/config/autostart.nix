@@ -9,10 +9,12 @@ let
               eval $* & disown || true
       }
 
-      ${pkgs.swww}/bin/swww init
-      ${pkgs.swww}/bin/swww img ${wallpaper}
+      run "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       run ${pkgs.waybar}/bin/waybar
       run ${pkgs.mako}/bin/mako
+
+      ${pkgs.swww}/bin/swww init
+      ${pkgs.swww}/bin/swww img ${wallpaper}
 
       # Kludge for pyprland cause it started generating this wrapped binary
       [[ -z $(pgrep -f ${pkgs.pyprland}/bin/.pypr-wrapped) ]] && \
