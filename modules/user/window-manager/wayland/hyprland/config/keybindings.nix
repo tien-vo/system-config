@@ -3,10 +3,10 @@ let
   inherit (pkgs) writeShellScriptBin bash;
   script = writeShellScriptBin ("move-workspace-to-monitor") (
     ''
-    active_monitor=$(hyprctl monitors -j | jq '.[] | select(.focused == true).id')
-    passive_monitor=$(hyprctl monitors -j | jq '.[] | select(.focused == false).id')
-    active_workspace=$(hyprctl monitors -j | jq '.[] | select(.focused == true).activeWorkspace.id')
-    passive_workspace=$(hyprctl monitors -j | jq '.[] | select(.focused == false).activeWorkspace.id')
+    active_monitor=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == true).id')
+    passive_monitor=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == false).id')
+    active_workspace=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == true).activeWorkspace.id')
+    passive_workspace=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == false).activeWorkspace.id')
     
     hyprctl dispatch movecurrentworkspacetomonitor "$passive_monitor"
     hyprctl dispatch workspace "$active_workspace"
@@ -22,12 +22,12 @@ in
       "SUPER, C, killactive"
       "SUPER, F, togglefloating"
       "SUPER_SHIFT, F, fullscreen"
-      "SUPER, Print, exec, grim"
-      "SUPER_SHIFT, Print, exec, grim -g '$(slurp)'"
+      "SUPER, Print, exec, ${pkgs.grim}/bin/grim"
+      "SUPER_SHIFT, Print, exec, ${pkgs.grim}/bin/grim -g '$(${pkgs.slurp}/bin/slurp)'"
 
       # Launchers
-      "SUPER, RETURN, exec, alacritty"
-      "SUPER, R, exec, fuzzel"
+      "SUPER, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
+      "SUPER, R, exec, ${pkgs.fuzzel}/bin/fuzzel"
 
       # Movements
       "SUPER, H, movefocus, l"
@@ -73,11 +73,11 @@ in
       "ALT, K, resizeactive, 0 10"
 
       # Multimedia
-      ", XF86monbrightnessup, exec, brightnessctl set 5%+"
-      ", XF86monbrightnessdown, exec, brightnessctl set 5%-"
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-      ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86monbrightnessup, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
+      ", XF86monbrightnessdown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
+      ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     ];
   };
 }

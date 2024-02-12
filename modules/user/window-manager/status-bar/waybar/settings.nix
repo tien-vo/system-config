@@ -1,4 +1,4 @@
-{ settings, ... }:
+{ pkgs, settings, ... }:
 let
   inherit (builtins) ceil;
   inherit (settings.window) gap;
@@ -77,7 +77,7 @@ in
     "custom/powermenu" = {
       format = "⏻";
       tooltip = false;
-      on-click = "exec wlogout -p layer-shell";
+      on-click = "exec ${pkgs.wlogout}/bin/wlogout -p layer-shell";
     };
     wireplumber = {
       format = "{icon} {volume}%";

@@ -37,19 +37,11 @@ in
   ];
 
   config.home.packages = [
-    pkgs.jq
-    pkgs.eza
     pkgs.unzip
-    pkgs.grim
-    pkgs.slurp
-    pkgs.wlogout
     pkgs.wl-clipboard
-    pkgs.brightnessctl
     pkgs.swayimg
     pkgs.htop
     pkgs.neofetch
     pkgs.dex
-    pkgs.file
-    pkgs.dig
   ];
 }
