@@ -13,6 +13,7 @@ pkgs.writeTextFile ({
     user_pref("extensions.zotero.translators.better-bibtex.citekeyFormatEditing", "auth.lower + year + infix");
     user_pref("extensions.zotero.translators.better-bibtex.platform", "lin");
     user_pref("extensions.zotero.secondarySort.title", "year");
+    user_pref("extensions.zotero.recursiveCollections", false);
 
     user_pref("extensions.zotfile.dest_dir", "${homeDirectory}/Sync/zotero");
     user_pref("extensions.zotfile.import", false);
