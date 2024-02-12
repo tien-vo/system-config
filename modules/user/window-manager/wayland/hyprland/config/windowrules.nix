@@ -29,6 +29,9 @@
     "workspace 5, class:^(blueman-manager)(.*)$"
     "float, class:^(blueman-manager)(.*)$"
 
+    "workspace 5, class:^(.blueman-manager-wrapped)(.*)$"
+    "float, class:^(.blueman-manager-wrapped)(.*)$"
+
     "workspace 5, class:^(Cisco AnyConnect Secure Mobility Client)(.*)$"
     "float, class:^(Cisco AnyConnect Secure Mobility Client)(.*)$"
 

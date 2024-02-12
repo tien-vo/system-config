@@ -1,4 +1,4 @@
-"
+''
 #TabsToolbar
 {
     visibility: collapse;
@@ -7,4 +7,4 @@
 {
     display: none;
 }
-"
+''

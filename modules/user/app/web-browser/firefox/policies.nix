@@ -4,7 +4,7 @@ let
   addonList = map (name: "${prefix}/${name}/latest.xpi") ([
     "ublock-origin"
     "sidebery"
-    "gruvbox-material"
+    "gruvbox-material-dark"
     "bitwarden-password-manager"
   ]);
 in
@@ -29,12 +29,19 @@ in
       ];
     };
     Extensions = {
-      Install = addonList;
+      Install = [
+        "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
+        "https://addons.mozilla.org/firefox/downloads/latest/sidebery/latest.xpi"
+        "https://addons.mozilla.org/firefox/downloads/latest/gruvbox-material-dark/latest.xpi"
+        "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi"
+        "https://www.zotero.org/download/connector/dl?browser=firefox&version=5.0.114"
+      ];
       Uninstall = [
         "google@search.mozilla.org"
         "bing@search.mozilla.org"
         "amazondotcom@search.mozilla.org"
         "ebay@search.mozilla.org"
+        "twitter@search.mozilla.org"
         "wikipedia@search.mozilla.org"
       ];
     };
@@ -46,6 +53,7 @@ in
         "Amazon.com"
         "eBay"
         "Wikipedia"
+        "Twitter"
       ];
       Default = "StartPage";
       Add = [

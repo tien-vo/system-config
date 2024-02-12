@@ -23,10 +23,10 @@ in
     modules-right = [
       "tray"
       "wireplumber"
-      "cpu"
-      "memory"
-      "temperature"
       "upower"
+      "temperature"
+      "memory"
+      "cpu"
       "custom/powermenu"
     ];
     tray = {
