@@ -1,13 +1,4 @@
 { ... }:
-let
-  prefix = "https://addons.mozilla.org/firefox/downloads/latest";
-  addonList = map (name: "${prefix}/${name}/latest.xpi") ([
-    "ublock-origin"
-    "sidebery"
-    "gruvbox-material-dark"
-    "bitwarden-password-manager"
-  ]);
-in
 {
   config.programs.firefox.policies = {
     DisableAppUpdate = true;
@@ -18,6 +9,21 @@ in
     DisableFeedbackCommands = true;
     DisablePocket = true;
     DisableDeveloperTools = false;
+    FirefoxHome = {
+      Search = true;
+      TopSites = false;
+      SponsoredTopSites = false;
+      Highlights = false;
+      Pocket = false;
+      SponsoredPocket = false;
+      Snippets = false;
+      Locked = false;
+    };
+    FirefoxSuggest = {
+      WebSuggestions = false;
+      SponsoredSuggestions = false;
+      ImproveSuggest = false;
+    };
     NoDefaultBookmarks = true;
     OverrideFirstRunPage = "";
     WebsiteFilter = {
@@ -41,9 +47,15 @@ in
         "bing@search.mozilla.org"
         "amazondotcom@search.mozilla.org"
         "ebay@search.mozilla.org"
-        "twitter@search.mozilla.org"
         "wikipedia@search.mozilla.org"
       ];
+    };
+    ExtensionSettings = {
+      "google@search.mozilla.org".installation_mode = "blocked";
+      "bing@search.mozilla.org".installation_mode = "blocked";
+      "amazondotcom@search.mozilla.org".installation_mode = "blocked";
+      "ebay@search.mozilla.org".installation_mode = "blocked";
+      "wikipedia@search.mozilla.org".installation_mode = "blocked";
     };
     SearchEngines = {
       PreventInstalls = false;
@@ -53,7 +65,6 @@ in
         "Amazon.com"
         "eBay"
         "Wikipedia"
-        "Twitter"
       ];
       Default = "StartPage";
       Add = [

@@ -13,6 +13,6 @@
     };
   };
   config.home.sessionVariables = {
-    BROWSER = "firefox";
+    BROWSER = "${pkgs.firefox-esr}/bin/firefox-esr";
   };
 }

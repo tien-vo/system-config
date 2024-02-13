@@ -1,8 +1,6 @@
 { ... }:
 {
   config.wayland.windowManager.hyprland.settings.windowrulev2 = [
-    "float, title:"
-
     # Console
     "workspace 10, class:^(Alacritty)(.*)$"
 
