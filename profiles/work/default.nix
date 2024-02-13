@@ -12,8 +12,6 @@ in
     "${src}/modules/user/hardware/bluetooth"
 
     "${src}/modules/user/daemon/syncthing"
-    "${src}/modules/user/daemon/mako"
-    "${src}/modules/user/daemon/swww"
 
     "${src}/modules/user/devenv"
     "${src}/modules/user/devenv/git"
@@ -28,7 +26,7 @@ in
     "${src}/modules/user/window-manager/wayland/hyprland"
 
     "${src}/modules/user/app/multi-media"
-    "${src}/modules/user/app/personal-information-management/thunderbird"
+    #  "${src}/modules/user/app/personal-information-management/thunderbird"
     "${src}/modules/user/app/personal-information-management/betterbird"
     "${src}/modules/user/app/web-browser/firefox"
     "${src}/modules/user/app/file-manager/vifm"
