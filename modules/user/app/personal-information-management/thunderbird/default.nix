@@ -1,11 +1,14 @@
 { pkgs, ... } @ args:
+let
+  thunderbird = pkgs.thunderbird.override ({
+    extraPolicies = import(./policies.nix)(args);
+  });
+in
 {
-  config.programs.thunderbird = {
-    enable = true;
-    profiles.custom-profile = {
-      isDefault = true;
-      userChrome = import (./userChrome.nix);
-      extraConfig = import (./userjs.nix) (args);
-    };
-  };
+  config.home.packages = [
+    thunderbird
+  ];
+
+  config.home.file."./.thunderbird/profiles.ini".source = ./profiles.ini;
+  config.home.file."./.thunderbird/custom-profile/user.js".source = import(./userjs.nix)(args);
 }

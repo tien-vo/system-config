@@ -43,6 +43,7 @@ in
     pkgs.git
     pkgs.vim
     pkgs.wget
+    pkgs.protonmail-bridge
   ];
 
   config.services.gnome.gnome-keyring.enable = true;
