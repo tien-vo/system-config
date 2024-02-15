@@ -46,6 +46,7 @@ in
     pkgs.protonmail-bridge
   ];
 
+  config.programs.seahorse.enable = true;
   config.services.gnome.gnome-keyring.enable = true;
   config.systemd.user.services.protonmail-bridge = {          
     description = "Protonmail Bridge";          
