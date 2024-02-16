@@ -1,3 +1,3 @@
-# nix-config
+# system-config
 
-This is my personal system & home configurations with nix flake.
+This is a flake for configuring personal systems and home environments.
