@@ -15,7 +15,7 @@ in
 
     "${src}/modules/user/devenv"
     "${src}/modules/user/devenv/git"
-    "${src}/modules/user/devenv/micromamba"
+    #  "${src}/modules/user/devenv/micromamba"
 
     "${src}/modules/user/console/shell/zsh"
     "${src}/modules/user/console/neovim"

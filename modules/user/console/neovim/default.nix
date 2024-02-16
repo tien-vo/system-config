@@ -11,8 +11,6 @@ in
     defaultEditor = true;
     extraPackages = [
       pkgs.gcc
-      pkgs.python311Full
-      pkgs.python311Packages.pip
     ];
   };
   config.home.file."./.config/nvim/" = {
