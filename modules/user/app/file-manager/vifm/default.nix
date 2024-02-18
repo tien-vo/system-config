@@ -2,6 +2,7 @@
 {
   config.home.packages = [
     pkgs.vifm
+    pkgs.evince
   ];
 
   config.home.file."./.config/vifm/" = {
