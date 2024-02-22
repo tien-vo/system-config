@@ -8,7 +8,7 @@ in
     ./hardware.nix
     inputs.hardware.nixosModules.framework-13-7040-amd
     "${src}/modules/system/tools/nix"
-    #  "${src}/modules/system/tools/nix-ld"
+    "${src}/modules/system/tools/nix-ld"
     "${src}/modules/system/shells/zsh"
     "${src}/modules/system/hardware"
     "${src}/modules/system/window-managers/hyprland"

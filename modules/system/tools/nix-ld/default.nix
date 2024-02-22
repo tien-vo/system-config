@@ -7,7 +7,6 @@ in
     enable = true;
     package = inputs.nix-ld-rs.packages.${system}.nix-ld-rs;
     libraries = [
-      pkgs.libgcc
       pkgs.micromamba
     ];
   };
