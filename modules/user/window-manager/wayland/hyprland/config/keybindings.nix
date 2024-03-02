@@ -23,7 +23,7 @@ in
       "SUPER, F, togglefloating"
       "SUPER_SHIFT, F, fullscreen"
       "SUPER, Print, exec, ${pkgs.grim}/bin/grim"
-      "SUPER_SHIFT, Print, exec, ${pkgs.grim}/bin/grim -g '$(${pkgs.slurp}/bin/slurp)'"
+      ''SUPER_SHIFT, Print, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0)"''
 
       # Launchers
       "SUPER, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
