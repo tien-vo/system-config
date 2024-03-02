@@ -10,6 +10,7 @@ let
 in
 {
   config.home.packages = [
+    pkgs.corefonts
     (pkgs.nerdfonts.override ({ inherit fonts; }))
     pkgs.gtk-engine-murrine
   ];
