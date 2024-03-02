@@ -46,6 +46,5 @@ in
     pkgs.neofetch
     pkgs.dex
     pkgs.zoom-us
-    pkgs.sage
   ];
 }
