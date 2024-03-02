@@ -12,6 +12,7 @@ in
     "${src}/modules/user/hardware/bluetooth"
 
     "${src}/modules/user/daemon/syncthing"
+    "${src}/modules/user/daemon/udiskie"
 
     "${src}/modules/user/devenv"
     "${src}/modules/user/devenv/git"
