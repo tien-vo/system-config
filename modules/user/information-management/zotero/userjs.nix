@@ -9,11 +9,12 @@ pkgs.writeTextFile ({
   text = ''
     user_pref("extensions.zotero.dataDir", "${dataHome}/zotero");
     user_pref("extensions.zotero.export.quickCopy.setting", "export=ca65189f-8815-4afe-8c8b-8c7c15f0edca");
-    user_pref("extensions.zotero.translators.better-bibtex.citekeyFormat", "auth.lower + year + infix");
-    user_pref("extensions.zotero.translators.better-bibtex.citekeyFormatEditing", "auth.lower + year + infix");
-    user_pref("extensions.zotero.translators.better-bibtex.platform", "lin");
     user_pref("extensions.zotero.secondarySort.title", "year");
     user_pref("extensions.zotero.recursiveCollections", false);
+
+    user_pref("extensions.zotero.translators.better-bibtex.citekeyFold", false);
+    user_pref("extensions.zotero.translators.better-bibtex.citekeyFormat", "auth.lower + (authini.len(\">\", 1) ? \"+\" : \"\") + shortyear + infix(start=1)");
+    user_pref("extensions.zotero.translators.better-bibtex.citekeyFormatEditing", "auth.lower + (authini.len(\">\", 1) ? \"+\" : \"\") + shortyear + infix(start=1)");
 
     user_pref("extensions.zotfile.dest_dir", "${homeDirectory}/Sync/zotero");
     user_pref("extensions.zotfile.import", false);
