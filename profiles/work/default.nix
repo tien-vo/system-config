@@ -28,6 +28,7 @@ in
 
     "${src}/modules/user/information-management/thunderbird"
     "${src}/modules/user/information-management/zotero"
+    "${src}/modules/user/information-management/obsidian"
 
     "${src}/modules/user/app/multi-media"
     "${src}/modules/user/app/web-browser/firefox"
@@ -47,5 +48,6 @@ in
     pkgs.neofetch
     pkgs.dex
     pkgs.zoom-us
+    pkgs.file
   ];
 }
