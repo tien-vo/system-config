@@ -15,6 +15,7 @@
     # Readers
     "workspace 3, class:^(Zotero)(.*)$"
     "float, class:Zotero, title:Quick Format Citation$"
+    "float, class:Zotero, initialClass:Add Note$"
 
     # Multi-media
     "workspace 4, class:^(Slack)(.*)$"

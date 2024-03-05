@@ -26,6 +26,7 @@ in
     "${src}/modules/user/theme"
     "${src}/modules/user/window-manager/wayland/hyprland"
 
+    "${src}/modules/user/information-management/logseq"
     "${src}/modules/user/information-management/thunderbird"
     "${src}/modules/user/information-management/zotero"
     "${src}/modules/user/information-management/obsidian"
