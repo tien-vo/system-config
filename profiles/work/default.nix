@@ -50,5 +50,7 @@ in
     pkgs.dex
     pkgs.zoom-us
     pkgs.file
+    pkgs.imagemagick
+    pkgs.okular
   ];
 }

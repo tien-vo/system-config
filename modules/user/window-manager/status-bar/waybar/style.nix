@@ -10,7 +10,7 @@ let
   borderSize = toString (border.size);
   borderRadius = toString (border.radius);
 
-  iconSize = toString (ceil (1.1 * size));
+  iconSize = toString (ceil (1.3 * size));
 in
 {
   config.programs.waybar.style = ''
