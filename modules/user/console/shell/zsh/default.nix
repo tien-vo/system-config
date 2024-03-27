@@ -2,7 +2,7 @@
 {
   config.programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
     oh-my-zsh.enable = true;

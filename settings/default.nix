@@ -44,7 +44,7 @@ in
   };
   theme = {
     colorScheme = colorScheme;
-    wallpaper = "${src}/assets/wallpapers/gruvbox-dark-rainbow.png";
+    wallpaper = "${src}/assets/wallpapers/gruvbox-dark-rainbow_1920x1080.png";
     theme = {
       package = pkgs.gruvbox-gtk-theme;
       name = "Gruvbox-Dark-BL";
