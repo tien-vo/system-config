@@ -4,7 +4,7 @@ let
   inherit (settings.window) gap;
   inherit (settings.theme.font) size;
 
-  iconSize = ceil (1.1 * size * 1.6);
+  iconSize = ceil (1.3 * size * 1.6);
 in
 {
   config.programs.waybar.settings.mainBar = {
