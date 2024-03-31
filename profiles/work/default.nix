@@ -52,5 +52,7 @@ in
     pkgs.file
     pkgs.imagemagick
     pkgs.okular
+    pkgs.imv
+    pkgs.tomato-c
   ];
 }
