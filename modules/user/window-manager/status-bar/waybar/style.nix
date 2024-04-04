@@ -36,6 +36,7 @@ in
     #wireplumber,
     #battery,
     #upower,
+    #window,
     #tray,
     #custom-powermenu {
         background-color: rgba(0, 0, 0, 0);

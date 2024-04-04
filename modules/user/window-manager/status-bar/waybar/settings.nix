@@ -16,6 +16,7 @@ in
     margin-right = gap.outer;
     modules-left = [
       "clock"
+      "hyprland/window"
     ];
     modules-center = [
       "hyprland/workspaces"
@@ -32,6 +33,10 @@ in
     tray = {
       icon-size = iconSize;
       spacing = 4;
+    };
+    "hyprland/window" = {
+      max-length = 200;
+      separate-outputs = true;
     };
     "hyprland/workspaces" = {
       format = "{icon}";
