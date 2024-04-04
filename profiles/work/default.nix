@@ -54,5 +54,6 @@ in
     pkgs.okular
     pkgs.imv
     pkgs.tomato-c
+    pkgs.vlc
   ];
 }
