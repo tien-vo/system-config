@@ -11,7 +11,7 @@
   };
 
   # XDG compliance
-  config.environment.sessionVariables = {
+  config.home.sessionVariables = {
     GOPATH = "$XDG_DATA_HOME/go";
     GOMODCACHE = "$XDG_CACHE_HOME/go/mod";
   };
