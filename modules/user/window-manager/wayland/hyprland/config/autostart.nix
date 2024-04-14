@@ -10,6 +10,7 @@ let
       }
 
       run "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
+      run ${pkgs.hyprpaper}/bin/hyprpaper
       run ${pkgs.waybar}/bin/waybar
       run ${pkgs.mako}/bin/mako
 

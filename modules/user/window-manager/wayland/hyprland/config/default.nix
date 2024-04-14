@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, ... } @ args:
+let
+  hyprpaperConfig = import (./hyprpaper.nix) (args);
+in
 {
   imports = [
     ./autostart.nix
@@ -18,7 +21,9 @@
   };
   config.home.packages = [
     pkgs.hyprpicker
+    pkgs.hyprpaper
     pkgs.pyprland
   ];
-  config.home.file."./.config/hypr/pyprland.toml".source = ./pyprland.toml;
+  config.xdg.configFile."hypr/pyprland.toml".source = ./pyprland.toml;
+  config.xdg.configFile."hypr/hyprpaper.conf".source = hyprpaperConfig;
 }
