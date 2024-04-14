@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   config.xdg = {
     enable = true;
@@ -12,7 +12,7 @@
 
   # XDG compliance
   config.home.sessionVariables = {
-    GOPATH = "$XDG_DATA_HOME/go";
-    GOMODCACHE = "$XDG_CACHE_HOME/go/mod";
+    GOPATH = "${config.xdg.dataHome}/go";
+    GOMODCACHE = "${config.xdg.cacheHome}/go/mod";
   };
 }
