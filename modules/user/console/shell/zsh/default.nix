@@ -3,9 +3,9 @@
   config.programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
+    oh-my-zsh.enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
-    oh-my-zsh.enable = true;
     history = {
       extended = true;
       path = "${config.xdg.dataHome}/zsh/history";
