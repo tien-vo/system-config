@@ -7,7 +7,7 @@ in
     "${src}/modules/user/tools/nix"
     "${src}/modules/user/tools/xdg"
     "${src}/modules/user/tools/ssh"
-    "${src}/modules/user/tools/dbus"
+    "${src}/modules/user/tools/ibus"
 
     "${src}/modules/user/hardware/network"
     "${src}/modules/user/hardware/bluetooth"
