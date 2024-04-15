@@ -7,6 +7,7 @@ in
   imports = [
     ./hardware.nix
     inputs.hardware.nixosModules.framework-13-7040-amd
+    "${src}/modules/system/locale/input"
     "${src}/modules/system/tools/nix"
     "${src}/modules/system/tools/nix-ld"
     "${src}/modules/system/shells/zsh"
@@ -30,7 +31,6 @@ in
     networkmanager.enable = true;
   };
   config.time.timeZone = "America/Denver";
-  config.i18n.defaultLocale = "en_US.UTF-8";
 
   config.users.users.tvo = {
     isNormalUser = true;
