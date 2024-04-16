@@ -13,9 +13,9 @@
     "workspace 2, class:^(thunar)(.*)$"
 
     # Readers
+    "workspace 3, class:^(obsidian)(.*)$"
     "workspace 3, class:^(Zotero)(.*)$"
-    "float, class:Zotero, title:Quick Format Citation$"
-    "float, class:Zotero, initialClass:Add Note$"
+    "float, class:Zotero"
 
     # Multi-media
     "workspace 4, class:^(Slack)(.*)$"
