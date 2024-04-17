@@ -22,6 +22,7 @@ in
       enable = true;
       efiSupport = true;
       device = "nodev";
+      configurationLimit = 4;
     };
     initrd.luks.devices = setBootDevices ("de381c7f-5246-4e90-9fbf-0a463327df39");
   };
