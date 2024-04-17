@@ -39,6 +39,7 @@ in
     "${src}/modules/user/app/file-manager/zathura"
     "${src}/modules/user/app/cloud-service/megasync"
     "${src}/modules/user/app/cloud-service/cryptomator"
+    "${src}/modules/user/app/office/libreoffice"
   ];
 
   config.home.packages = [
