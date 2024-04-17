@@ -16,7 +16,6 @@ in
     margin-right = gap.outer;
     modules-left = [
       "clock"
-      "hyprland/window"
     ];
     modules-center = [
       "hyprland/workspaces"
