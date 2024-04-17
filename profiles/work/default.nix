@@ -7,6 +7,7 @@ in
     "${src}/modules/user/tools/nix"
     "${src}/modules/user/tools/xdg"
     "${src}/modules/user/tools/ssh"
+    "${src}/modules/user/tools/vpn"
     "${src}/modules/user/tools/fcitx5"
 
     "${src}/modules/user/hardware/network"
