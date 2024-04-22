@@ -7,5 +7,7 @@ pkgs.writeTextFile ({
   text = ''
     preload = ${wallpaper}
     wallpaper = ,${wallpaper}
+    ipc = off
+    splash = false
   '';
 })

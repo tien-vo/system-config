@@ -33,7 +33,7 @@ in
       outer = 8;
     };
     border = {
-      size = 2;
+      size = 1;
       radius = 6;
       active_color = {
         top = "d8a657";
@@ -44,7 +44,9 @@ in
   };
   theme = {
     colorScheme = colorScheme;
-    wallpaper = "${src}/assets/wallpapers/gruvbox-dark-rainbow_1920x1080.png";
+    #  wallpaper = "${src}/assets/wallpapers/gruvbox-dark-rainbow.png";
+    #  wallpaper = "${src}/assets/wallpapers/framework-4.png";
+    wallpaper = "${src}/assets/wallpapers/FW_16_Wallpaper.png";
     theme = {
       package = pkgs.gruvbox-gtk-theme;
       name = "Gruvbox-Dark-BL";
