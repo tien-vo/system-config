@@ -1,10 +1,10 @@
 ''
-#TabsToolbar
-{
-    visibility: collapse;
-}
-#sidebar-header
-{
-    display: none;
-}
+  #TabsToolbar
+  {
+      visibility: collapse;
+  }
+  #sidebar-header
+  {
+      display: none;
+  }
 ''

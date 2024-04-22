@@ -3,14 +3,14 @@ let
   inherit (pkgs) writeShellScriptBin bash;
   script = writeShellScriptBin ("move-workspace-to-monitor") (
     ''
-    active_monitor=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == true).id')
-    passive_monitor=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == false).id')
-    active_workspace=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == true).activeWorkspace.id')
-    passive_workspace=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == false).activeWorkspace.id')
+      active_monitor=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == true).id')
+      passive_monitor=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == false).id')
+      active_workspace=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == true).activeWorkspace.id')
+      passive_workspace=$(hyprctl monitors -j | ${pkgs.jq}/bin/jq '.[] | select(.focused == false).activeWorkspace.id')
     
-    hyprctl dispatch movecurrentworkspacetomonitor "$passive_monitor"
-    hyprctl dispatch workspace "$active_workspace"
-    hyprctl dispatch focusmonitor "$passive_monitor"
+      hyprctl dispatch movecurrentworkspacetomonitor "$passive_monitor"
+      hyprctl dispatch workspace "$active_workspace"
+      hyprctl dispatch focusmonitor "$passive_monitor"
     ''
   );
 in

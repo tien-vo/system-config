@@ -5,7 +5,7 @@ in
 pkgs.writeTextFile ({
   name = "hyprpaper.conf";
   text = ''
-  preload = ${wallpaper}
-  wallpaper = ,${wallpaper}
+    preload = ${wallpaper}
+    wallpaper = ,${wallpaper}
   '';
 })

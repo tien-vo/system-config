@@ -1,7 +1,7 @@
 { pkgs, ... } @ args:
 let
   thunderbird = pkgs.thunderbird.override ({
-    extraPolicies = import(./policies.nix)(args);
+    extraPolicies = import (./policies.nix) (args);
   });
 in
 {
@@ -10,5 +10,5 @@ in
   ];
 
   config.home.file."./.thunderbird/profiles.ini".source = ./profiles.ini;
-  config.home.file."./.thunderbird/custom-profile/user.js".source = import(./userjs.nix)(args);
+  config.home.file."./.thunderbird/custom-profile/user.js".source = import (./userjs.nix) (args);
 }
