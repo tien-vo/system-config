@@ -49,11 +49,11 @@
     "workspace 5, class:^(org.cryptomator.launcher.Cryptomator\\$MainApp)(.*)$"
     "float, class:^(org.cryptomator.launcher.Cryptomator\\$MainApp)(.*)$"
 
-    "float, class:^(nm-connection-editor)(.*)$"
-
     # Free-floating
     "float, class:^(swayimg)(.*)$"
     "float, class:^(imv)(.*)$"
     "float, class:^(Matplotlib)(.*)$"
+    "float, class:^(nm-openconnect-auth-dialog)(.*)$"
+    "float, class:^(nm-connection-editor)(.*)$"
   ];
 }
