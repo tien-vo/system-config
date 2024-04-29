@@ -58,5 +58,7 @@ in
     pkgs.imv
     pkgs.tomato-c
     pkgs.vlc
+    pkgs.sshfs
+    pkgs.nh
   ];
 }
