@@ -55,5 +55,6 @@
     "float, class:^(Matplotlib)(.*)$"
     "float, class:^(nm-openconnect-auth-dialog)(.*)$"
     "float, class:^(nm-connection-editor)(.*)$"
+    "float, title:^(Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox)(.*)$"
   ];
 }
