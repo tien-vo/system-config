@@ -60,5 +60,6 @@ in
     pkgs.vlc
     pkgs.sshfs
     pkgs.nh
+    pkgs.ventoy-full
   ];
 }
