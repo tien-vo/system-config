@@ -1,0 +1,27 @@
+---
+- hosts: all
+  tags: always
+  become: true
+  connection: local
+  pre_tasks:
+    - name: pre-run | Download community collection
+      ansible.builtin.command: ansible-galaxy collection install community.general
+      tags: always
+      changed_when: False
+
+    - name: pre-run | Download Arch-specific ansible modules
+      ansible.builtin.command: ansible-galaxy collection install kewlfft.aur
+      changed_when: False
+      when: ansible_distribution == "Archlinux"
+
+    - name: pre-run | Update Arch Linux package cache
+      community.general.pacman: update_cache=yes
+      tags: always
+      changed_when: False
+      when: ansible_distribution == "Archlinux"
+
+  tasks:
+    - name: Install neovim
+      package:
+        name: neovim
+        state: latest

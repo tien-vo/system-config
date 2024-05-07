@@ -1,6 +1,2 @@
----
-- name: Install base packages
-  become: true
-  community.general.pacman:
-    name: yay
-    state: present
+- block:
+  - import_tasks: software/neovim.yml
