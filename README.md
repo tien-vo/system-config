@@ -10,9 +10,8 @@ ansible-playbook pre-install.yml -K
 ansible-playbook install.yml -K
 ```
 
-To enable custom callbacks with [townk/ansible-beautiful-output](https://github.com/Townk/ansible-beautiful-output), set
+To enable custom callbacks with [townk/ansible-beautiful-output](https://github.com/Townk/ansible-beautiful-output), install `watchdog` and set
 ```
 ANSIBLE_STDOUT_CALLBACK="beautiful"
 ```
 while running the playbooks.
-
