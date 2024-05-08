@@ -1,30 +1,18 @@
 ---
-# ---- Pre-tasks
-- hosts: all
-  tags: always
+- name: Load ansible modules
+  hosts: all
   become: true
   connection: local
   pre_tasks:
-    - name: pre-run | Download community collection
-      ansible.builtin.command: ansible-galaxy collection install community.general
-      tags: always
-      changed_when: False
-
-    - name: pre-run | Download Arch-specific ansible modules
-      ansible.builtin.command: ansible-galaxy collection install kewlfft.aur
-      changed_when: False
-      when: ansible_distribution == "Archlinux"
-
-    - name: pre-run | Update Arch Linux package cache
-      community.general.pacman: update_cache=yes
-      tags: always
-      changed_when: False
-      when: ansible_distribution == "Archlinux"
+    - ansible.builtin.import_tasks: pre_tasks/common.yml
+    - ansible.builtin.import_tasks: pre_tasks/archlinux.yml
+  tags:
+    - always
 
 # ---- Run roles
-- hosts: all
-  become: true
-  connection: local
-  tags: base
-  roles:
-    - base
+#  - hosts: all
+#    become: true
+#    connection: local
+#    tags: base
+#    roles:
+#      - base

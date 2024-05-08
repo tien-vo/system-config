@@ -1,0 +1,6 @@
+---
+- name: Load community collection
+  ansible.builtin.command: ansible-galaxy collection install community.general
+  changed_when: False
+  tags:
+    - always
