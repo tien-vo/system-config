@@ -1,0 +1,4 @@
+---
+- name: Install Arch User Repository helper
+  ansible.builtin.include_tasks: "Archlinux.yml"
+  when: ansible_distribution == "Archlinux"
