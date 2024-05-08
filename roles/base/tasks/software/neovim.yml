@@ -1,4 +1,0 @@
-- name: software | Install neovim
-  package:
-    name: neovim
-    state: latest

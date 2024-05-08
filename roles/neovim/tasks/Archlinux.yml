@@ -1,0 +1,7 @@
+---
+- kewlfft.aur.aur:
+    use: yay
+    name: neovim-git
+    state: latest
+  become: True
+  become_user: aur_builder
