@@ -3,5 +3,5 @@
     use: yay
     name: neovim-git
     state: latest
-  become: True
+  become: true
   become_user: aur_builder

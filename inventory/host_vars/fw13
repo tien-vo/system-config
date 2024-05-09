@@ -1,3 +1,8 @@
 ---
-user_name: tvo
-user_email: tvo.work@proton.me
+users:
+  - tvo:
+    name: tvo
+    email: tvo.work@proton.me
+  - test:
+    name: test
+    email: tvo.work@proton.me

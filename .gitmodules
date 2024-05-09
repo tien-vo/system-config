@@ -1,0 +1,3 @@
+[submodule "collections/ansible_collections/kewlfft/aur"]
+	path = collections/ansible_collections/kewlfft/aur
+	url = https://github.com/kewlfft/ansible-aur.git
