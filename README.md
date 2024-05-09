@@ -2,16 +2,14 @@
 
 ## Installation
 
-First and foremost, `ansible` is required in the system. See the [installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html) for different methods of getting Ansible.
+First, `ansible` is required in the system. See the [installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html) for different methods of getting Ansible.
 
-Then, run the following playbooks in order
+Then, do
 ```
-ansible-playbook pre-install.yml -K
-ansible-playbook install.yml -K
+ansible-pull --url git@github.com:tien-vo/system-config.git --checkout archlinux-dev
 ```
-
-To enable custom callbacks with [townk/ansible-beautiful-output](https://github.com/Townk/ansible-beautiful-output), install `watchdog` and set
+for running the playbook remotely, or
 ```
-ANSIBLE_STDOUT_CALLBACK="beautiful"
+ansible-playbook local.yml -K
 ```
-while running the playbooks.
+for local repository.
