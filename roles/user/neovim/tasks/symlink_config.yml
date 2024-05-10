@@ -1,0 +1,25 @@
+---
+- ansible.builtin.user:
+    name: "{{ user.name }}"
+    state: present
+  register: user_info
+  check_mode: true
+  changed_when: false
+
+- ansible.builtin.debug:
+    msg: "{{ user_info }}"
+
+- name: Symlinking neovim config for user `{{ user.name }}`
+  become: true
+  become_user: "{{ user.name }}"
+  ansible.builtin.file:
+    src: "{{ role_path }}/files"
+    dest: "{{ user_info.home }}/.config/nvim"
+    state: link
+    force: true
+
+#  - name: Create config directory
+#    ansible.builtin.file:
+#      mode: 0755
+#      path: "{{ ansible_user_dir }}/.config/nvim"
+#      state: directory

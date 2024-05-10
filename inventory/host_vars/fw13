@@ -1,8 +1,6 @@
 ---
 users:
-  - tvo:
-    name: tvo
+  - name: tvo
     email: tvo.work@proton.me
-  - test:
-    name: test
-    email: tvo.work@proton.me
+  - name: aur_builder
+    email: test.work@proton.me

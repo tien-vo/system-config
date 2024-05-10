@@ -1,21 +1,9 @@
 ---
-# - name: Install
-#   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
- 
-- name: debug output
-  debug: var=user
+#  - ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
 
-    # - name: Symlink configuration directory
-    #   become: True
-    #   become_user: tvo
-    #   ansible.builtin.file:
-    #     src: "{{ role_path }}/files"
-    #     dest: "{{ ansible_user_dir }}/.config/nvim"
-    #     state: link
-    #     force: true
+- ansible.builtin.include_tasks: symlink_config.yml
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: user
 
-      #  - name: Create config directory
-      #    ansible.builtin.file:
-      #      mode: 0755
-      #      path: "{{ ansible_user_dir }}/.config/nvim"
-      #      state: directory
+

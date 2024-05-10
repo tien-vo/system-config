@@ -1,5 +1,6 @@
 ---
-- kewlfft.aur.aur:
+- name: Install neovim
+  kewlfft.aur.aur:
     use: yay
     name: neovim-git
     state: latest
