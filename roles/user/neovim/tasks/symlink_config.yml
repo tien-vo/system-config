@@ -22,4 +22,3 @@
     dest: "{{ user_info.home }}/.config/nvim"
     state: link
     force: true
-    follow: false
