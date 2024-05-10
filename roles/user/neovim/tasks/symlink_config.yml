@@ -1,5 +1,6 @@
 ---
-- ansible.builtin.user:
+- name: Fetch user info
+  ansible.builtin.user:
     name: "{{ user.name }}"
     state: present
   register: user_info
