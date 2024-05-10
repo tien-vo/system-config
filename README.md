@@ -12,4 +12,4 @@ for running the playbook remotely, or
 ```
 ansible-playbook local.yml -K
 ```
-for local repository.
+for local repository. Note: It is more preferrable to install locally.

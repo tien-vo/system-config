@@ -1,9 +1,3 @@
 ---
-#  - ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
-
+- ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
 - ansible.builtin.include_tasks: symlink_config.yml
-  loop: "{{ users }}"
-  loop_control:
-    loop_var: user
-
-
