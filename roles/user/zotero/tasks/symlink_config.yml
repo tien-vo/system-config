@@ -1,0 +1,27 @@
+---
+- name: Fetch user info
+  ansible.builtin.user:
+    name: "{{ user.name }}"
+    state: present
+  register: user_info
+  check_mode: true
+  changed_when: false
+
+- name: Create Zotero-related directories
+  ansible.builtin.file:
+    path: "{{ user_info.home }}/.local/state/zotero"
+    state: directory
+    recurse: true
+  become: true
+  become_user: "{{ user.name }}"
+
+- name: Symlink Zotero config for user `{{ user.name }}`
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ user_info.home }}/{{ item.dest }}"
+    state: link
+    force: true
+  become: true
+  become_user: "{{ user.name }}"
+  loop:
+    - { src: "zotero.desktop", dest: ".local/share/applications/zotero.desktop" }

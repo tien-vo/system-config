@@ -1,0 +1,8 @@
+---
+- name: Install zotero beta from AUR
+  kewlfft.aur.aur:
+    use: yay
+    name: zotero-beta-bin
+    state: latest
+  become: true
+  become_user: aur_builder

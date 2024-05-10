@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=Zotero
+GenericName=Reference Manager
+Exec=sh -c "/usr/bin/zotero --profile $HOME/.local/state/zotero" %u
+Icon=zotero
+Type=Application
