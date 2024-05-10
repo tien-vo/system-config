@@ -1,0 +1,8 @@
+---
+- name: Install MegaSync from AUR
+  kewlfft.aur.aur:
+    use: yay
+    name: megasync-bin
+    state: latest
+  become: true
+  become_user: aur_builder
