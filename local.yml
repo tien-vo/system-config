@@ -8,5 +8,6 @@
 - name: User-level setup for all hosts
   hosts: all
   connection: local
+  become: true
   roles:
     - user/neovim
