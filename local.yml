@@ -11,4 +11,5 @@
   connection: local
   become: true
   roles:
-    - user/neovim
+    # - user/neovim
+    - user/librewolf

@@ -1,0 +1,47 @@
+---
+- name: Fetch user info
+  ansible.builtin.user:
+    name: "{{ user.name }}"
+    state: present
+  register: user_info
+  check_mode: true
+  changed_when: false
+
+- name: Create librewolf-related directories
+  block:
+    - ansible.builtin.file:
+        path: "{{ user_info.home }}/{{ item }}"
+        state: directory
+        recurse: true
+      become: true
+      become_user: "{{ user.name }}"
+      loop:
+        - ".librewolf"
+        - ".local/state/librewolf/chrome"
+
+    - ansible.builtin.file:
+        path: "/usr/lib/librewolf/distribution"
+        state: directory
+        recurse: true
+      become: true
+
+- name: Symlink librewolf config for user `{{ user.name }}`
+  block:
+    - ansible.builtin.file:
+        src: "{{ role_path }}/files/{{ item.src }}"
+        dest: "{{ user_info.home }}/{{ item.dest }}"
+        state: link
+        force: true
+      become: true
+      become_user: "{{ user.name }}"
+      loop:
+        - { src: "userChrome.css", dest: ".local/state/librewolf/chrome/userChrome.css" }
+        - { src: "librewolf.desktop", dest: ".local/share/applications/librewolf.desktop" }
+        - { src: "librewolf.overrides.cfg", dest: ".librewolf/librewolf.overrides.cfg" }
+
+    - ansible.builtin.file:
+        src: "{{ role_path }}/files/policies.json"
+        dest: "/usr/lib/librewolf/distribution/policies.json"
+        state: link
+        force: true
+      become: true

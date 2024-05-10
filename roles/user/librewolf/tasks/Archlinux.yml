@@ -1,0 +1,8 @@
+---
+- name: Install librewolf from AUR
+  kewlfft.aur.aur:
+    use: yay
+    name: librewolf-bin
+    state: latest
+  become: true
+  become_user: aur_builder
