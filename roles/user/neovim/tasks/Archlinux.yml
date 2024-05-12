@@ -1,8 +1,8 @@
 ---
 - name: Install neovim from AUR
+  become: true
+  become_user: aur_builder
   kewlfft.aur.aur:
     use: yay
     name: neovim-git
     state: latest
-  become: true
-  become_user: aur_builder
