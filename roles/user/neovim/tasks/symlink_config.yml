@@ -22,8 +22,8 @@
   ansible.builtin.file:
     src: "{{ role_path }}/files"
     dest: "{{ user_info.home }}/.config/nvim"
-    follow: true
     state: link
     force: true
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
+    follow: false
