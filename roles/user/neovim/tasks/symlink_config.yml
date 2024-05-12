@@ -16,7 +16,7 @@
 
 - name: Symlink neovim config for user `{{ user.name }}`
   ansible.builtin.file:
-    mode: 554
+    mode: 0554
     src: "{{ role_path }}/files"
     dest: "{{ user_info.home }}/.config/nvim"
     state: link
