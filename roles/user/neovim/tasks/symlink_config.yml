@@ -20,10 +20,8 @@
   become: true
   become_user: "{{ user.name }}"
   ansible.builtin.file:
+    mode: 554
     src: "{{ role_path }}/files"
     dest: "{{ user_info.home }}/.config/nvim"
     state: link
     force: true
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-    follow: false
