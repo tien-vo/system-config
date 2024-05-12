@@ -20,7 +20,7 @@
     dest: "{{ user_info.home }}/.config/nvim"
     state: link
     force: true
-    recursive: true
+    recurse: true
     follow: false
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
