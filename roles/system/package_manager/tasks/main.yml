@@ -5,4 +5,3 @@
 
 - name: Configure OS package manager
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
-  when: ansible_distribution == "{{ ansible_distribution }}"
