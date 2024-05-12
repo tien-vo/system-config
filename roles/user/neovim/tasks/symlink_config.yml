@@ -9,10 +9,9 @@
 
 - name: Create neovim config directory
   ansible.builtin.file:
+    mode: 0755
     path: "{{ user_info.home }}/.config/nvim"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
 
 - name: Symlink neovim config for user `{{ user.name }}`
   ansible.builtin.file:
@@ -20,7 +19,3 @@
     dest: "{{ user_info.home }}/.config/nvim"
     state: link
     force: true
-    recurse: true
-    follow: false
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
