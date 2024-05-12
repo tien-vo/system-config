@@ -11,11 +11,16 @@
   ansible.builtin.file:
     path: "{{ user_info.home }}/.config/nvim"
     state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
 
 - name: Symlink neovim config for user `{{ user.name }}`
   ansible.builtin.file:
-    mode: 0554
     src: "{{ role_path }}/files"
     dest: "{{ user_info.home }}/.config/nvim"
     state: link
     force: true
+    recursive: true
+    follow: false
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
