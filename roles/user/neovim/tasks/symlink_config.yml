@@ -8,8 +8,6 @@
   changed_when: false
 
 - name: Create neovim config directory
-  become: true
-  become_user: "{{ user.name }}"
   ansible.builtin.file:
     path: "{{ user_info.home }}/.config/nvim"
     state: directory
@@ -17,8 +15,6 @@
     group: "{{ user.name }}"
 
 - name: Symlink neovim config for user `{{ user.name }}`
-  become: true
-  become_user: "{{ user.name }}"
   ansible.builtin.file:
     mode: 554
     src: "{{ role_path }}/files"
