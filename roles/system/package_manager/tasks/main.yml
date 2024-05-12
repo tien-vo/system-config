@@ -1,7 +1,3 @@
 ---
-#  - name: Install Arch User Repository helper
-#    ansible.builtin.include_tasks: "Archlinux.yml"
-#    when: ansible_distribution == "Archlinux"
-
-- name: Configure OS package manager
+- name: Configure package manager for `{{ ansible_distribution}}`
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"

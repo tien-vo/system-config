@@ -1,6 +1,7 @@
 ---
 - name: System-level setup for all hosts
   hosts: all
+  connection: local
   roles:
     - system/package_manager
 
