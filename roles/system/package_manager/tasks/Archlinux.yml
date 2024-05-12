@@ -1,30 +1,28 @@
 ---
 - name: Create `aur_builder` user
+  become: true
   ansible.builtin.user:
     name: aur_builder
     group: wheel
     create_home: true
-  become: true
 
 - name: Allow `aur_builder` user to run `sudo pacman` without a password
+  become: true
   ansible.builtin.lineinfile:
     path: "/etc/sudoers.d/11-install-aur_builder"
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     mode: 0644
     create: true
     validate: "visudo -cf %s"
-  become: true
 
 - name: Install yay using makepkg
+  become: true
+  become_user: aur_builder
   kewlfft.aur.aur:
     name: yay
     state: latest
-  become: true
-  become_user: aur_builder
 
 - name: Update Arch Linux package cache
-  community.general.pacman: update_cache=yes
   become: true
   changed_when: false
-  tags:
-    - always
+  community.general.pacman: update_cache=yes

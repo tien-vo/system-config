@@ -2,15 +2,13 @@
 - name: System-level setup for all hosts
   hosts: all
   connection: local
-  become: true
   roles:
     - system/package_manager
 
-- name: User-level setup for all hosts
-  hosts: all
-  connection: local
-  become: true
-  roles:
-    - user/neovim
-    - user/librewolf
-    - user/zotero
+#  - name: User-level setup for all hosts
+#    hosts: all
+#    connection: local
+#    roles:
+#      - user/neovim
+#      - user/librewolf
+#      - user/zotero
