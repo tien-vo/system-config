@@ -7,15 +7,9 @@
   check_mode: true
   changed_when: false
 
-- name: Create neovim config directory
-  ansible.builtin.file:
-    mode: 0755
-    path: "{{ user_info.home }}/.config/nvim"
-    state: directory
-
-- name: Symlink neovim config for user `{{ user.name }}`
-  ansible.builtin.file:
-    src: "{{ role_path }}/files"
-    dest: "{{ user_info.home }}/.config/nvim"
-    state: link
-    force: true
+- name: Copy neovim config for user `{{ user.name }}`
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/"
+    dest: "{{ user_info.home }}/.config/nvim/"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
