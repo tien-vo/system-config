@@ -25,3 +25,4 @@
     state: link
     force: true
     group: "{{ user.name }}"
+    follow: yes
