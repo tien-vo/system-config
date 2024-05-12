@@ -11,7 +11,6 @@
   become: true
   become_user: "{{ user.name }}"
   ansible.builtin.file:
-    mode: 0755
     path: "{{ user_info.home }}/.config/nvim"
     state: directory
     owner: "{{ user.name }}"
