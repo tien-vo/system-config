@@ -8,19 +8,33 @@
   changed_when: false
 
 - name: Create Zotero-related directories
-  ansible.builtin.file:
-    path: "{{ user_info.home }}/.local/state/zotero"
-    state: directory
-    recurse: true
-  become: true
-  become_user: "{{ user.name }}"
+  block:
+    - ansible.builtin.file:
+        path: "{{ user_info.home }}/{{ item }}"
+        state: directory
+        recurse: true
+      become: true
+      become_user: "{{ user.name }}"
+      loop:
+        - ".local/state/zotero"
+
+    - ansible.builtin.file:
+        path: "/usr/lib/zotero/distribution"
+        state: directory
+        recurse: true
+      become: true
 
 - name: Symlink Zotero config for user `{{ user.name }}`
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/{{ item.src }}"
-    dest: "{{ user_info.home }}/{{ item.dest }}"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-  loop:
-    - { src: "zotero.desktop", dest: ".local/share/applications/zotero.desktop" }
-    - { src: "user.js", dest: ".local/state/zotero/user.js" }
+  block:
+    - ansible.builtin.copy:
+        src: "{{ role_path }}/files/{{ item.src }}"
+        dest: "{{ user_info.home }}/{{ item.dest }}"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+      loop:
+        - { src: "zotero.desktop", dest: ".local/share/applications/zotero.desktop" }
+        - { src: "user.js", dest: ".local/state/zotero/user.js" }
+
+    - ansible.builtin.copy:
+        src: "{{ role_path }}/files/policies.json"
+        dest: "/usr/lib/zotero/distribution/policies.json"
