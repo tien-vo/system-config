@@ -1,5 +1,5 @@
 ---
-- name: Install librewolf from AUR
+- name: Install Librewolf from AUR
   kewlfft.aur.aur:
     use: yay
     name: librewolf-bin

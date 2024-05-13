@@ -7,7 +7,7 @@
   check_mode: true
   changed_when: false
 
-- name: Create librewolf-related directories
+- name: Create Librewolf-related directories
   block:
     - ansible.builtin.file:
         path: "{{ user_info.home }}/{{ item }}"
@@ -25,7 +25,7 @@
         recurse: true
       become: true
 
-- name: Symlink librewolf config for user `{{ user.name }}`
+- name: Symlink Librewolf config for user `{{ user.name }}`
   block:
     - ansible.builtin.copy:
         src: "{{ role_path }}/files/{{ item.src }}"
@@ -40,18 +40,3 @@
     - ansible.builtin.copy:
         src: "{{ role_path }}/files/policies.json"
         dest: "/usr/lib/librewolf/distribution/policies.json"
-
-    #  - ansible.builtin.file:
-    #      src: "{{ role_path }}/files/{{ item.src }}"
-    #      dest: "{{ user_info.home }}/{{ item.dest }}"
-    #      state: link
-    #      force: true
-    #    become: true
-    #    become_user: "{{ user.name }}"
-
-    #  - ansible.builtin.file:
-    #      src: "{{ role_path }}/files/policies.json"
-    #      dest: "/usr/lib/librewolf/distribution/policies.json"
-    #      state: link
-    #      force: true
-    #    become: true
