@@ -11,4 +11,4 @@
   roles:
     - user/neovim
     - user/librewolf
-    #  - user/zotero
+    - user/zotero

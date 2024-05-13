@@ -16,12 +16,10 @@
   become_user: "{{ user.name }}"
 
 - name: Symlink Zotero config for user `{{ user.name }}`
-  ansible.builtin.file:
+  ansible.builtin.copy:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ user_info.home }}/{{ item.dest }}"
-    state: link
-    force: true
-  become: true
-  become_user: "{{ user.name }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
   loop:
     - { src: "zotero.desktop", dest: ".local/share/applications/zotero.desktop" }
