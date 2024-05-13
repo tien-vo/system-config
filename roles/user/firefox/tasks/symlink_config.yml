@@ -7,7 +7,7 @@
   check_mode: true
   changed_when: false
 
-- name: Create Librewolf-related directories
+- name: Create Firefox-related directories
   block:
     - ansible.builtin.file:
         path: "{{ user_info.home }}/{{ item }}"
@@ -17,7 +17,7 @@
       become_user: "{{ user.name }}"
       loop:
         - ".librewolf"
-        - ".local/state/librewolf/chrome"
+        - ".local/state/firefox/chrome"
 
     - ansible.builtin.file:
         path: "/usr/lib/librewolf/distribution"
@@ -25,7 +25,7 @@
         recurse: true
       become: true
 
-- name: Symlink Librewolf config for user `{{ user.name }}`
+- name: Symlink Firefox config for user `{{ user.name }}`
   block:
     - ansible.builtin.copy:
         src: "{{ role_path }}/files/{{ item.src }}"
@@ -33,10 +33,10 @@
         owner: "{{ user.name }}"
         group: "{{ user.name }}"
       loop:
-        - { src: "userChrome.css", dest: ".local/state/librewolf/chrome/userChrome.css" }
-        - { src: "librewolf.desktop", dest: ".local/share/applications/librewolf.desktop" }
-        - { src: "librewolf.overrides.cfg", dest: ".librewolf/librewolf.overrides.cfg" }
+        - { src: "userChrome.css", dest: ".local/state/firefox/chrome/userChrome.css" }
+        - { src: "firefox.desktop", dest: ".local/share/applications/firefox.desktop" }
+        - { src: "user.js", dest: ".local/state/firefox/user.js" }
 
     - ansible.builtin.copy:
         src: "{{ role_path }}/files/policies.json"
-        dest: "/usr/lib/librewolf/distribution/policies.json"
+        dest: "/opt/firefox-esr/distribution/policies.json"

@@ -1,8 +1,8 @@
 ---
-- name: Install Librewolf from AUR
+- name: Install Firefox ESR from AUR
   kewlfft.aur.aur:
     use: yay
-    name: librewolf-bin
+    name: firefox-esr-bin
     state: latest
   become: true
   become_user: aur_builder

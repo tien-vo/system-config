@@ -10,7 +10,7 @@
   connection: local
   roles:
     - user/neovim
-    - user/librewolf
+    - user/firefox
     - user/zotero
     - user/megasync
     - user/cryptomator
