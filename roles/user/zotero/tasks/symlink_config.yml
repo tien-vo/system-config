@@ -23,3 +23,4 @@
     group: "{{ user.name }}"
   loop:
     - { src: "zotero.desktop", dest: ".local/share/applications/zotero.desktop" }
+    - { src: "user.js", dest: ".local/state/zotero/user.js" }
