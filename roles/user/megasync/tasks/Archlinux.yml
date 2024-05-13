@@ -1,12 +1,4 @@
 ---
-- name: Install MegaSync from AUR
-  kewlfft.aur.aur:
-    use: yay
-    name: megasync-bin
-    state: latest
-  become: true
-  become_user: aur_builder
-
 - name: Install MegaSync dependencies
   community.general.pacman:
     name:
@@ -14,3 +6,11 @@
       # See https://github.com/meganz/MEGAsync/issues/710#issuecomment-2048344795
       - xorg-xhost
     state: latest
+
+- name: Install MegaSync from AUR
+  kewlfft.aur.aur:
+    use: yay
+    name: megasync-bin
+    state: latest
+  become: true
+  become_user: aur_builder
