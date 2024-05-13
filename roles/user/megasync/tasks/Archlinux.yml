@@ -7,13 +7,10 @@
   become: true
   become_user: aur_builder
 
-  #  - name: Install MegaSync dependencies
-  #    community.general.pacman:
-  #      name:
-  #        - xorg-xrdb
-  #      state: latest
-  #  
-  #  - name: Echo my_env_var
-  #    shell: "echo $MY_ENV_VARIABLE"
-  #    environment:
-  #      MY_ENV_VARIABLE: whatever_value
+- name: Install MegaSync dependencies
+  community.general.pacman:
+    name:
+      - xorg-xrdb
+      # See https://github.com/meganz/MEGAsync/issues/710#issuecomment-2048344795
+      - xorg-xhost
+    state: latest
