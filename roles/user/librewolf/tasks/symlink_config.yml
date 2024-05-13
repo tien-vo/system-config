@@ -27,21 +27,31 @@
 
 - name: Symlink librewolf config for user `{{ user.name }}`
   block:
-    - ansible.builtin.file:
+    - ansible.builtin.copy:
         src: "{{ role_path }}/files/{{ item.src }}"
         dest: "{{ user_info.home }}/{{ item.dest }}"
-        state: link
-        force: true
-      become: true
-      become_user: "{{ user.name }}"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
       loop:
         - { src: "userChrome.css", dest: ".local/state/librewolf/chrome/userChrome.css" }
         - { src: "librewolf.desktop", dest: ".local/share/applications/librewolf.desktop" }
         - { src: "librewolf.overrides.cfg", dest: ".librewolf/librewolf.overrides.cfg" }
 
-    - ansible.builtin.file:
+    - ansible.builtin.copy:
         src: "{{ role_path }}/files/policies.json"
         dest: "/usr/lib/librewolf/distribution/policies.json"
-        state: link
-        force: true
-      become: true
+
+    #  - ansible.builtin.file:
+    #      src: "{{ role_path }}/files/{{ item.src }}"
+    #      dest: "{{ user_info.home }}/{{ item.dest }}"
+    #      state: link
+    #      force: true
+    #    become: true
+    #    become_user: "{{ user.name }}"
+
+    #  - ansible.builtin.file:
+    #      src: "{{ role_path }}/files/policies.json"
+    #      dest: "/usr/lib/librewolf/distribution/policies.json"
+    #      state: link
+    #      force: true
+    #    become: true

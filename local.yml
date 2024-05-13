@@ -10,5 +10,5 @@
   connection: local
   roles:
     - user/neovim
-    #  - user/librewolf
+    - user/librewolf
     #  - user/zotero
