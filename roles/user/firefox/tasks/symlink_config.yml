@@ -13,14 +13,16 @@
         path: "{{ user_info.home }}/{{ item }}"
         state: directory
         recurse: true
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
       become: true
       become_user: "{{ user.name }}"
       loop:
-        - ".librewolf"
+        - ".local/share/applications"
         - ".local/state/firefox/chrome"
 
     - ansible.builtin.file:
-        path: "/usr/lib/librewolf/distribution"
+        path: "{{ install_directory }}/distribution"
         state: directory
         recurse: true
       become: true
@@ -33,10 +35,10 @@
         owner: "{{ user.name }}"
         group: "{{ user.name }}"
       loop:
+        - { src: "user.js", dest: ".local/state/firefox/user.js" }
         - { src: "userChrome.css", dest: ".local/state/firefox/chrome/userChrome.css" }
         - { src: "firefox.desktop", dest: ".local/share/applications/firefox.desktop" }
-        - { src: "user.js", dest: ".local/state/firefox/user.js" }
 
     - ansible.builtin.copy:
         src: "{{ role_path }}/files/policies.json"
-        dest: "/opt/firefox-esr/distribution/policies.json"
+        dest: "{{ install_directory }}/distribution/policies.json"
