@@ -22,7 +22,7 @@
         - ".local/state/firefox/chrome"
 
     - ansible.builtin.file:
-        path: "{{ install_directory }}/distribution"
+        path: "{{ install_path }}/distribution"
         state: directory
         recurse: true
       become: true
@@ -41,4 +41,4 @@
 
     - ansible.builtin.copy:
         src: "{{ role_path }}/files/policies.json"
-        dest: "{{ install_directory }}/distribution/policies.json"
+        dest: "{{ install_path }}/distribution/policies.json"
