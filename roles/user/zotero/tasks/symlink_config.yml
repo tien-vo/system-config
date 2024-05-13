@@ -13,13 +13,16 @@
         path: "{{ user_info.home }}/{{ item }}"
         state: directory
         recurse: true
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
       become: true
       become_user: "{{ user.name }}"
       loop:
+        - ".local/share/applications"
         - ".local/state/zotero"
 
     - ansible.builtin.file:
-        path: "/usr/lib/zotero/distribution"
+        path: "{{ install_path }}/distribution"
         state: directory
         recurse: true
       become: true
@@ -32,9 +35,10 @@
         owner: "{{ user.name }}"
         group: "{{ user.name }}"
       loop:
-        - { src: "zotero.desktop", dest: ".local/share/applications/zotero.desktop" }
         - { src: "user.js", dest: ".local/state/zotero/user.js" }
+        - { src: "zotero.desktop", dest: ".local/share/applications/zotero.desktop" }
 
     - ansible.builtin.copy:
         src: "{{ role_path }}/files/policies.json"
-        dest: "/usr/lib/zotero/distribution/policies.json"
+        dest: "{{ install_path }}/distribution/policies.json"
+      become: true
