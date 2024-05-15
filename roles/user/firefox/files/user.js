@@ -8,6 +8,8 @@ user_pref("browser.search.separatePrivateDefault", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
 
-user_pref("signon.rememberSignons", true);
+user_pref("layout.css.prefers-color-scheme.content-override", 0);
+
+user_pref("signon.rememberSignons", false);
 user_pref("extensions.formautofill.addresses.enabled", false);
 user_pref("extensions.formautofill.creditCards.enabled", false);
