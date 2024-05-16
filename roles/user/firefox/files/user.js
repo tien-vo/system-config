@@ -13,3 +13,6 @@ user_pref("layout.css.prefers-color-scheme.content-override", 0);
 user_pref("signon.rememberSignons", false);
 user_pref("extensions.formautofill.addresses.enabled", false);
 user_pref("extensions.formautofill.creditCards.enabled", false);
+
+// Remember search and form history
+user_pref("services.sync.prefs.sync-seen.browser.formfill.enable", true);
