@@ -1,4 +1,5 @@
 user_pref("extensions.zotero.dataDir", "~/.local/state/zotero");
+user_pref("extensions.zotero.baseAttachmentPath", "~/Workspace/work/library/assets/zotero");
 user_pref("extensions.zotero.export.quickCopy.setting", "export=ca65189f-8815-4afe-8c8b-8c7c15f0edca");
 user_pref("extensions.zotero.recursiveCollections", false);
 user_pref("extensions.zotero.automaticSnapshots", false);

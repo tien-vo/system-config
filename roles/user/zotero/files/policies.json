@@ -2,8 +2,7 @@
     "policies": {
         "Extensions": {
             "Install": [
-                "https://github.com/wileyyugioh/zotmoov/releases/download/1.0.0.0/zotmoov-1.0.0.0-fx.xpi",
-                "https://github.com/wshanks/Zutilo/releases/download/v3.10.0/zutilo.xpi"
+                "https://github.com/wileyyugioh/zotmoov/releases/download/1.0.0.0/zotmoov-1.0.0.0-fx.xpi"
             ]
         }
     }
