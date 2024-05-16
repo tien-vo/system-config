@@ -2,7 +2,8 @@
     "policies": {
         "Extensions": {
             "Install": [
-                "https://github.com/wileyyugioh/zotmoov/releases/download/1.0.0.0/zotmoov-1.0.0.0-fx.xpi"
+                "https://github.com/wileyyugioh/zotmoov/releases/download/1.0.0.0/zotmoov-1.0.0.0-fx.xpi",
+                "https://github.com/retorquere/zotero-better-bibtex/releases/download/v6.7.192/zotero-better-bibtex-6.7.192.xpi"
             ]
         }
     }

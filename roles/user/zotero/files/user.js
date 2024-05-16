@@ -8,6 +8,7 @@ user_pref("extensions.zotero.purge.tags", true);
 user_pref("extensions.zotero.sortCreatorAsString", true);
 user_pref("extensions.zotero.secondarySort.title", "year");
 user_pref("extensions.zotero.secondarySort.firstCreator", "year");
+user_pref("extensions.zotero.reader.contentDarkMode", false);
 
 user_pref("extensions.zotero.translators.better-bibtex.citekeyFold", false);
 user_pref("extensions.zotero.translators.better-bibtex.citekeyFormat", "auth.lower + (authini.len(\">\", 1) ? \"+\" : \"\") + year + infix(start=1)");
