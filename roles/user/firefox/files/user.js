@@ -16,3 +16,4 @@ user_pref("extensions.formautofill.creditCards.enabled", false);
 
 // Remember search and form history
 user_pref("services.sync.prefs.sync-seen.browser.formfill.enable", true);
+user_pref("services.sync.prefs.sync-seen.privacy.sanitize.sanitizeOnShutdown", false);
