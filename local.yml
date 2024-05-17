@@ -4,6 +4,11 @@
   connection: local
   roles:
     - system/package_manager
+  tasks:
+    - debug:
+        msg: "{{ ansible_env }}"
+      tags:
+        - test
 
 - name: User-level setup for all hosts
   hosts: all
