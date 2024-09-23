@@ -6,7 +6,7 @@ First, `ansible` is required in the system. See the [installation guide](https:/
 
 Then, do
 ```
-ansible-pull --url git@github.com:tien-vo/system-config.git --checkout archlinux-dev
+ansible-pull -K --url git@github.com:tien-vo/system-config.git --checkout archlinux-dev
 ```
 for running the playbook remotely, or
 ```
