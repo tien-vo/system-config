@@ -1,5 +1,9 @@
 return {
     "romgrk/barbar.nvim",
+    dependencies = {
+        "lewis6991/gitsigns.nvim",
+        "nvim-tree/nvim-web-devicons",
+    },
     config = function()
         local nvim_tree_events = require("nvim-tree.events")
         local nvim_tree_view = require("nvim-tree.view")
@@ -13,7 +17,7 @@ return {
                 inactive = { separator = { left = "▎" } },
                 pinned = { button = "車" },
                 modified = { button = "●" },
-                button = "",
+                button = "",
             },
             animation = true,
             auto_hide = false,
