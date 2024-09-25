@@ -21,6 +21,10 @@
         hostname = "mesabi.msi.umn.edu";
         user = "voxxx266";
       };
+      "lasp-macl2556-ethernet" = {
+        hostname = "10.247.21.135";
+        user = "tienad";
+      };
     };
   };
 }
