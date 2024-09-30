@@ -12,13 +12,13 @@ in
     shellIntegration = {
         mode = "no-cursor";
     };
-    themeFile = "GruvBoxMaterialDarkMedium";
+    themeFile = "GruvboxMaterialDarkHard";
     settings = {
       cursor_shape = "block";
       cursor_shape_unfocused = "hollow";
       cursor_blink_interval = 0;
       
-      background_opacity = 0.8;
+      background_opacity = "0.8";
       
       scrollback_lines = 10000;
     };
