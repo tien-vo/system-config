@@ -17,7 +17,7 @@ in
     framework13 = {
       name = "BOE 0x0BCA";
       resolution = "2256x1504@60";
-      screenScaling = 1.6;
+      screenScaling = 1.33333;
       fontScaling = 1.4;
     };
     sceptre = {
@@ -49,7 +49,7 @@ in
     #  wallpaper = "${src}/assets/wallpapers/FW_16_Wallpaper.png";
     theme = {
       package = pkgs.gruvbox-gtk-theme;
-      name = "Gruvbox-Dark-BL";
+      name = "Gruvbox-Dark";
     };
     font = {
       name = "FiraMono Nerd Font";
