@@ -9,14 +9,17 @@
       url = "github:nixos/nixos-hardware";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
     };
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -30,6 +33,7 @@
 
   outputs = inputs:
     let
+
       args = {
         inherit inputs;
         inherit (inputs.self) outputs;
