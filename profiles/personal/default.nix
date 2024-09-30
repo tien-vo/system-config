@@ -10,9 +10,6 @@ in
     "${src}/modules/user/tools/vpn"
     "${src}/modules/user/tools/fcitx5"
 
-    "${src}/modules/user/hardware/network"
-    #  "${src}/modules/user/hardware/bluetooth"
-
     #  "${src}/modules/user/daemon/syncthing"
     #  "${src}/modules/user/daemon/udiskie"
 

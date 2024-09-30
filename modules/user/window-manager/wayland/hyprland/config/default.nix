@@ -34,8 +34,6 @@ in
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP QT_QPA_PLATFORMTHEME"
 
         "systemctl --user enable dconf.service"                   # For gtk
-        "systemctl --user enable network-manager-applet.service"  # Enable nm-applet
-        "systemctl --user enable blueman-applet.service"          # Enable blueman-applet
       ];
     };
   };
