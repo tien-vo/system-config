@@ -18,7 +18,6 @@ in
     gaps_in = gap.inner;
     gaps_out = gap.outer;
     border_size = border.size;
-    no_cursor_warps = true;
     resize_on_border = true;
     hover_icon_on_border = false;
     "col.active_border" = "rgba(${border.active_color.top}ff) rgba(${border.active_color.bottom}ff) 60deg";

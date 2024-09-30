@@ -26,7 +26,7 @@ in
       ''SUPER_SHIFT, Print, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0)"''
 
       # Launchers
-      "SUPER, RETURN, exec, ${pkgs.alacritty}/bin/alacritty"
+      "SUPER, RETURN, exec, ${pkgs.kitty}/bin/kitty"
       "SUPER, R, exec, ${pkgs.fuzzel}/bin/fuzzel"
 
       # Movements
