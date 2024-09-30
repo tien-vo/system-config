@@ -6,11 +6,11 @@ in
   imports = [
     "${src}/modules/user/tools/nix"
     "${src}/modules/user/tools/xdg"
-    #  "${src}/modules/user/tools/ssh"
-    #  "${src}/modules/user/tools/vpn"
-    #  "${src}/modules/user/tools/fcitx5"
+    "${src}/modules/user/tools/ssh"
+    "${src}/modules/user/tools/vpn"
+    "${src}/modules/user/tools/fcitx5"
 
-    #  "${src}/modules/user/hardware/network"
+    "${src}/modules/user/hardware/network"
     #  "${src}/modules/user/hardware/bluetooth"
 
     #  "${src}/modules/user/daemon/syncthing"
@@ -20,13 +20,14 @@ in
     #  "${src}/modules/user/devenv/git"
     #  "${src}/modules/user/devenv/micromamba"
 
-    #  "${src}/modules/user/console/shell/zsh"
+    "${src}/modules/user/console/shell/zsh"
     #  "${src}/modules/user/console/neovim"
-    #  "${src}/modules/user/console/autojump"
-    #  "${src}/modules/user/console/alacritty"
+    "${src}/modules/user/console/autojump"
+    "${src}/modules/user/console/alacritty"
+    "${src}/modules/user/console/kitty"
 
-    #  "${src}/modules/user/theme"
-    #  "${src}/modules/user/window-manager/wayland/hyprland"
+    "${src}/modules/user/theme"
+    "${src}/modules/user/window-manager/wayland/hyprland"
 
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
