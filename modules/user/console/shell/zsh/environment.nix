@@ -2,9 +2,7 @@
 {
   config.programs.zsh.envExtra = ''
     export LANG="en_US.UTF-8"
-
-    GOPATH = "${config.xdg.dataHome}/go";
-    GOMODCACHE = "${config.xdg.cacheHome}/go/mod";
+    export LC_TIME="en_US.UTF-8"
 
     export CARGO_HOME="${config.xdg.dataHome}/cargo"
     export GNUPGHOME="${config.xdg.dataHome}/gnupg"
