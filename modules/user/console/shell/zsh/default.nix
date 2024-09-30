@@ -2,14 +2,15 @@
 {
   config.programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
-    oh-my-zsh.enable = true;
     enableCompletion = true;
+    enableVteIntegration = true;
     dotDir = ".config/zsh";
     history = {
       extended = true;
       path = "${config.xdg.dataHome}/zsh/history";
     };
+    autosuggestion.enable = true;
+    oh-my-zsh.enable = true;
     antidote = {
       enable = true;
       plugins = [ "romkatv/powerlevel10k" ];
@@ -26,7 +27,7 @@
     };
   };
 
-  config.home.packages = [
-    pkgs.eza
+  imports = [
+    ./environment.nix
   ];
 }
