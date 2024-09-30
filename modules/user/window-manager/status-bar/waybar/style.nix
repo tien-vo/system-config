@@ -28,6 +28,7 @@ in
     }
 
     #clock,
+    #custom-clock,
     #workspaces,
     #cpu,
     #memory,
@@ -58,6 +59,9 @@ in
     }
 
     #clock {
+        padding-left: ${outerGap}px;
+    }
+    #custom-clock {
         padding-left: ${outerGap}px;
     }
     #custom-powermenu {

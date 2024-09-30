@@ -15,7 +15,7 @@ in
     margin-left = gap.outer;
     margin-right = gap.outer;
     modules-left = [
-      "clock"
+      "custom/clock"
     ];
     modules-center = [
       "hyprland/workspaces"
@@ -23,19 +23,16 @@ in
     modules-right = [
       "tray"
       "wireplumber"
-      "upower"
-      "temperature"
       "memory"
+      "temperature"
       "cpu"
+      "disk"
+      "upower"
       "custom/powermenu"
     ];
     tray = {
       icon-size = iconSize;
       spacing = 4;
-    };
-    "hyprland/window" = {
-      max-length = 200;
-      separate-outputs = true;
     };
     "hyprland/workspaces" = {
       format = "{icon}";
@@ -61,12 +58,12 @@ in
       format-icons = [ "" "" "" "" "" ];
     };
     memory = {
-      format = "󰍛 {percentage}%";
-      tooltip = false;
+        interval = 1;
+        format = "󰍛 {percentage}({swapPercentage})%";
     };
     cpu = {
       interval = 1;
-      format = "  {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
+      format = " {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}";
       format-icons = [
         "<span color='#a9b665'>▁</span>"
         "<span color='#94A6FF'>▂</span>"
@@ -95,7 +92,11 @@ in
       tooltip = false;
     };
     clock = {
-      format = "󰥔  {:%A, %B %Oe %H:%M:%S}";
+      format = "󰥔  {:L%A, %B %Oe %H:%M:%S %Z}";
+      interval = 1;
+    };
+    "custom/clock" = {
+      exec = "date +'󰥔  %A, %B %Oe %H:%M:%S %Z'";
       interval = 1;
     };
     battery = {
@@ -106,6 +107,12 @@ in
       };
       format = "{icon} {capacity}%";
       format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁾" "󰂀" "󰂁" "󰂁" "󰁹" ];
+    };
+    disk = {
+      interval = 60;
+      format = " {specific_used:.0f}/{specific_total:.0f} GB";
+      unit = "GB";
+      path = "/";
     };
   };
 }
