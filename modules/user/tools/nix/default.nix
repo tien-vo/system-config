@@ -1,4 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, settings, inputs, ... }:
+let
+  pkgs = import inputs.nixpkgs({
+    system = settings.arch;
+    overlays = [ inputs.nixgl.overlay ];
+  });
+in
 {
   config.nix = {
     package = pkgs.nixFlakes;
@@ -16,5 +22,6 @@
   };
   config.home.packages = [
     pkgs.nix-index
+    pkgs.nixgl.nixGLIntel
   ];
 }
