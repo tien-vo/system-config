@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, inputs, ... }:
 {
   config.xdg = {
     enable = true;
     portal = {
+      enable = true;
       xdgOpenUsePortal = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-hyprland
       ];
     };
   };
