@@ -10,4 +10,5 @@ in
     homeDirectory = "/home/tvo";
   };
   config.programs.home-manager.enable = true;
+  config.targets.genericLinux.enable = true;
 }
