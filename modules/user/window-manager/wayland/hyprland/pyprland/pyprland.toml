@@ -4,8 +4,8 @@ plugins = [
 ]
 
 [scratchpads.term]
-command = "alacritty --class alacritty-dropterm"
-class = "alacritty-dropterm"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
 animation = "fromTop"
 unfocus = "hide"
 lazy = true
@@ -13,8 +13,8 @@ margin = 125
 size = "75% 75%"
 
 [scratchpads.vifm]
-command = "alacritty --class vifm-dropterm -e vifm"
-class = "vifm-dropterm"
+command = "kitty --class fm-dropterm -e yazi"
+class = "fm-dropterm"
 animation = "fromTop"
 unfocus = "hide"
 lazy = true
