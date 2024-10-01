@@ -3,6 +3,7 @@
   config.wayland.windowManager.hyprland.settings.windowrulev2 = [
     # Console
     "workspace 10, class:^(Alacritty)(.*)$"
+    "workspace 10, class:^(kitty)(.*)$"
 
     # Web browsers
     "workspace 1, class:^(floorp)(.*)$"
