@@ -20,11 +20,10 @@ return {
                 "lua",
                 "python",
                 "vim",
-                "nix",
             },
             sync_install = false,
             auto_install = false,
-            highlight = { enable = false },
+            highlight = { enable = true },
             indent = { enable = false },
             incremental_selection = { enable = true },
             refactor = {

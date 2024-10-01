@@ -24,14 +24,6 @@ return  {
             end
 
             api.config.mappings.default_on_attach(bufnr)
-            api.events.subscribe(api.events.Event.TreeOpen, function()
-                vim.api.nvim_set_hl(0, "NvimTreeNormal", {link = "Normal"})
-                vim.api.nvim_set_hl(0, "NvimTreeNormalNC", {link = "NormalNC"})
-                vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", {link = "EndOfBuffer"})
-                vim.api.nvim_set_hl(0, "NvimTreeNormal", {link = "SignColumn"})
-
-                vim.wo.fillchars = "eob: "
-            end)
         end
 
         -- Setup

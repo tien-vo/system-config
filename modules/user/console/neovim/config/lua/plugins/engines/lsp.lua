@@ -34,7 +34,9 @@ return {
     config = function()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+        vim.lsp.set_log_level("debug")
 
+        require("vim.lsp.log").set_format_func(vim.inspect)
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
@@ -50,7 +52,8 @@ return {
                         -- Formatter
                         black = {
                             -- Plugin: python-lsp-black
-                            enabled = true
+                            enabled = true,
+                            line_length = 79
                         },
                         -- Import sorting
                         pyls_isort = {
@@ -61,7 +64,8 @@ return {
                         -- Linter
                         ruff = {
                             -- Plugin: python-lsp-ruff
-                            enabled = true
+                            enabled = true,
+                            formatEnabled = false
                         },
                         -- Type checker
                         pylsp_mypy = {

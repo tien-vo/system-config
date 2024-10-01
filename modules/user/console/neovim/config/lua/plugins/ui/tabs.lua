@@ -1,23 +1,26 @@
 return {
     "romgrk/barbar.nvim",
-    keys = {
-        { "<S-h>", ":BufferPrevious<CR>", desc = "Move to previous buffer" },
-        { "<S-l>", ":BufferNext<CR>", desc = "Move to next buffer" },
-        { "<C-c>", ":BufferClose<CR>", desc = "Close buffer" },
+    dependencies = {
+        "lewis6991/gitsigns.nvim",
+        "nvim-tree/nvim-web-devicons",
     },
     config = function()
         local nvim_tree_events = require("nvim-tree.events")
         local nvim_tree_view = require("nvim-tree.view")
+        local bufferline = require("bufferline")
         local bufferline_api = require("bufferline.api")
 
-        require("barbar").setup({
+        bufferline.setup({
             icons = {
                 filetype = { enabled = true },
                 active = { separator = { left = "▎" } },
                 inactive = { separator = { left = "▎" } },
+                pinned = { button = "車" },
+                modified = { button = "●" },
+                button = "",
             },
             animation = true,
-            auto_hide = true,
+            auto_hide = false,
             tabpages = true,
             clickable = false,
             hide = {current = false, inactive = false, visible = false},

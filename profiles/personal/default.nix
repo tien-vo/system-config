@@ -17,7 +17,7 @@ in
     "${src}/modules/user/devenv/micromamba"
 
     "${src}/modules/user/console/shell/zsh"
-    #  "${src}/modules/user/console/neovim"
+    "${src}/modules/user/console/neovim"
     "${src}/modules/user/console/autojump"
     "${src}/modules/user/console/alacritty"
     "${src}/modules/user/console/kitty"
