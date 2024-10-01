@@ -1,4 +1,4 @@
-{ ... }:
+{ config, pkgs, ... }:
 {
   config.wayland.windowManager.hyprland.settings.bind = [
     "SUPER, SPACE, exec, ${pkgs.pyprland}/bin/pypr toggle term"
