@@ -19,7 +19,7 @@ in
 
   imports = [
     # Crucial
-    ./systemd
+    ./systemd.nix
 
     # Configs
     ./autostart.nix
