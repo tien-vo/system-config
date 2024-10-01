@@ -8,8 +8,12 @@ in
     settings = {
       ipc = "off";
       splash = false;
-      preload = "${wallpaper}";
-      wallpaper = ",${wallpaper}";
+      preload = [
+        "${wallpaper}"
+      ];
+      wallpaper = [
+        ",${wallpaper}"
+      ];
     };
   };
 }
