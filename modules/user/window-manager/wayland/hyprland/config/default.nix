@@ -12,10 +12,12 @@ in
     ./scratchpads.nix
     ./windowrules.nix
     ./monitors.nix
+    ./cursor.nix
     ./input.nix
     ./theme.nix
     ./misc.nix
   ];
+
   config.wayland.windowManager.hyprland = {
     enable = true;
     package = hyprland;

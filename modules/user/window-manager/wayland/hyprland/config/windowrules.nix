@@ -50,6 +50,7 @@
     "float, class:^(org.cryptomator.launcher.Cryptomator\\$MainApp)(.*)$"
 
     # Free-floating
+    "float, class:^(udiskie)(.*)$"
     "float, class:^(swayimg)(.*)$"
     "float, class:^(imv)(.*)$"
     "float, class:^(Matplotlib)(.*)$"
