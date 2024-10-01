@@ -33,6 +33,7 @@ in
     #  "${src}/modules/user/app/multi-media"
     #  "${src}/modules/user/app/web-browser/firefox"
     #  "${src}/modules/user/app/file-manager/vifm"
+    "${src}/modules/user/app/file-manager/yazi"
     #  "${src}/modules/user/app/file-manager/thunar"
     #  "${src}/modules/user/app/file-manager/zathura"
     #  "${src}/modules/user/app/cloud-service/megasync"
