@@ -40,7 +40,7 @@ in
 
     # Other dependencies
     "${src}/modules/user/daemon/mako"
-    "${src}/modules/user/window-manager/status-bar/waybar"
-    "${src}/modules/user/window-manager/launcher/fuzzel"
+    "${src}/modules/user/status-bar/waybar"
+    "${src}/modules/user/launcher/fuzzel"
   ];
 }
