@@ -10,8 +10,6 @@ in
     "${src}/modules/user/tools/vpn"
     "${src}/modules/user/tools/fcitx5"
 
-    "${src}/modules/user/services/disk/udiskie"
-
     "${src}/modules/user/devenv/git"
     "${src}/modules/user/devenv/micromamba"
 

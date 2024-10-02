@@ -3,6 +3,10 @@ let
   inherit (settings) src arch;
   hyprland = inputs.hyprland.packages.${arch}.hyprland;
   hyprland-portal = inputs.hyprland.packages.${arch}.xdg-desktop-portal-hyprland;
+  pkgs = import inputs.nixpkgs({
+    system = arch;
+    overlays = [ inputs.nixgl.overlay ];
+  });
 in
 {
   config.wayland.windowManager.hyprland = {
@@ -42,5 +46,10 @@ in
     "${src}/modules/user/services/notifications/mako"
     "${src}/modules/user/status-bar/waybar"
     "${src}/modules/user/launcher/fuzzel"
+    "${src}/modules/user/services/disk/udiskie"
   ];
+
+  config.home.shellAliases = {
+    Hyprland = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel ${hyprland}/bin/Hyprland";
+  };
 }

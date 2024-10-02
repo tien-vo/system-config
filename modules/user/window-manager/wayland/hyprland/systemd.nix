@@ -13,7 +13,8 @@
       "systemctl --user start hyprland-session.target"
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP QT_QPA_PLATFORMTHEME"
 
-      "systemctl --user enable dconf.service"  # For gtk to work properly
+      "systemctl --user enable dconf.service"    # For gtk to work properly
+      "systemctl --user enable udiskie.service"  # For gtk to work properly
     ];
   };
 }
