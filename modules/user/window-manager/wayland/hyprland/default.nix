@@ -39,7 +39,7 @@ in
     ./hyprpaper
 
     # Other dependencies
-    "${src}/modules/user/services/notifcations/mako"
+    "${src}/modules/user/services/notifications/mako"
     "${src}/modules/user/status-bar/waybar"
     "${src}/modules/user/launcher/fuzzel"
   ];
