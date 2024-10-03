@@ -6,6 +6,8 @@
   };
 
   imports = [
+    ./init.nix
+    ./manager.nix
     ./open.nix
     ./theme.nix
   ];
