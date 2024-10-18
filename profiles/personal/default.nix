@@ -25,10 +25,11 @@ in
 
     "${src}/modules/user/services/sync/megasync"
 
+    #  "${src}/modules/user/information-management/obsidian"
+
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
     #  "${src}/modules/user/information-management/zotero_beta"
-    #  "${src}/modules/user/information-management/obsidian"
 
     #  "${src}/modules/user/app/multi-media"
     #  "${src}/modules/user/app/web-browser/firefox"
@@ -41,6 +42,8 @@ in
   ];
 
   config.home.packages = [
+    pkgs.obsidian
+    pkgs.cryptomator
     #  pkgs.xdg-utils
     #  pkgs.unzip
     #  pkgs.wl-clipboard

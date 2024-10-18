@@ -5,6 +5,5 @@
   ];
 
   config.home.packages = [
-    pkgs.obsidian
   ];
 }
