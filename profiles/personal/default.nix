@@ -23,6 +23,8 @@ in
     "${src}/modules/user/theme"
     "${src}/modules/user/window-manager/wayland/hyprland"
 
+    "${src}/modules/user/services/sync/megasync"
+
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
     #  "${src}/modules/user/information-management/zotero_beta"
@@ -34,7 +36,6 @@ in
     "${src}/modules/user/app/file-manager/yazi"
     #  "${src}/modules/user/app/file-manager/thunar"
     #  "${src}/modules/user/app/file-manager/zathura"
-    #  "${src}/modules/user/app/cloud-service/megasync"
     #  "${src}/modules/user/app/cloud-service/cryptomator"
     #  "${src}/modules/user/app/office/libreoffice"
   ];
