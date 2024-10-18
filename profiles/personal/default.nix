@@ -25,8 +25,6 @@ in
 
     "${src}/modules/user/services/sync/megasync"
 
-    #  "${src}/modules/user/information-management/obsidian"
-
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
     #  "${src}/modules/user/information-management/zotero_beta"
