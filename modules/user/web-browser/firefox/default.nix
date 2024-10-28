@@ -1,4 +1,4 @@
-{ pkgs, settings, ... }:
+{ config, pkgs, settings, ... }:
 {
   imports = [ ./policies.nix ];
 
