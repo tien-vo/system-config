@@ -7,7 +7,6 @@ in
 
   config.wayland.windowManager.hyprland.settings.decoration = {
     rounding = border.radius;
-    active_opacity = 1.0;
     blur.enabled = false;
     shadow.enabled = false;
   };
