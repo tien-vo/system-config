@@ -6,5 +6,6 @@
     ./general.nix
     ./decoration.nix
     ./animations.nix
+    ./input.nix
   ];
 }

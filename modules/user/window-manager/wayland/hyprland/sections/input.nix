@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   config.wayland.windowManager.hyprland.settings.input = {
     repeat_rate = 30;
