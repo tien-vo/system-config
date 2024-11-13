@@ -8,6 +8,7 @@
     ./animations.nix
     ./input.nix
     ./misc.nix
+    ./xwayland.nix
     ./cursor.nix
     ./debug.nix
   ];
