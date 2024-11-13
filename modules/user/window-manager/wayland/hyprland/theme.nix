@@ -13,6 +13,8 @@ in
 {
   config.wayland.windowManager.hyprland.settings.exec-once = [
     "${bash}/bin/bash ${script}/bin/hyprland-set-cursor-theme"
+    "gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Material-Dark"
+    "gsettings set org.gnome.desktop.interface icon-theme Gruvbox-Material-Dark"
   ];
   config.wayland.windowManager.hyprland.settings.general = {
     gaps_in = gap.inner;
@@ -26,14 +28,8 @@ in
   config.wayland.windowManager.hyprland.settings.decoration = {
     rounding = border.radius;
     active_opacity = 1.0;
-    drop_shadow = false;
-    shadow_range = 30;
-    shadow_render_power = 3;
-    blur = {
-      enabled = false;
-      size = 1;
-      passes = 1;
-    };
+    blur.enabled = false;
+    shadow.enabled = false;
   };
   config.wayland.windowManager.hyprland.settings.animations = {
     enabled = true;

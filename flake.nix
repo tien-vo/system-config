@@ -5,6 +5,9 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    nixpkgs-cryptomator = {
+      url = "github:nixos/nixpkgs/aa2e499744d2a501584497993575006799cc4f94";
+    };
     hardware = {
       url = "github:nixos/nixos-hardware";
     };
@@ -33,7 +36,6 @@
 
   outputs = inputs:
     let
-
       args = {
         inherit inputs;
         inherit (inputs.self) outputs;
