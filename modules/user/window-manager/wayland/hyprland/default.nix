@@ -37,7 +37,6 @@ in
     ./monitors.nix
     ./cursor.nix
     ./theme.nix
-    ./misc.nix
 
     # Plugins
     ./pyprland
