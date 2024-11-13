@@ -4,5 +4,6 @@
 
   imports = [
     ./general.nix
+    ./decoration.nix
   ];
 }

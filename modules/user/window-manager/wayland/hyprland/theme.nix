@@ -16,12 +16,6 @@ in
     "gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Material-Dark"
     "gsettings set org.gnome.desktop.interface icon-theme Gruvbox-Material-Dark"
   ];
-  config.wayland.windowManager.hyprland.settings.decoration = {
-    rounding = border.radius;
-    active_opacity = 1.0;
-    blur.enabled = false;
-    shadow.enabled = false;
-  };
   config.wayland.windowManager.hyprland.settings.animations = {
     enabled = true;
     bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
