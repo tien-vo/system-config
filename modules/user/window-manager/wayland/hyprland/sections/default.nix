@@ -7,5 +7,8 @@
     ./decoration.nix
     ./animations.nix
     ./input.nix
+    ./misc.nix
+    ./cursor.nix
+    ./debug.nix
   ];
 }

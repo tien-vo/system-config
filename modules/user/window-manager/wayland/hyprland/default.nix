@@ -35,7 +35,6 @@ in
     ./scratchpads.nix
     ./windowrules.nix
     ./monitors.nix
-    ./cursor.nix
     ./theme.nix
 
     # Plugins
