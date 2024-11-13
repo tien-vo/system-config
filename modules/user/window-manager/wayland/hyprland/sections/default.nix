@@ -5,5 +5,6 @@
   imports = [
     ./general.nix
     ./decoration.nix
+    ./animations.nix
   ];
 }
