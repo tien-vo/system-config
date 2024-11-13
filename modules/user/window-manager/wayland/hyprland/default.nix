@@ -25,8 +25,10 @@ in
     # Crucial
     ./systemd.nix
 
-    # Configs
     ./autostart.nix
+
+    # Configuration sections (https://wiki.hyprland.org/Configuring/Variables/#sections)
+    ./general.nix
     ./environment.nix
     ./keybindings.nix
     ./scratchpads.nix
