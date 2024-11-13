@@ -27,8 +27,9 @@ in
 
     ./autostart.nix
 
-    # Configuration sections (https://wiki.hyprland.org/Configuring/Variables/#sections)
-    ./general.nix
+    # Configurations
+    ./sections
+
     ./environment.nix
     ./keybindings.nix
     ./scratchpads.nix
