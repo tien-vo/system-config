@@ -28,7 +28,6 @@ in
 
     # Configurations
     ./sections
-
     ./environment.nix
     ./keybindings.nix
     ./scratchpads.nix

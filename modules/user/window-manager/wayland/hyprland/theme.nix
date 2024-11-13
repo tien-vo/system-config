@@ -2,7 +2,6 @@
 let
   inherit (builtins) toString;
   inherit (settings.theme) cursorTheme;
-  inherit (settings.window) gap border;
   inherit (pkgs) writeShellScriptBin bash;
   script = writeShellScriptBin ("hyprland-set-cursor-theme") (
     ''
