@@ -52,7 +52,7 @@ in
       name = "Gruvbox-Dark";
     };
     font = {
-      name = "FiraMono Nerd Font";
+      name = "DejaVuSansM Nerd Font";
       size = 10;
     };
     iconTheme = {

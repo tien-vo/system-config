@@ -1,18 +1,12 @@
-{ pkgs, ... }:
-let
-  fonts = [
-    "RobotoMono"
-    "FiraMono"
-    "Inconsolata"
-    "InconsolataGo"
-    "DejaVuSansMono"
-  ];
-in
+{ config, pkgs, ... }:
 {
   config.home.packages = [
     pkgs.corefonts
-    (pkgs.nerdfonts.override ({ inherit fonts; }))
-    pkgs.gtk-engine-murrine
+    pkgs.nerd-fonts.roboto-mono
+    pkgs.nerd-fonts.fira-mono
+    pkgs.nerd-fonts.inconsolata
+    pkgs.nerd-fonts.inconsolata-go
+    pkgs.nerd-fonts.dejavu-sans-mono
   ];
   config.fonts.fontconfig.enable = true;
 }
