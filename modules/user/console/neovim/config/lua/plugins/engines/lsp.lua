@@ -65,7 +65,8 @@ return {
                         ruff = {
                             -- Plugin: python-lsp-ruff
                             enabled = true,
-                            formatEnabled = false
+                            formatEnabled = false,
+                            lineLength = 79
                         },
                         -- Type checker
                         pylsp_mypy = {
@@ -73,6 +74,7 @@ return {
                             enabled = true,
                             overrides = { "--python-executable", "python", true }
                         },
+                        flake8 = { enabled = false },
                     }
                 }
             }
