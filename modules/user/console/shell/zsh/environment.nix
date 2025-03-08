@@ -15,5 +15,7 @@
     export JUPYTER_CONFIG_DIR="${config.xdg.configHome}/jupyter"
     export JUPYTER_PLATFORM_DIRS="1"
     export LEIN_HOME="${config.xdg.dataHome}/lein"
+    export PATH="$PATH:$HOME/.local/bin"
+
   '';
 }
