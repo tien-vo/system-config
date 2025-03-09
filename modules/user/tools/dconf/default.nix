@@ -6,5 +6,6 @@ with lib.hm.gvariant;
 {
   config.home.packages = [
     pkgs.dconf
+    pkgs.dconf2nix 
   ];
 }
