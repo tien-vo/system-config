@@ -1,6 +1,7 @@
-{ pkgs, settings, ... }:
+{ config, inputs, pkgs, settings, ... }:
 let
   inherit (settings) src;
+  cryptomator = inputs.nixpkgs-cryptomator.legacyPackages.${settings.arch}.cryptomator;
 in
 {
   imports = [
@@ -29,11 +30,12 @@ in
     #  "${src}/modules/user/information-management/thunderbird"
     #  "${src}/modules/user/information-management/zotero_beta"
 
+    "${src}/modules/user/web-browser/firefox"
+
     #  "${src}/modules/user/app/multi-media"
-    #  "${src}/modules/user/app/web-browser/firefox"
     #  "${src}/modules/user/app/file-manager/vifm"
     "${src}/modules/user/app/file-manager/yazi"
-    #  "${src}/modules/user/app/file-manager/thunar"
+    "${src}/modules/user/app/file-manager/thunar"
     #  "${src}/modules/user/app/file-manager/zathura"
     #  "${src}/modules/user/app/cloud-service/cryptomator"
     #  "${src}/modules/user/app/office/libreoffice"
@@ -41,7 +43,7 @@ in
 
   config.home.packages = [
     pkgs.obsidian
-    pkgs.cryptomator
+    cryptomator
     #  pkgs.xdg-utils
     #  pkgs.unzip
     #  pkgs.wl-clipboard
