@@ -48,6 +48,7 @@ in
   ];
 
   config.services.udisks2.enable = true;
+  config.programs.dconf.enable = true;
   config.programs.seahorse.enable = true;
   config.services.gnome.gnome-keyring.enable = true;
   config.systemd.user.services.protonmail-bridge = {
