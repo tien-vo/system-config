@@ -17,5 +17,11 @@
     export LEIN_HOME="${config.xdg.dataHome}/lein"
     export PATH="$PATH:$HOME/.local/bin"
 
+    # IDL
+    . "${config.home.homeDirectory}/Apps/idl/9.1.0/idl/bin/idl_setup.bash"
+    export SPEDAS_DATA_DIR="${config.xdg.dataHome}/spedas"
+    export ROOT_DATA_DIR="${config.xdg.dataHome}/spedas"
+    export IDL_PATH="<IDL_DEFAULT>:+${config.home.homeDirectory}/Apps/spedas/bleeding_edge"
+    export IDL_PATH="$IDL_PATH:+${config.home.homeDirectory}/Workspace/projects/_tvolib/tvolib/src/idl"
   '';
 }
