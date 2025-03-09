@@ -1,11 +1,16 @@
 { config, pkgs, ... }:
 {
   config.nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nix;
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
       use-xdg-base-directories = true;
+      trusted-users = [
+        "root"
+        "@wheel"
+        "tvo"
+      ];
     };
   };
   config.nixpkgs.config = {
