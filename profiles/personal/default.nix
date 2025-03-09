@@ -6,7 +6,6 @@ in
 {
   imports = [
     "${src}/modules/user/tools/nix"
-    "${src}/modules/user/tools/dconf"
     "${src}/modules/user/tools/xdg"
     "${src}/modules/user/tools/ssh"
     "${src}/modules/user/tools/vpn"

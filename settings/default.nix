@@ -7,7 +7,6 @@ let
   pkgs = inputs.nixpkgs.legacyPackages.${arch};
   lib = inputs.nixpkgs.lib;
 
-  gruvbox-icons = import ("${src}/packages/gruvbox-icons") (pkgs);
   colorScheme = gruvbox-dark-medium;
 in
 {
@@ -56,8 +55,8 @@ in
       size = 10;
     };
     iconTheme = {
-      package = gruvbox-icons;
-      name = "GruvboxIcons";
+      package = pkgs.gruvbox-plus-icons;
+      name = "GruvBox-Plus-Dark";
     };
     cursorTheme = {
       package = pkgs.capitaine-cursors-themed;
