@@ -1,5 +1,8 @@
 return  {
     "nvim-lualine/lualine.nvim",
+    dependencies = {
+        "f-person/git-blame.nvim",
+    },
     config = function()
         local lualine = require("lualine")
         local hide_in_width = function() return vim.fn.winwidth(0) > 80 end
@@ -22,17 +25,33 @@ return  {
         local filetype = { "filetype", icons_enabled = false, icon = nil }
         local branch = { "branch", icons_enabled = true, icon = "" }
         local location = { "location", padding = 0 }
-        -- cool function for progress
-        local progress = function()
-            local current_line = vim.fn.line(".")
-            local total_lines = vim.fn.line("$")
-            local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-            local line_ratio = current_line / total_lines
-            local index = math.ceil(line_ratio * #chars)
-            return chars[index]
-        end
         local spaces = function() return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") end
+        local lsp = {
+            function()
+                local msg = "No Active Lsp"
+                local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+                local clients = vim.lsp.get_clients()
+                if next(clients) == nil then
+                  return msg
+                end
+                for _, client in ipairs(clients) do
+                  local filetypes = client.config.filetypes
+                  if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                    return client.name
+                  end
+                end
+                return msg
+            end,
+            icon = "  LSP:",
+        }
+        local git_blame = require("gitblame")
+        -- This disables showing of the blame text next to the cursor
+        vim.g.gitblame_display_virtual_text = 0
         vim.opt.showmode = false
+        local blame = {
+            git_blame.get_current_blame_text,
+            cond = git_blame.is_blame_text_available,
+        }
         lualine.setup({
             options = {
                 icons_enabled = true,
@@ -43,12 +62,12 @@ return  {
                 always_divide_middle = true,
             },
             sections = {
-                lualine_a = { branch, diagnostics },
+                lualine_a = { branch, diff, diagnostics },
                 lualine_b = { mode },
-                lualine_c = {},
-                lualine_x = { diff, spaces, "encoding", filetype },
+                lualine_c = { blame },
+                lualine_x = { lsp, spaces, "encoding", filetype },
                 lualine_y = { location },
-                lualine_z = { progress },
+                lualine_z = { },
             },
             inactive_sections = {
                 lualine_a = {},
@@ -59,7 +78,7 @@ return  {
                 lualine_z = {},
             },
             tabline = {},
-            extensions = {},
+            extensions = { },
         })
     end,
 }
