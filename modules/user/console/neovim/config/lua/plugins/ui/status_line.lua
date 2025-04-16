@@ -65,7 +65,7 @@ return  {
                 lualine_a = { branch, diff, diagnostics },
                 lualine_b = { mode },
                 lualine_c = { blame },
-                lualine_x = { lsp, spaces, "encoding", filetype },
+                lualine_x = { lsp, filetype },
                 lualine_y = { location },
                 lualine_z = { },
             },
