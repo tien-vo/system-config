@@ -24,6 +24,7 @@ in
     "${src}/modules/user/window-manager/wayland/hyprland"
 
     "${src}/modules/user/services/sync/megasync"
+    "${src}/modules/user/services/sync/syncthing"
 
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
