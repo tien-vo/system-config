@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, settings, inputs, ... }:
+let
+  micromamba = inputs.nixpkgs-micromamba.legacyPackages.${settings.arch}.micromamba;
+in
 {
   config.home.packages = [
-    pkgs.micromamba
+    micromamba
   ];
 
   config.xdg.configFile."mamba/mambarc".source = ./mambarc;
