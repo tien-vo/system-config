@@ -20,6 +20,7 @@
 
       bindkey -v
       bindkey "^ " autosuggest-accept
+      bindkey '^P' up-line-or-search
     '';
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza -h --icons=auto --sort=name --group-directories-first";
