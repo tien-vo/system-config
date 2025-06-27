@@ -8,15 +8,17 @@ in
 {
   config.services.mako = {
     enable = true;
-    height = 300;
-    width = 400;
-    margin = "20,20";
-    defaultTimeout = 5000;
-    font = "${font.name} ${toString(font.size)}";
-    borderSize = border.size;
-    borderRadius = border.radius;
-    borderColor = "#${border.active_color.bottom}";
-    backgroundColor = "#${palette.base00}";
+    settings = {
+      margin = "20,20";
+      height = 300;
+      width = 400;
+      font = "${font.name} ${toString(font.size)}";
+      default-timeout = 5000;
+      border-size = border.size;
+      border-radius = border.radius;
+      border-color = "#${border.active_color.bottom}";
+      background-color = "#${palette.base00}";
+    };
   };
 
   config.home.packages = [
