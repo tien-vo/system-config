@@ -1,7 +1,7 @@
 { config, inputs, pkgs, settings, ... }:
 let
   inherit (settings) src;
-  cryptomator = inputs.nixpkgs-cryptomator.legacyPackages.${settings.arch}.cryptomator;
+  #  cryptomator = inputs.nixpkgs-cryptomator.legacyPackages.${settings.arch}.cryptomator;
 in
 {
   imports = [
@@ -23,7 +23,7 @@ in
     "${src}/modules/user/theme"
     "${src}/modules/user/window-manager/wayland/hyprland"
 
-    "${src}/modules/user/services/sync/megasync"
+    #  "${src}/modules/user/services/sync/megasync"
     "${src}/modules/user/services/sync/syncthing"
 
     #  "${src}/modules/user/information-management/logseq"
@@ -43,7 +43,7 @@ in
 
   config.home.packages = [
     pkgs.obsidian
-    cryptomator
+    pkgs.cryptomator
     #  pkgs.xdg-utils
     #  pkgs.unzip
     #  pkgs.wl-clipboard

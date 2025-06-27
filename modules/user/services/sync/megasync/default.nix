@@ -1,4 +1,7 @@
 { ... }:
 {
-  config.services.megasync.enable = true;
+  config.services.megasync = {
+    enable = true;
+    forceWayland = true;
+  };
 }
