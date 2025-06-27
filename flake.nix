@@ -5,9 +5,6 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    nixpkgs-cryptomator = {
-      url = "github:nixos/nixpkgs/aa2e499744d2a501584497993575006799cc4f94";
-    };
     hardware = {
       url = "github:nixos/nixos-hardware";
     };
@@ -19,10 +16,10 @@
       url = "github:misterio77/nix-colors";
     };
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      url = "github:hyprwm/Hyprland/db249648776875ce3142141d0d3055e43ce606aa";
     };
     nixgl = {
-      url = "github:nix-community/nixGL";
+      url = "github:nix-community/nixGL/310f8e49a149e4c9ea52f1adf70cdc768ec53f8a";
     };
     flake-utils = {
       url = "github:numtide/flake-utils";
