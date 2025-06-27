@@ -15,7 +15,7 @@
       enable = true;
       plugins = [ "romkatv/powerlevel10k" ];
     };
-    initExtra = ''
+    initContent = ''
       [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh}
 
       bindkey -v
