@@ -6,7 +6,8 @@
   ];
 
   config.wayland.windowManager.hyprland.settings.windowrulev2 = [
-    "float, class:^(vifm-dropterm)(.*)$"
+    "float, class:^(kitty-dropterm)(.*)$"
+    "float, class:^(fm-dropterm)(.*)$"
     "workspace special:scratchpad silent, class:^(vifm-dropterm)(.*)$"
   ];
 }

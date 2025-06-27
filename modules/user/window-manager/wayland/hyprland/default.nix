@@ -3,7 +3,7 @@ let
   inherit (settings) src arch;
   hyprland = inputs.hyprland.packages.${arch}.hyprland;
   hyprland-portal = inputs.hyprland.packages.${arch}.xdg-desktop-portal-hyprland;
-  pkgs = import inputs.nixpkgs({
+  pkgs = import inputs.hyprland.inputs.nixpkgs({
     system = arch;
     overlays = [ inputs.nixgl.overlay ];
   });
@@ -12,6 +12,7 @@ in
   config.wayland.windowManager.hyprland = {
     enable = true;
     package = hyprland;
+    portalPackage = hyprland-portal;
   };
 
   config.xdg.portal = {
