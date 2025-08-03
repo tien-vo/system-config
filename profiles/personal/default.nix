@@ -1,7 +1,6 @@
 { config, inputs, pkgs, settings, ... }:
 let
   inherit (settings) src;
-  #  cryptomator = inputs.nixpkgs-cryptomator.legacyPackages.${settings.arch}.cryptomator;
 in
 {
   imports = [
@@ -44,21 +43,20 @@ in
   config.home.packages = [
     pkgs.obsidian
     pkgs.cryptomator
+    pkgs.htop
+    pkgs.imv
+    pkgs.kdePackages.okular
+    pkgs.unzip
+    pkgs.sshfs
+    pkgs.vlc
     #  pkgs.xdg-utils
-    #  pkgs.unzip
     #  pkgs.wl-clipboard
     #  pkgs.swayimg
-    #  pkgs.htop
     #  pkgs.neofetch
     #  pkgs.dex
     #  pkgs.zoom-us
-    #  pkgs.file
     #  pkgs.imagemagick
-    #  pkgs.okular
-    #  pkgs.imv
     #  pkgs.tomato-c
-    #  pkgs.vlc
-    #  pkgs.sshfs
     #  pkgs.nh
     #  pkgs.ventoy-full
   ];
