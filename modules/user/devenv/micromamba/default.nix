@@ -8,7 +8,7 @@
   config.home.sessionVariables = {
     MAMBA_ROOT_PREFIX = "${config.xdg.dataHome}/mamba";
   };
-  config.programs.zsh.initExtra = ''
+  config.programs.zsh.initContent = ''
     eval "$(micromamba shell hook --shell zsh)"
   '';
 }

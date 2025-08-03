@@ -4,7 +4,7 @@
     enable = true;
     enableCompletion = true;
     enableVteIntegration = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     history = {
       extended = true;
       path = "${config.xdg.dataHome}/zsh/history";
