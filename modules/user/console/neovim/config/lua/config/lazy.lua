@@ -7,4 +7,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load plugins
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", { rocks = { enabled = false } })
