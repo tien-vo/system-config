@@ -76,9 +76,11 @@ return {
     config = function()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-        vim.lsp.set_log_level("debug")
 
-        require("vim.lsp.log").set_format_func(vim.inspect)
+        -- NOTE: Enable for debug
+        -- vim.lsp.log.set_level(vim.log.levels.DEBUG)
+        -- vim.lsp.log.set_format_func(vim.inspect)
+
         require("mason").setup()
         require("mason-lspconfig").setup({ ensure_installed = { "pylsp" } })
         require("lspconfig").pylsp.setup({
