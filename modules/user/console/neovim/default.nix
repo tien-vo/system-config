@@ -17,4 +17,8 @@ in
     source = ./config;
     recursive = true;
   };
+  config.home.packages = [
+    pkgs.ripgrep
+    pkgs.fd
+  ];
 }
