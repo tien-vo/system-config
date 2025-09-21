@@ -2,9 +2,12 @@
 {
   config.programs.ssh = {
     enable = true;
-    addKeysToAgent = "confirm";
-    hashKnownHosts = true;
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {
+        hashKnownHosts = true;
+        addKeysToAgent = "confirm";
+      };
       "reMarkable.usb" = {
         hostname = "10.11.99.1";
         user = "root";
