@@ -1,5 +1,9 @@
-{ ... }:
+{ config, pkgs, ... }:
 {
+  config.home.packages = [
+    pkgs.hyprpolkitagent
+  ];
+
   config.wayland.windowManager.hyprland.systemd = {
     enable = true;
     enableXdgAutostart = true;
@@ -15,6 +19,8 @@
 
       "systemctl --user enable dconf.service"    # For gtk to work properly
       "systemctl --user enable udiskie.service"  # For gtk to work properly
+
+      "systemctl --user enable hyprpolkitagent.service"
     ];
   };
 }
