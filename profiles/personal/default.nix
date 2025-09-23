@@ -27,7 +27,7 @@ in
 
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
-    #  "${src}/modules/user/information-management/zotero_beta"
+    "${src}/modules/user/information-management/zotero"
 
     "${src}/modules/user/web-browser/firefox"
 

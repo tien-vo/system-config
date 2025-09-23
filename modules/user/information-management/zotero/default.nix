@@ -1,24 +1,18 @@
-{ config, pkgs, settings, ... } @ args:
+{ config, pkgs, ... } @ args:
 let
   inherit (builtins) toString;
-  inherit (config.xdg) configHome;
+  inherit (config.xdg) stateHome;
 
-  fw13 = settings.monitors.framework13;
   userjs = import (./userjs.nix) (args);
-  userChrome = import (./userChrome.nix) (args);
 in
 {
-  config.xdg.dataFile."zotero/.keep".text = "";
-  config.xdg.configFile."zotero/user.js".source = userjs;
-  config.xdg.configFile."zotero/chrome/userChrome.css".source = userChrome;
+  config.xdg.stateFile."zotero/user.js".source = userjs;
 
   config.xdg.desktopEntries.zotero = {
     name = "Zotero";
     genericName = "Reference manager";
-    exec = "env GDK_DPI_SCALE=${toString(fw13.fontScaling)} zotero --profile ${configHome}/zotero";
+    exec = ''sh -c "${pkgs.zotero}/bin/zotero --profile ${stateHome}/zotero" %u'';
+    icon = "zotero";
+    type = "Application";
   };
-
-  config.home.packages = [
-    pkgs.zotero
-  ];
 }
