@@ -30,6 +30,7 @@ in
     "${src}/modules/user/information-management/zotero"
 
     "${src}/modules/user/web-browser/firefox"
+    "${src}/modules/user/web-browser/chromium"
 
     #  "${src}/modules/user/app/multi-media"
     #  "${src}/modules/user/app/file-manager/vifm"
