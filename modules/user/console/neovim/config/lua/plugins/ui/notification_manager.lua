@@ -5,7 +5,8 @@ return {
 
         notify = require("notify")
         notify.setup({
-            stages = "slide"
+            stages = "slide",
+            top_down = false
         })
         vim.notify = notify
     end,

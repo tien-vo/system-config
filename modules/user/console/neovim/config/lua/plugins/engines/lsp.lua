@@ -84,7 +84,7 @@ return {
 
         require("mason").setup()
         require("mason-lspconfig").setup({ ensure_installed = { "pylsp" } })
-        require("lspconfig").pylsp.setup({
+        vim.lsp.config("pylsp", {
             on_attach = on_attach,
             capabilities = capabilities,
             settings = {
@@ -125,5 +125,7 @@ return {
                 }
             }
         })
+
+        vim.lsp.enable({"pylsp"})
     end,
 }
