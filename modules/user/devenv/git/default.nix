@@ -2,11 +2,13 @@
 {
     config.programs.git = {
         enable = true;
-        userName = "tien-vo";
-        userEmail = "tvo.email@proton.me";
-        extraConfig = {
+        settings = {
             init.defaultBranch = "main";
             pull.rebase = true;
+            user = {
+                name = "tien-vo";
+                email = "tvo.email@proton.me";
+            };
         };
     };
 }

@@ -5,6 +5,9 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    nixpkgs-micromamba = {
+      url = "github:nixos/nixpkgs/bbcc95ec1c749e487c4bbc4cf99ad52785c8cc7d";
+    };
     hardware = {
       url = "github:nixos/nixos-hardware";
     };
