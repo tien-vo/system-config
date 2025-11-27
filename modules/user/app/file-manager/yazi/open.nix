@@ -9,7 +9,7 @@
         { run = ''${pkgs.vlc}/bin/vlc "$@"''; orphan = true; for = "unix"; }
       ];
       view = [
-        { run = ''${pkgs.imv}/bin/imv -b ffffff "$@"''; orphan = true; for = "unix"; }
+        { run = ''${pkgs.swayimg}/bin/swayimg "$@"''; orphan = true; for = "unix"; }
       ];
       open = [
         { run = ''${pkgs.xdg-utils}/bin/xdg-open "$@"''; desc = "Open"; }

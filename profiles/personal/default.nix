@@ -32,7 +32,8 @@ in
     "${src}/modules/user/web-browser/firefox"
     "${src}/modules/user/web-browser/chromium"
 
-    #  "${src}/modules/user/app/multi-media"
+    "${src}/modules/user/app/multi-media/swayimg"
+
     #  "${src}/modules/user/app/file-manager/vifm"
     "${src}/modules/user/app/file-manager/yazi"
     "${src}/modules/user/app/file-manager/thunar"
@@ -45,14 +46,12 @@ in
     pkgs.obsidian
     pkgs.cryptomator
     pkgs.htop
-    pkgs.imv
     pkgs.kdePackages.okular
     pkgs.unzip
     pkgs.sshfs
     pkgs.vlc
     #  pkgs.xdg-utils
     #  pkgs.wl-clipboard
-    #  pkgs.swayimg
     #  pkgs.neofetch
     #  pkgs.dex
     #  pkgs.zoom-us
