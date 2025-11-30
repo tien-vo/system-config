@@ -28,6 +28,7 @@ in
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
     "${src}/modules/user/information-management/zotero"
+    "${src}/modules/user/information-management/obsidian"
 
     "${src}/modules/user/web-browser/firefox"
     "${src}/modules/user/web-browser/chromium"
@@ -43,7 +44,6 @@ in
   ];
 
   config.home.packages = [
-    pkgs.obsidian
     pkgs.cryptomator
     pkgs.htop
     pkgs.kdePackages.okular
