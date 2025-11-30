@@ -50,6 +50,7 @@ in
     pkgs.unzip
     pkgs.sshfs
     pkgs.vlc
+    pkgs.filen-desktop
     #  pkgs.xdg-utils
     #  pkgs.wl-clipboard
     #  pkgs.neofetch
