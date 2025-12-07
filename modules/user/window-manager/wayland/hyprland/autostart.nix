@@ -11,6 +11,7 @@ let
 
       run ${pkgs.hyprpaper}/bin/hyprpaper
       run ${pkgs.waybar}/bin/waybar
+      run ${pkgs.filen-desktop}/bin/filen-desktop
 
       # Kludge for pyprland cause it started generating this wrapped binary
       [[ -z $(pgrep -f ${pkgs.pyprland}/bin/.pypr-wrapped) ]] && \
