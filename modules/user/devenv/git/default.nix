@@ -7,7 +7,7 @@
             pull.rebase = true;
             user = {
                 name = "tien-vo";
-                email = "tvo.email@proton.me";
+                email = "work@tienvo.me";
             };
         };
     };
