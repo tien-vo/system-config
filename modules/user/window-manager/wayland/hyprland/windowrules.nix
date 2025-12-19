@@ -50,6 +50,9 @@
     "workspace 5, match:class (org.cryptomator.launcher.Cryptomator\\$MainApp)(.*)"
     "float on, match:class (org.cryptomator.launcher.Cryptomator\\$MainApp)(.*)"
 
+    "workspace 5, match:title (Filen)(.*)"
+    "float on, match:title (Filen)(.*)"
+
     # Free-floating
     "float on, match:class (udiskie)(.*)"
     "float on, match:class (swayimg)(.*)"
