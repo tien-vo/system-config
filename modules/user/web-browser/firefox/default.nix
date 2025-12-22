@@ -1,4 +1,4 @@
-{ config, pkgs, settings, ... }:
+{ config, pkgs, settings, ... } @ args:
 {
   imports = [ ./policies.nix ];
 
@@ -9,7 +9,7 @@
       name = "Custom profile";
       isDefault = true;
       userChrome = import (./userChrome.nix);
-      extraConfig = import (./userjs.nix);
+      extraConfig = builtins.readFile( import (./userjs.nix) (args) );
     };
   };
   config.home.sessionVariables = {
