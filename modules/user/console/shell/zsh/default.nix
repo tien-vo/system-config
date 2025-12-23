@@ -23,7 +23,7 @@
       bindkey '^P' up-line-or-search
     '';
     shellAliases = {
-      ls = "${pkgs.eza}/bin/eza -1h --icons=auto --sort=name --group-directories-first";
+      ls = "${pkgs.eza}/bin/eza -h --icons=auto --sort=name --group-directories-first";
       tree = "${pkgs.eza}/bin/eza --color=auto --tree";
     };
   };
