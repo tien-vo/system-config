@@ -19,7 +19,7 @@ pkgs.writeTextFile ({
     user_pref("extensions.formautofill.addresses.enabled", false);
     user_pref("extensions.formautofill.creditCards.enabled", false);
 
-    user_pref("browser.download.dir", "${config.home.homeDirectory}/91_downloads");
+    user_pref("browser.download.dir", "${config.home.homeDirectory}/02_downloads");
 
     // Remember search and form history
     user_pref("services.sync.prefs.sync-seen.browser.formfill.enable", true);
