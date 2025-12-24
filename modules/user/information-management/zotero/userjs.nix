@@ -1,12 +1,13 @@
 { config, pkgs, ... }:
 let
   inherit (config.xdg) stateHome;
+  inherit (config.home) homeDirectory;
 in
 pkgs.writeTextFile ({
   name = "user.js";
   text = ''
     user_pref("extensions.zotero.dataDir", "${stateHome}/zotero");
-    user_pref("extensions.zotero.baseAttachmentPath", "~/Workspace/library/assets/zotero");
+    user_pref("extensions.zotero.baseAttachmentPath", "${homeDirectory}/01_documents/01_references");
     user_pref("extensions.zotero.export.quickCopy.setting", "export=ca65189f-8815-4afe-8c8b-8c7c15f0edca");
     user_pref("extensions.zotero.recursiveCollections", false);
     user_pref("extensions.zotero.automaticSnapshots", false);
@@ -21,7 +22,7 @@ pkgs.writeTextFile ({
     user_pref("extensions.zotero.translators.better-bibtex.citekeyFormat", "auth.lower + (authini.len(\">\", 1) ? \"+\" : \"\") + year + infix(start=1)");
     user_pref("extensions.zotero.translators.better-bibtex.citekeyFormatEditing", "auth.lower + (authini.len(\">\", 1) ? \"+\" : \"\") + year + infix(start=1)");
 
-    user_pref("extensions.zotmoov.dst_dir", "~/Workspace/library/assets/zotero");
+    user_pref("extensions.zotmoov.dst_dir", "${homeDirectory}/01_documents/01_references");
     user_pref("extensions.zotmoov.enable_subdir_move", true);
     user_pref("extensions.zotmoov.subdirectory_string", "{%a}");
   '';
