@@ -1,12 +1,13 @@
 { config, settings, inputs, ... }:
 let
   inherit (settings) src arch;
-  hyprland = inputs.hyprland.packages.${arch}.hyprland;
-  hyprland-portal = inputs.hyprland.packages.${arch}.xdg-desktop-portal-hyprland;
   pkgs = import inputs.hyprland.inputs.nixpkgs({
     system = arch;
     overlays = [ inputs.nixgl.overlay ];
   });
+
+  hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  hyprland-portal = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 in
 {
   config.wayland.windowManager.hyprland = {
