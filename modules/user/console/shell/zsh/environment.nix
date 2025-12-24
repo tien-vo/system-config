@@ -6,7 +6,6 @@
     export TERM="xterm-256color"
 
     export CARGO_HOME="${config.xdg.dataHome}/cargo"
-    export GNUPGHOME="${config.xdg.dataHome}/gnupg"
     export NUGET_PACKAGES="${config.xdg.dataHome}/nuget"
     export LEIN_HOME="${config.xdg.dataHome}/lein"
     export PATH="$PATH:$HOME/.local/bin"
