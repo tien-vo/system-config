@@ -6,6 +6,7 @@ in
   imports = [
     "${src}/modules/user/tools/nix"
     "${src}/modules/user/tools/xdg"
+    "${src}/modules/user/tools/gpg"
     "${src}/modules/user/tools/ssh"
     "${src}/modules/user/tools/vpn"
     "${src}/modules/user/tools/fcitx5"
