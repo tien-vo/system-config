@@ -12,6 +12,8 @@ in
     extraPackages = [
       pkgs.gcc
     ];
+    withRuby = true;
+    withPython3 = true;
   };
   config.home.file."./.config/nvim/" = {
     source = ./config;

@@ -22,7 +22,7 @@
     export MATHEMATICA_USERBASE="${config.xdg.configHome}/mathematica"
 
     # IDL
-    . "${config.home.homeDirectory}/01_applications/idl/9.1.0/idl/bin/idl_setup.bash"
+    . "${config.home.homeDirectory}/04_applications/idl/9.1.0/idl/bin/idl_setup.bash"
     export SPEDAS_DATA_DIR="${config.xdg.dataHome}/spedas"
     export ROOT_DATA_DIR="${config.xdg.dataHome}/spedas"
     export IDL_PATH="<IDL_DEFAULT>:+${config.home.homeDirectory}/01_applications/spedas/bleeding_edge"
