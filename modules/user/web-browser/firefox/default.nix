@@ -4,15 +4,17 @@
 
   config.programs.firefox = {
     enable = true;
-    package = pkgs.firefox-esr;
+    package = pkgs.firefox;
+    configPath = ".mozilla/firefox";
+    #  configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.custom-profile = {
+      id = 0;
       name = "Custom profile";
-      isDefault = true;
       userChrome = import (./userChrome.nix);
       extraConfig = builtins.readFile( import (./userjs.nix) (args) );
     };
   };
   config.home.sessionVariables = {
-    BROWSER = "${pkgs.firefox-esr}/bin/firefox-esr";
+    BROWSER = "${pkgs.firefox}/bin/firefox";
   };
 }
