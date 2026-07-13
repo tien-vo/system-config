@@ -30,6 +30,7 @@ in
     #  "${src}/modules/user/information-management/thunderbird"
     "${src}/modules/user/information-management/zotero"
     "${src}/modules/user/information-management/obsidian"
+    "${src}/modules/user/information-management/actual-server"
 
     "${src}/modules/user/web-browser/firefox"
     "${src}/modules/user/web-browser/chromium"
