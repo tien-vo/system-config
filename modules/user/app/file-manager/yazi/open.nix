@@ -18,9 +18,9 @@
 
     open = {
       prepend_rules = [
-        { name = "*.png"; use = "view"; }
-        { name = "*.avi"; use = "play"; }
-        { name = "*.mp3"; use = "play"; }
+        { url = "*.png"; use = "view"; }
+        { url = "*.avi"; use = "play"; }
+        { url = "*.mp3"; use = "play"; }
       ];
     };
   };

@@ -16,7 +16,7 @@
       
       tab_active = { fg = "#282828"; bg = "#504945"; };
       tab_inactive = { fg = "#a89984"; bg = "#3c3836"; };
-      tab_width = 1;
+      tab_width = "1";
       
       border_symbol = "│";
       border_style  = { fg = "#665c54"; };
@@ -94,8 +94,8 @@
         { mime = "application/x-7z-compressed"; fg = "#fe8019"; }
         { mime = "application/x-rar"; fg = "#fe8019"; }
       
-        { name = "*"; fg = "#a89984"; }
-        { name = "*/"; fg = "#83a598"; }
+        { mime = "*"; fg = "#a89984"; }
+        { mime = "*/"; fg = "#83a598"; }
       ];
     };
   };
