@@ -12,6 +12,7 @@ in
 {
   config.wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
     package = hyprland;
     portalPackage = hyprland-portal;
   };
@@ -24,18 +25,16 @@ in
 
   imports = [
     # Crucial
-    ./systemd.nix
-
     ./autostart.nix
 
     # Configurations
-    ./sections
+    ./config
+    ./bindings.nix
     ./environment.nix
-    ./keybindings.nix
-    ./scratchpads.nix
-    ./windowrules.nix
     ./monitors.nix
+    ./scratchpads.nix
     ./theme.nix
+    ./windowrules.nix
 
     # Plugins
     ./pyprland

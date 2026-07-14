@@ -5,22 +5,44 @@ let
   script = writeShellScriptBin ("autostart") (
     ''
       function run() {
-          [[ -z $(pgrep -f $1) ]] && \
-              eval $* & disown || true
+          [[ -z $(pgrep -f "$1") ]] && "$@" &
       }
 
       run ${pkgs.hyprpaper}/bin/hyprpaper
       run ${pkgs.waybar}/bin/waybar
       run ${pkgs.filen-desktop}/bin/filen-desktop
-
-      # Kludge for pyprland cause it started generating this wrapped binary
-      [[ -z $(pgrep -f ${pkgs.pyprland}/bin/.pypr-wrapped) ]] && \
-          ${pkgs.pyprland}/bin/pypr & disown
+      run ${pkgs.pyprland}/bin/pypr
     ''
   );
 in
 {
-  config.wayland.windowManager.hyprland.settings.exec = [
-    "${bash}/bin/bash ${script}/bin/autostart"
+  config.home.packages = [
+    pkgs.hyprpolkitagent
   ];
+
+  config.wayland.windowManager.hyprland.systemd = {
+    enable = true;
+    enableXdgAutostart = true;
+    variables = [
+      "WAYLAND_DISPLAY"
+      "XDG_CURRENT_DESKTOP"
+      "--all"
+    ];
+    extraCommands = [
+      "systemctl --user stop hyprland-session.target"
+      "systemctl --user start hyprland-session.target"
+      "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP QT_QPA_PLATFORMTHEME"
+
+      "systemctl --user enable dconf.service"    # For gtk to work properly
+      "systemctl --user enable udiskie.service"  # For gtk to work properly
+
+      "systemctl --user enable hyprpolkitagent.service"
+    ];
+  };
+
+  config.wayland.windowManager.hyprland.extraConfig = ''
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("${script}/bin/autostart")
+end)
+  '';
 }

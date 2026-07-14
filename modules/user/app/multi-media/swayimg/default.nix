@@ -2,10 +2,10 @@
 {
     config.programs.swayimg = {
         enable = true;
-        settings = {
-            info = {
-                show = "no";
-            };
-        };
+        # settings = {
+        #     info = {
+        #         show = "no";
+        #     };
+        # };
     };
 }

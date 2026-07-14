@@ -1,13 +1,28 @@
-{ config, pkgs, ... }:
-{
-  config.wayland.windowManager.hyprland.settings.bind = [
-    "SUPER, SPACE, exec, ${pkgs.pyprland}/bin/pypr toggle term"
-    "SUPER, V, exec, ${pkgs.pyprland}/bin/pypr toggle vifm"
-  ];
+{ config, settings, pkgs, ... }:
+let
+  inherit (builtins) toString;
+  inherit (settings.window) border;
+  fw13 = settings.monitors.framework13;
+  sceptre = settings.monitors.sceptre;
+in {
+  config.wayland.windowManager.hyprland.extraConfig = ''
+hl.bind("SUPER + SPACE",                        hl.dsp.exec_cmd("${pkgs.pyprland}/bin/pypr toggle term"))
+hl.bind("SUPER + V",                            hl.dsp.exec_cmd("${pkgs.pyprland}/bin/pypr toggle vifm"))
 
-  config.wayland.windowManager.hyprland.settings.windowrule = [
-    "float on, match:class (kitty-dropterm)(.*)"
-    "float on, match:class (fm-dropterm)(.*)"
-    "workspace special:scratchpad silent, match:class (vifm-dropterm)(.*)"
-  ];
+hl.window_rule({
+    match = { class = "^(kitty-dropterm)(.*)" },
+    float = true,
+    border_color = { colors = {"rgba(${border.active_color.top}ff)", "rgba(${border.active_color.bottom}ff)"}, angle =  60 }
+})
+hl.window_rule({
+    match = { class = "^(fm-dropterm)(.*)" },
+    float = true,
+    border_color = { colors = {"rgba(${border.active_color.top}ff)", "rgba(${border.active_color.bottom}ff)"}, angle =  60 }
+})
+hl.window_rule({
+    workspace = "special:scratchpad silent",
+    match = { class = "^(fm-dropterm)(.*)" },
+    border_color = { colors = {"rgba(${border.active_color.top}ff)", "rgba(${border.active_color.bottom}ff)"}, angle =  60 }
+})
+  '';
 }
