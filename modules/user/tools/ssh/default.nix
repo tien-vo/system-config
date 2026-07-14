@@ -13,7 +13,7 @@
         user = "root";
       };
       "reMarkable.wifi" = {
-        hostname = "192.168.0.6";
+        hostname = "192.168.1.9";
         user = "root";
       };
       "msi-agate" = {

@@ -60,10 +60,10 @@ hl.bind(
 )
 
 -- Multimedia
-hl.bind("XF86AudioRaiseVolume",             hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+", { locked = true, repeating = true }))
-hl.bind("XF86AudioLowerVolume",             hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-", { locked = true, repeating = true }))
-hl.bind("XF86AudioMute",                    hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", { locked = true, repeating = true }))
-hl.bind("XF86MonBrightnessUp",              hl.dsp.exec_cmd("${pkgs.brightnessctl}/bin/brightnessctl -e4 -n2 set 5%+", { locked = true, repeating = true }))
-hl.bind("XF86MonBrightnessDown",            hl.dsp.exec_cmd("${pkgs.brightnessctl}/bin/brightnessctl -e4 -n2 set 5%-", { locked = true, repeating = true }))
+hl.bind("XF86AudioRaiseVolume",             hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"))
+hl.bind("XF86AudioLowerVolume",             hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"))
+hl.bind("XF86AudioMute",                    hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+hl.bind("XF86MonBrightnessUp",              hl.dsp.exec_cmd("${pkgs.brightnessctl}/bin/brightnessctl -e4 -n2 set 5%+"))
+hl.bind("XF86MonBrightnessDown",            hl.dsp.exec_cmd("${pkgs.brightnessctl}/bin/brightnessctl -e4 -n2 set 5%-"))
   '';
 }
