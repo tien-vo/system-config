@@ -22,14 +22,14 @@
     export MATHEMATICA_USERBASE="${config.xdg.configHome}/mathematica"
 
     # IDL
-    . "${config.home.homeDirectory}/04_applications/idl/9.1.0/idl/bin/idl_setup.bash"
+    . "${config.home.homeDirectory}/60_applications/10_scientific-computing/idl/9.1.0/idl/bin/idl_setup.bash"
     export SPEDAS_DATA_DIR="${config.xdg.dataHome}/spedas"
     export ROOT_DATA_DIR="${config.xdg.dataHome}/spedas"
-    export IDL_PATH="<IDL_DEFAULT>:+${config.home.homeDirectory}/04_applications/spedas/bleeding_edge"
+    export IDL_PATH="<IDL_DEFAULT>:+${config.home.homeDirectory}/60_applications/10_scientific-computing/spedas/bleeding_edge"
     export IDL_PATH="$IDL_PATH:+${config.home.homeDirectory}/Workspace/projects/_tvolib/tvolib/src/idl"
 
     # CDF
-    export PATH="$PATH:$HOME/04_applications/cdf/3.9/bin"
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/04_applications/cdf/3.9/lib"
+    export PATH="$PATH:$HOME/60_applications/10_scientific-computing/cdf/3.9/bin"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/60_applications/10_scientific-computing/cdf/3.9/lib"
   '';
 }

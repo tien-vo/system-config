@@ -25,6 +25,7 @@
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza -h --icons=auto --sort=name --group-directories-first";
       tree = "${pkgs.eza}/bin/eza --color=auto --tree";
+      virt-manager = "${config.home.homeDirectory}/.local/bin/virt-manager";
     };
   };
 
