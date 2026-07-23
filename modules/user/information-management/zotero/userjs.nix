@@ -24,6 +24,6 @@ pkgs.writeTextFile ({
 
     user_pref("extensions.zotmoov.dst_dir", "${homeDirectory}/70_collections/01_zotero-library");
     user_pref("extensions.zotmoov.enable_subdir_move", true);
-    user_pref("extensions.zotmoov.subdirectory_string", "{%a}");
+    user_pref("extensions.zotmoov.subdirectory_string", "01_attachments");
   '';
 })
