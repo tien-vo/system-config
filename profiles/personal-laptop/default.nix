@@ -43,33 +43,33 @@ in
     "${src}/modules/user/web-browser/chromium"
 
     "${src}/modules/user/viewer/swayimg"
-    #  "${src}/modules/user/app/file-management/zathura"
+    "${src}/modules/user/viewer/zathura"
 
     "${src}/modules/user/file-management/yazi"
     "${src}/modules/user/file-management/thunar"
     #  "${src}/modules/user/file-management/vifm"
 
-    #  "${src}/modules/user/office/libreoffice"
+    "${src}/modules/user/office/libreoffice"
 
+    "${src}/modules/user/communication/slack"
     #  "${src}/modules/user/communication/thunderbird"
   ];
 
   config.home.packages = [
     pkgs.cryptomator
     pkgs.htop
+    pkgs.jq
     pkgs.kdePackages.okular
-    pkgs.unzip
+    pkgs.ncdu
+    pkgs.pandoc
     pkgs.sshfs
+    pkgs.trash-cli
+    pkgs.tree
+    pkgs.zip
+    pkgs.unzip
+    pkgs.uv
     pkgs.vlc
-    pkgs.filen-desktop
-    #  pkgs.xdg-utils
-    #  pkgs.wl-clipboard
-    #  pkgs.neofetch
-    #  pkgs.dex
-    #  pkgs.zoom-us
-    #  pkgs.imagemagick
-    #  pkgs.tomato-c
-    #  pkgs.nh
-    #  pkgs.ventoy-full
+    pkgs.wget
+    pkgs.wl-clipboard
   ];
 }

@@ -9,5 +9,6 @@
 
   config.home.packages = [
     pkgs.xdotool
+    pkgs.zathuraPkgs.zathura_pdf_poppler
   ];
 }
