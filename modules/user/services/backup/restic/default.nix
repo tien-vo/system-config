@@ -22,7 +22,7 @@ let
       export RCLONE_CONFIG_PASS
 
       exec restic \
-        --repository "rclone:filen:backups/restic/fw13" \
+        --repo "rclone:filen:backups/restic/fw13" \
         --password-file "${config.sops.secrets.restic-filen-password.path}" \
         "$@"
     '';
