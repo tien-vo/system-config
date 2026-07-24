@@ -114,7 +114,10 @@ in
       createWrapper = false;
 
       inhibitsSleep = true;
-      timerConfig = null;
+      timerConfig = {
+        OnCalendar = "Sun *-*-* 03:00:00";
+        Persistent = true;
+      };
       progressFps = 0.0166;
     };
   };
