@@ -1,0 +1,56 @@
+#!/bin/sh
+
+set -eu
+
+case "${2:-}" in
+  connectivity-change)
+    if ! timezone="$(
+      curl \
+        --fail \
+        --silent \
+        --connect-timeout 10 \
+        --max-time 20 \
+        https://ipapi.co/timezone
+    )"; then
+      logger \
+        --tag=automatic-timezone \
+        "Timezone lookup failed; keeping the current timezone"
+
+      exit 0
+    fi
+
+    case "$timezone" in
+      */*)
+        ;;
+      *)
+        logger \
+          --tag=automatic-timezone \
+          "Ignoring invalid timezone response"
+
+        exit 0
+        ;;
+    esac
+
+    if [ ! -e "/usr/share/zoneinfo/$timezone" ]; then
+      logger \
+        --tag=automatic-timezone \
+        "Ignoring timezone not installed on this system: $timezone"
+
+      exit 0
+    fi
+
+    current_timezone="$(
+      timedatectl show \
+        --property=Timezone \
+        --value
+    )"
+
+    if [ "$timezone" != "$current_timezone" ]; then
+      timedatectl set-timezone "$timezone"
+
+      logger \
+        --tag=automatic-timezone \
+        "Changed timezone from $current_timezone to $timezone"
+    fi
+    ;;
+esac
