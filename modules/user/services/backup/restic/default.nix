@@ -26,8 +26,9 @@ let
         --password-file "${config.sops.secrets.restic-filen-password.path}" \
         "$@"
     '';
-
   };
+
+  restic-next-backup = import ./restic-next-backup.nix({ inherit pkgs; });
 in
 {
   config.home.packages = [
@@ -36,6 +37,7 @@ in
     pkgs.restic
     pkgs.sops
     restic-filen-fw13
+    restic-next-backup
   ];
 
   config.sops = {
@@ -149,6 +151,25 @@ in
         ExecStart =
           "${progress-notifier}/bin/restic-progress-notifier";
       };
+    };
+  };
+
+  config.systemd.user.services.restic-login-notification = {
+    Unit = {
+      Description =
+        "Show the next Restic backup at Hyprland login";
+  
+      After = [
+        "graphical-session.target"
+        "mako.service"
+      ];
+    };
+  
+    Service = {
+      Type = "oneshot";
+  
+      ExecStart =
+        "${restic-next-backup}/bin/restic-next-backup --notify";
     };
   };
 }
