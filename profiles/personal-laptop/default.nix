@@ -12,6 +12,8 @@ in
 
     "${src}/modules/user/services/sync/syncthing"
     "${src}/modules/user/services/backup/restic"
+    #  "${src}/modules/user/services/sync/megasync"
+    #  "${src}/modules/user/services/cryptomator"
 
     "${src}/modules/user/shell/zsh"
     "${src}/modules/user/shell/autojump"
@@ -33,6 +35,7 @@ in
     "${src}/modules/user/reference-management/zotero"
 
     "${src}/modules/user/knowledge-management/obsidian"
+    #  "${src}/modules/user/knowledge-management/logseq"
 
     "${src}/modules/user/finance/actual-server"
 
@@ -40,18 +43,15 @@ in
     "${src}/modules/user/web-browser/chromium"
 
     "${src}/modules/user/viewer/swayimg"
+    #  "${src}/modules/user/app/file-management/zathura"
 
     "${src}/modules/user/file-management/yazi"
     "${src}/modules/user/file-management/thunar"
+    #  "${src}/modules/user/file-management/vifm"
 
-    #  "${src}/modules/user/services/sync/megasync"
-    #  "${src}/modules/user/information-management/logseq"
-    #  "${src}/modules/user/information-management/thunderbird"
+    #  "${src}/modules/user/office/libreoffice"
 
-    #  "${src}/modules/user/app/file-manager/vifm"
-    #  "${src}/modules/user/app/file-manager/zathura"
-    #  "${src}/modules/user/app/cloud-service/cryptomator"
-    #  "${src}/modules/user/app/office/libreoffice"
+    #  "${src}/modules/user/communication/thunderbird"
   ];
 
   config.home.packages = [
