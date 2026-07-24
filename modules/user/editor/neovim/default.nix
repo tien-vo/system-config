@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    "${src}/modules/user/devenv/tectonic"
+    "${src}/modules/user/development-environment/tectonic"
   ];
   config.programs.neovim = {
     enable = true;

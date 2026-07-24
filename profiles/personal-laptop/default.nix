@@ -4,43 +4,51 @@ let
 in
 {
   imports = [
-    "${src}/modules/user/tools/nix"
-    "${src}/modules/user/tools/xdg"
-    "${src}/modules/user/tools/gpg"
-    "${src}/modules/user/tools/ssh"
-    "${src}/modules/user/tools/vpn"
-    "${src}/modules/user/tools/fcitx5"
+    "${src}/modules/user/package-management/nix"
 
-    "${src}/modules/user/devenv/git"
-    "${src}/modules/user/devenv/micromamba"
+    "${src}/modules/user/security/gpg"
+    "${src}/modules/user/security/ssh"
+    "${src}/modules/user/security/vpn"
 
-    "${src}/modules/user/console/shell/zsh"
-    "${src}/modules/user/console/neovim"
-    "${src}/modules/user/console/autojump"
-    "${src}/modules/user/console/alacritty"
-    "${src}/modules/user/console/kitty"
+    "${src}/modules/user/services/sync/syncthing"
+    "${src}/modules/user/services/backup/restic"
+
+    "${src}/modules/user/shell/zsh"
+    "${src}/modules/user/shell/autojump"
+
+    "${src}/modules/user/terminal/alacritty"
+    "${src}/modules/user/terminal/kitty"
+
+    "${src}/modules/user/development-environment/git"
+    "${src}/modules/user/development-environment/micromamba"
+
+    "${src}/modules/user/editor/neovim"
+
+    "${src}/modules/user/desktop/xdg"
+    "${src}/modules/user/desktop/fcitx5"
 
     "${src}/modules/user/theme"
     "${src}/modules/user/window-manager/wayland/hyprland"
 
-    #  "${src}/modules/user/services/sync/megasync"
-    "${src}/modules/user/services/sync/syncthing"
-    "${src}/modules/user/services/backup/restic"
+    "${src}/modules/user/reference-management/zotero"
 
-    #  "${src}/modules/user/information-management/logseq"
-    #  "${src}/modules/user/information-management/thunderbird"
-    "${src}/modules/user/information-management/zotero"
-    "${src}/modules/user/information-management/obsidian"
-    "${src}/modules/user/information-management/actual-server"
+    "${src}/modules/user/knowledge-management/obsidian"
+
+    "${src}/modules/user/finance/actual-server"
 
     "${src}/modules/user/web-browser/firefox"
     "${src}/modules/user/web-browser/chromium"
 
-    "${src}/modules/user/app/multi-media/swayimg"
+    "${src}/modules/user/viewer/swayimg"
+
+    "${src}/modules/user/file-management/yazi"
+    "${src}/modules/user/file-management/thunar"
+
+    #  "${src}/modules/user/services/sync/megasync"
+    #  "${src}/modules/user/information-management/logseq"
+    #  "${src}/modules/user/information-management/thunderbird"
 
     #  "${src}/modules/user/app/file-manager/vifm"
-    "${src}/modules/user/app/file-manager/yazi"
-    "${src}/modules/user/app/file-manager/thunar"
     #  "${src}/modules/user/app/file-manager/zathura"
     #  "${src}/modules/user/app/cloud-service/cryptomator"
     #  "${src}/modules/user/app/office/libreoffice"
