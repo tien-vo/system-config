@@ -36,6 +36,10 @@
       url = "github:cjavad/nixpille-obsidian-community-plugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -59,7 +63,10 @@
       homeConfigurations = {
         "tvo@fw13" = inputs.home-manager.lib.homeManagerConfiguration ({
           inherit pkgs;
-          modules = [ "${src}/users/${arch}/tvo@fw13" ];
+          modules = [
+            inputs.sops-nix.homeManagerModules.sops
+            "${src}/users/${arch}/tvo@fw13"
+          ];
           extraSpecialArgs = args;
         });
       };

@@ -25,6 +25,7 @@ in
 
     #  "${src}/modules/user/services/sync/megasync"
     "${src}/modules/user/services/sync/syncthing"
+    "${src}/modules/user/services/backup/restic"
 
     #  "${src}/modules/user/information-management/logseq"
     #  "${src}/modules/user/information-management/thunderbird"
