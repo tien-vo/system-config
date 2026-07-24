@@ -24,14 +24,6 @@
     nixgl = {
       url = "github:nix-community/nixGL";
     };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
-    nix-ld-rs = {
-      url = "github:nix-community/nix-ld-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
     obsidian-plugins = {
       url = "github:cjavad/nixpille-obsidian-community-plugins";
       inputs.nixpkgs.follows = "nixpkgs";

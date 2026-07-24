@@ -7,7 +7,10 @@ in
   imports = [
     ./hardware.nix
     inputs.hardware.nixosModules.framework-13-7040-amd
+
     "${src}/modules/system/locale/input"
+    "${src}/modules/system/locale/timezone"
+
     "${src}/modules/system/tools/nix"
     "${src}/modules/system/tools/nix-ld"
     "${src}/modules/system/shells/zsh"
@@ -31,7 +34,6 @@ in
     hostName = "fw13";
     networkmanager.enable = true;
   };
-  config.time.timeZone = "America/Denver";
 
   config.users.users.tvo = {
     isNormalUser = true;
@@ -49,14 +51,13 @@ in
 
   config.services.udisks2.enable = true;
   config.programs.dconf.enable = true;
-  config.services.dbus.package = pkgs.dconf;
   config.programs.seahorse.enable = true;
   config.services.gnome.gnome-keyring.enable = true;
   config.systemd.user.services.protonmail-bridge = {
     description = "Protonmail Bridge";
     enable = true;
     script = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --noninteractive --log-level info";
-    path = [ pkgs.gnome3.gnome-keyring ];
+    path = [ pkgs.gnome-keyring ];
     wantedBy = [ "graphical-session.target" ];
     partOf = [ "graphical-session.target" ];
   };

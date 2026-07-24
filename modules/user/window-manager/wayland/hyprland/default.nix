@@ -17,12 +17,6 @@ in
     portalPackage = hyprland-portal;
   };
 
-  config.xdg.portal = {
-    enable = true;
-    extraPortals = [ hyprland-portal ];
-    configPackages = [ hyprland ];
-  };
-
   imports = [
     # Crucial
     ./autostart.nix

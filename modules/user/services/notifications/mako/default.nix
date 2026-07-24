@@ -18,6 +18,7 @@ in
       border-radius = border.radius;
       border-color = "#${border.active_color.bottom}";
       background-color = "#${palette.base00}";
+      progress-color = "over #${palette.base0A}";
     };
   };
 

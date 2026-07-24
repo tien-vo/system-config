@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
-
 let
   home = config.home.homeDirectory;
+  progress-notifier = import ./progress-notifier.nix ({ inherit pkgs; });
 in
 {
   config.home.packages = [
@@ -54,7 +54,7 @@ in
 
       extraBackupArgs = [
         "--host=fw13"
-        "--verbose"
+        "--json"
       ];
 
       createWrapper = true;
@@ -62,6 +62,29 @@ in
 
       timerConfig = null;
       progressFps = 0.0166;
+    };
+  };
+
+  config.systemd.user.services.restic-backups-filen-fw13.Unit = {
+    "X-SwitchMethod" = "keep-old";
+
+    Wants = [
+      "restic-progress-filen-fw13.service"
+    ];
+  };
+
+  config.systemd.user.services.restic-progress-filen-fw13 = {
+    Unit = {
+      Description = "Desktop progress notifications for fw13 Restic backup";
+
+      After = [
+        "graphical-session.target"
+      ];
+    };
+
+    Service = {
+      Type = "exec";
+      ExecStart = "${progress-notifier}/bin/restic-progress-notifier";
     };
   };
 }
