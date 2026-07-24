@@ -5,7 +5,7 @@ in
 {
   imports = [ "${src}/profiles/personal-laptop" ];
   config.home = {
-    stateVersion = nixVersion;
+    stateVersion = stateVersion;
     username = "tvo";
     homeDirectory = "/home/tvo";
   };

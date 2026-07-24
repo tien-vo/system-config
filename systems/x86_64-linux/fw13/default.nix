@@ -1,6 +1,6 @@
 { pkgs, inputs, settings, ... }:
 let
-  inherit (settings) src nixVersion;
+  inherit (settings) src stateVersion;
   setBootDevices = uuid: { "luks-${uuid}".device = "/dev/disk/by-uuid/${uuid}"; };
 in
 {
@@ -18,7 +18,7 @@ in
     "${src}/modules/system/window-managers/hyprland"
   ];
 
-  config.system.stateVersion = nixVersion;
+  config.system.stateVersion = stateVersion;
 
   config.boot = {
     loader.grub = {

@@ -11,7 +11,7 @@ let
 in
 {
   inherit src arch pkgs;
-  nixVersion = "25.11";
+  stateVersion = "25.11";
   monitors = {
     framework13 = {
       name = "BOE 0x0BCA";
