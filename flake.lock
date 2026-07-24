@@ -627,6 +627,26 @@
         "type": "github"
       }
     },
+    "obsidian-plugins": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770753851,
+        "narHash": "sha256-0FtmTKNKa8imXQYLJi+uKf0zOS5WmsIhTVW00+zKx1w=",
+        "owner": "cjavad",
+        "repo": "nixpille-obsidian-community-plugins",
+        "rev": "e98d37b2404143e876b6f795448d744df27b1dfc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cjavad",
+        "repo": "nixpille-obsidian-community-plugins",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -659,7 +679,8 @@
         "nix-ld-rs": "nix-ld-rs",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-micromamba": "nixpkgs-micromamba"
+        "nixpkgs-micromamba": "nixpkgs-micromamba",
+        "obsidian-plugins": "obsidian-plugins"
       }
     },
     "systems": {
