@@ -1,6 +1,6 @@
 { pkgs, settings, ... }:
 let
-  inherit (settings) src nixVersion;
+  inherit (settings) src stateVersion;
 in
 {
   imports = [ "${src}/profiles/personal-laptop" ];
