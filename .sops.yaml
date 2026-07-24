@@ -6,3 +6,8 @@ creation_rules:
     key_groups:
       - age:
           - *fw13
+
+  - path_regex: ^secrets/rclone-fw13\.yaml$
+    key_groups:
+      - age:
+          - *fw13

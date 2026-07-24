@@ -1,7 +1,33 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 let
   home = config.home.homeDirectory;
-  progress-notifier = import ./progress-notifier.nix ({ inherit pkgs; });
+
+  progress-notifier = import ./progress-notifier.nix {
+    inherit pkgs;
+  };
+
+  restic-filen-fw13 = pkgs.writeShellApplication {
+    name = "restic-filen-fw13";
+
+    runtimeInputs = [
+      pkgs.rclone
+      pkgs.restic
+    ];
+
+    text = ''
+      RCLONE_CONFIG_PASS="$(
+        cat "${config.sops.secrets.rclone-config-password.path}"
+      )"
+
+      export RCLONE_CONFIG_PASS
+
+      exec restic \
+        --repository "rclone:filen:backups/restic/fw13" \
+        --password-file "${config.sops.secrets.restic-filen-password.path}" \
+        "$@"
+    '';
+
+  };
 in
 {
   config.home.packages = [
@@ -9,13 +35,36 @@ in
     pkgs.rclone
     pkgs.restic
     pkgs.sops
+    restic-filen-fw13
   ];
 
   config.sops = {
-    defaultSopsFile = ../../../../../secrets/restic-filen-fw13.yaml;
+    defaultSopsFile =
+      "${settings.src}/secrets/restic-filen-fw13.yaml";
+
     defaultSopsFormat = "yaml";
-    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
-    secrets.restic-filen-password = {
+
+    age.keyFile =
+      "${config.xdg.configHome}/sops/age/keys.txt";
+
+    secrets = {
+      restic-filen-password = {
+        mode = "0400";
+      };
+
+      rclone-config-password = {
+        sopsFile =
+          "${settings.src}/secrets/rclone-fw13.yaml";
+
+        mode = "0400";
+      };
+    };
+
+    templates."rclone-filen-fw13.env" = {
+      content = ''
+        RCLONE_CONFIG_PASS=${config.sops.placeholder.rclone-config-password}
+      '';
+
       mode = "0400";
     };
   };
@@ -29,7 +78,8 @@ in
       # The repository already exists.
       initialize = false;
 
-      passwordFile = config.sops.secrets.restic-filen-password.path;
+      passwordFile =
+        config.sops.secrets.restic-filen-password.path;
 
       paths = [
         "${home}/70_collections"
@@ -57,34 +107,48 @@ in
         "--json"
       ];
 
-      createWrapper = true;
-      inhibitsSleep = true;
+      # A custom wrapper is defined above so it can read
+      # the rclone configuration password from sops-nix.
+      createWrapper = false;
 
+      inhibitsSleep = true;
       timerConfig = null;
       progressFps = 0.0166;
     };
   };
 
-  config.systemd.user.services.restic-backups-filen-fw13.Unit = {
-    "X-SwitchMethod" = "keep-old";
+  config.systemd.user.services = {
+    restic-backups-filen-fw13 = {
+      Unit = {
+        "X-SwitchMethod" = "keep-old";
 
-    Wants = [
-      "restic-progress-filen-fw13.service"
-    ];
-  };
+        Wants = [
+          "restic-progress-filen-fw13.service"
+        ];
+      };
 
-  config.systemd.user.services.restic-progress-filen-fw13 = {
-    Unit = {
-      Description = "Desktop progress notifications for fw13 Restic backup";
-
-      After = [
-        "graphical-session.target"
-      ];
+      Service = {
+        EnvironmentFile =
+          config.sops.templates."rclone-filen-fw13.env".path;
+      };
     };
 
-    Service = {
-      Type = "exec";
-      ExecStart = "${progress-notifier}/bin/restic-progress-notifier";
+    restic-progress-filen-fw13 = {
+      Unit = {
+        Description =
+          "Desktop progress notifications for fw13 Restic backup";
+
+        After = [
+          "graphical-session.target"
+        ];
+      };
+
+      Service = {
+        Type = "exec";
+
+        ExecStart =
+          "${progress-notifier}/bin/restic-progress-notifier";
+      };
     };
   };
 }
