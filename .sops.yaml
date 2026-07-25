@@ -2,7 +2,7 @@ keys:
   - &fw13 age1acj8use2y5cnemwhq9es0yqv9dr53f44qgjpjxyy0zrkqxjlqq9skkarp7
 
 creation_rules:
-  - path_regex: ^secrets/restic-filen-fw13\.yaml$
+  - path_regex: ^secrets/restic-(filen|proton)-fw13\.yaml$
     key_groups:
       - age:
           - *fw13
