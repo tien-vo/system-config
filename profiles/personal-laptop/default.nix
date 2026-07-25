@@ -12,6 +12,7 @@ in
 
     "${src}/modules/user/services/sync/syncthing"
     "${src}/modules/user/services/backup/restic"
+    "${src}/modules/user/services/backup/proton-drive-cli"
     #  "${src}/modules/user/services/sync/megasync"
     #  "${src}/modules/user/services/cryptomator"
 
