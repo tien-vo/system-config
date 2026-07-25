@@ -28,7 +28,50 @@ let
     '';
   };
 
+  restic-proton-fw13 = pkgs.writeShellApplication {
+    name = "restic-proton-fw13";
+
+    runtimeInputs = [
+      pkgs.rclone
+      pkgs.restic
+    ];
+
+    text = ''
+      RCLONE_CONFIG_PASS="$(
+        cat "${config.sops.secrets.rclone-config-password.path}"
+      )"
+
+      export RCLONE_CONFIG_PASS
+
+      exec restic \
+        --repo "rclone:proton:backups/restic/fw13" \
+        --password-file "${config.sops.secrets.restic-proton-password.path}" \
+        "$@"
+    '';
+  };
+
   restic-next-backup = import ./restic-next-backup.nix({ inherit pkgs; });
+
+  backup-paths = [
+    "${home}/70_collections"
+    "${home}/80_archive"
+  ];
+
+  backup-excludes = [
+    # Cryptomator plaintext views
+    "${home}/70_collections/03_personal-records/01_content"
+    "${home}/70_collections/04_work-records/01_content"
+
+    # Volatile/generated directories
+    "**/__pycache__"
+    "**/.mypy_cache"
+    "**/.pytest_cache"
+    "**/.ruff_cache"
+    "**/.cache"
+    "**/.venv"
+    "**/node_modules"
+    "**/.debris"
+  ];
 in
 {
   config.home.packages = [
@@ -37,6 +80,7 @@ in
     pkgs.restic
     pkgs.sops
     restic-filen-fw13
+    restic-proton-fw13
     restic-next-backup
   ];
 
@@ -64,7 +108,9 @@ in
     };
   
     templates."rclone-fw13.env" = {
-      content = ''RCLONE_CONFIG_PASS=${config.sops.placeholder.rclone-config-password}'';
+      content = ''
+        RCLONE_CONFIG_PASS=${config.sops.placeholder.rclone-config-password}
+      '';
       mode = "0400";
     };
   };
@@ -72,51 +118,57 @@ in
   config.services.restic = {
     enable = true;
 
-    backups.filen-fw13 = {
-      repository = "rclone:filen:backups/restic/fw13";
+    backups = {
+      filen-fw13 = {
+        repository = "rclone:filen:backups/restic/fw13";
+        initialize = false;
 
-      # The repository already exists.
-      initialize = false;
+        passwordFile = config.sops.secrets.restic-filen-password.path;
 
-      passwordFile =
-        config.sops.secrets.restic-filen-password.path;
+        paths = backup-paths;
+        exclude = backup-excludes;
 
-      paths = [
-        "${home}/70_collections"
-        "${home}/80_archive"
-      ];
+        extraBackupArgs = [
+          "--host=fw13"
+          "--json"
+        ];
 
-      exclude = [
-        # Cryptomator plaintext views
-        "${home}/70_collections/03_personal-records/01_content"
-        "${home}/70_collections/04_work-records/01_content"
+        createWrapper = false;
+        inhibitsSleep = true;
+        progressFps = 0.0166;
 
-        # Volatile/generated directories
-        "**/__pycache__"
-        "**/.mypy_cache"
-        "**/.pytest_cache"
-        "**/.ruff_cache"
-        "**/.cache"
-        "**/.venv"
-        "**/node_modules"
-        "**/.debris"
-      ];
-
-      extraBackupArgs = [
-        "--host=fw13"
-        "--json"
-      ];
-
-      # A custom wrapper is defined above so it can read
-      # the rclone configuration password from sops-nix.
-      createWrapper = false;
-
-      inhibitsSleep = true;
-      timerConfig = {
-        OnCalendar = "Sun *-*-* 03:00:00";
-        Persistent = true;
+        timerConfig = {
+          OnCalendar = "Sun *-*-* 03:00:00";
+          Persistent = true;
+        };
       };
-      progressFps = 0.0166;
+
+      proton-fw13 = {
+        repository = "rclone:proton:backups/restic/fw13";
+        initialize = false;
+
+        passwordFile = config.sops.secrets.restic-proton-password.path;
+
+        paths = backup-paths;
+        exclude = backup-excludes;
+
+        extraBackupArgs = [
+          "--host=fw13"
+          "--json"
+          "--pack-size=8"
+          "--option=rclone.connections=1"
+        ];
+
+        createWrapper = false;
+        inhibitsSleep = true;
+        progressFps = 0.0166;
+
+        timerConfig = null;
+        #  timerConfig = {
+        #    OnCalendar = "Sat *-*-* 03:00:00";
+        #    Persistent = true;
+        #  };
+      };
     };
   };
 
@@ -131,15 +183,23 @@ in
       };
 
       Service = {
-        EnvironmentFile =
-          config.sops.templates."rclone-filen-fw13.env".path;
+        EnvironmentFile = config.sops.templates."rclone-fw13.env".path;
+      };
+    };
+
+    restic-backups-proton-fw13 = {
+      Unit = {
+        "X-SwitchMethod" = "keep-old";
+      };
+    
+      Service = {
+        EnvironmentFile = config.sops.templates."rclone-fw13.env".path;
       };
     };
 
     restic-progress-filen-fw13 = {
       Unit = {
-        Description =
-          "Desktop progress notifications for fw13 Restic backup";
+        Description = "Desktop progress notifications for fw13 Restic backup";
 
         After = [
           "graphical-session.target"
@@ -148,17 +208,14 @@ in
 
       Service = {
         Type = "exec";
-
-        ExecStart =
-          "${progress-notifier}/bin/restic-progress-notifier";
+        ExecStart = "${progress-notifier}/bin/restic-progress-notifier";
       };
     };
   };
 
   config.systemd.user.services.restic-login-notification = {
     Unit = {
-      Description =
-        "Show the next Restic backup at Hyprland login";
+      Description = "Show the next Restic backup at Hyprland login";
   
       After = [
         "graphical-session.target"
@@ -169,8 +226,7 @@ in
     Service = {
       Type = "oneshot";
   
-      ExecStart =
-        "${restic-next-backup}/bin/restic-next-backup --notify";
+      ExecStart = "${restic-next-backup}/bin/restic-next-backup --notify";
     };
   };
 }
