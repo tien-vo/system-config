@@ -1,4 +1,4 @@
-{ config, settings, ... }:
+{ config, machine-name, settings, ... }:
 {
   config.sops = {
     defaultSopsFormat = "yaml";
@@ -7,29 +7,30 @@
 
     secrets = {
       restic-filen-password = {
-        sopsFile = "${settings.src}/secrets/restic-filen-fw13.yaml";
+        sopsFile = "${settings.src}/secrets/restic-filen-${machine-name}.yaml";
+
         key = "restic-filen-password";
         mode = "0400";
       };
 
       restic-proton-password = {
-        sopsFile = "${settings.src}/secrets/restic-proton-fw13.yaml";
+        sopsFile = "${settings.src}/secrets/restic-proton-${machine-name}.yaml";
+
         key = "restic-proton-password";
         mode = "0400";
       };
 
       rclone-config-password = {
-        sopsFile = "${settings.src}/secrets/rclone-fw13.yaml";
+        sopsFile = "${settings.src}/secrets/rclone-${machine-name}.yaml";
         key = "rclone-config-password";
         mode = "0400";
       };
     };
 
-    templates."rclone-fw13.env" = {
+    templates."rclone-${machine-name}.env" = {
       content = ''
         RCLONE_CONFIG_PASS=${config.sops.placeholder.rclone-config-password}
       '';
-
       mode = "0400";
     };
   };

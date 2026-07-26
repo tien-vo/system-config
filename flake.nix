@@ -39,28 +39,33 @@
       args = {
         inherit inputs;
         inherit (inputs.self) outputs;
-        settings = import (./settings) (inputs);
+
+        settings = import ./settings inputs;
       };
+
       inherit (args.settings) src arch pkgs;
     in
     {
       formatter.${arch} = pkgs.nixpkgs-fmt;
+
       nixosConfigurations = {
-        fw13 = inputs.nixpkgs.lib.nixosSystem ({
+        fw13 = inputs.nixpkgs.lib.nixosSystem {
           inherit pkgs;
-          modules = [ "${src}/systems/${arch}/fw13" ];
-          specialArgs = args;
-        });
-      };
-      homeConfigurations = {
-        "tvo@fw13" = inputs.home-manager.lib.homeManagerConfiguration ({
-          inherit pkgs;
+
           modules = [
-            inputs.sops-nix.homeManagerModules.sops
-            "${src}/users/${arch}/tvo@fw13"
+            "${src}/systems/${arch}/fw13"
           ];
-          extraSpecialArgs = args;
-        });
+
+          specialArgs = args;
+        };
+      };
+
+      homeConfigurations = import "${src}/users/${arch}" {
+        inherit args inputs pkgs;
+
+        home-names = [
+          "tvo@fw13"
+        ];
       };
     };
 }

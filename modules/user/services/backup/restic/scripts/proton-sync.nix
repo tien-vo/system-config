@@ -1,11 +1,7 @@
-{
-  config,
-  pkgs,
-  repository,
-}:
+{ config, machine-name, pkgs, repository }:
 
 pkgs.writeShellApplication {
-  name = "proton-drive-sync-restic-fw13";
+  name = "proton-sync-restic-${machine-name}";
 
   runtimeInputs = [
     pkgs.coreutils
@@ -19,14 +15,14 @@ pkgs.writeShellApplication {
 
   text = ''
     password_file="${config.sops.secrets.restic-proton-password.path}"
-    proton_drive="${config.home.profileDirectory}/bin/proton-drive"
+    proton_cli="${config.home.profileDirectory}/bin/proton-drive"
 
-    remote_repository="/my-files/backups/restic/fw13"
+    remote_repository="/my-files/backups/restic/${machine-name}"
     remote_data="$remote_repository/data"
 
-    state_directory="${config.xdg.stateHome}/proton-drive-sync"
-    state_file="$state_directory/fw13.state"
-    manifest_file="$state_directory/fw13-batches.tsv"
+    state_directory="${config.xdg.stateHome}/proton-sync"
+    state_file="$state_directory/${machine-name}.state"
+    manifest_file="$state_directory/${machine-name}-batches.tsv"
 
     mkdir -p "$state_directory"
 
@@ -60,10 +56,7 @@ pkgs.writeShellApplication {
         printf 'failed_items=%s\n' "$failed_items"
       } > "$temporary_state"
 
-      mv \
-        --force \
-        "$temporary_state" \
-        "$state_file"
+      mv --force "$temporary_state" "$state_file"
     }
 
     fail() {
@@ -88,10 +81,7 @@ pkgs.writeShellApplication {
       path="$1"
 
       if [[ -f "$path" ]]; then
-        stat \
-          --format='%s' \
-          -- "$path"
-
+        stat --format='%s' -- "$path"
         return
       fi
 
@@ -112,35 +102,22 @@ pkgs.writeShellApplication {
       parent="$2"
       name="$3"
 
-      if "$proton_drive" \
-        filesystem info \
-        "$path" \
-        >/dev/null 2>&1
-      then
+      if "$proton_cli" filesystem info "$path" >/dev/null 2>&1; then
         return
       fi
 
-      "$proton_drive" \
-        filesystem create-folder \
-        "$parent" \
-        "$name"
+      "$proton_cli" filesystem create-folder "$parent" "$name"
     }
 
     notify_progress_thresholds() {
       while (( next_notification_percent <= 95 &&
                percent >= next_notification_percent )); do
         completed_human="$(
-          numfmt \
-            --to=iec-i \
-            --suffix=B \
-            "$completed_bytes"
+          numfmt --to=iec-i --suffix=B "$completed_bytes"
         )"
 
         total_human="$(
-          numfmt \
-            --to=iec-i \
-            --suffix=B \
-            "$total_bytes"
+          numfmt --to=iec-i --suffix=B "$total_bytes"
         )"
 
         notify-send \
@@ -178,10 +155,10 @@ pkgs.writeShellApplication {
       output_file="$(
         mktemp \
           --tmpdir="$state_directory" \
-          proton-drive-output.XXXXXXXX
+          proton-output.XXXXXXXX
       )"
 
-      if ! "$proton_drive" \
+      if ! "$proton_cli" \
         filesystem upload \
         --folder-conflict-strategy merge \
         --file-conflict-strategy skip \
@@ -195,49 +172,32 @@ pkgs.writeShellApplication {
         fail "Upload failed while processing $batch_name."
       fi
 
-      if ! jq \
-        --exit-status \
-        'type == "object"' \
-        "$output_file" \
-        >/dev/null
-      then
+      if ! jq --exit-status 'type == "object"' "$output_file" >/dev/null; then
         rm -f -- "$output_file"
-        fail "Invalid Proton Drive JSON for $batch_name."
+        fail "Invalid Proton JSON for $batch_name."
       fi
 
       transferred_items="$(
-        jq \
-          --raw-output \
-          '.transferredItems // 0' \
-          "$output_file"
+        jq --raw-output '.transferredItems // 0' "$output_file"
       )"
 
       transferred_bytes="$(
-        jq \
-          --raw-output \
-          '.transferredBytes // 0' \
-          "$output_file"
+        jq --raw-output '.transferredBytes // 0' "$output_file"
       )"
 
       skipped_items="$(
-        jq \
-          --raw-output \
-          '.skippedItems // 0' \
-          "$output_file"
+        jq --raw-output '.skippedItems // 0' "$output_file"
       )"
 
       failed_items="$(
-        jq \
-          --raw-output \
-          '.failedItems // 0' \
-          "$output_file"
+        jq --raw-output '.failedItems // 0' "$output_file"
       )"
 
       if (( failed_items != 0 )); then
         jq . "$output_file" >&2
         rm -f -- "$output_file"
 
-        fail "Proton Drive reported failed items in $batch_name."
+        fail "Proton reported failed items in $batch_name."
       fi
 
       rm -f -- "$output_file"
@@ -255,17 +215,11 @@ pkgs.writeShellApplication {
       notify_progress_thresholds
 
       completed_human="$(
-        numfmt \
-          --to=iec-i \
-          --suffix=B \
-          "$completed_bytes"
+        numfmt --to=iec-i --suffix=B "$completed_bytes"
       )"
 
       total_human="$(
-        numfmt \
-          --to=iec-i \
-          --suffix=B \
-          "$total_bytes"
+        numfmt --to=iec-i --suffix=B "$total_bytes"
       )"
 
       printf 'Progress: %d/%d batches, %s/%s, %d%%\n' \
@@ -282,8 +236,8 @@ pkgs.writeShellApplication {
       fail "The local Restic repository does not exist."
     fi
 
-    if [[ ! -x "$proton_drive" ]]; then
-      fail "The Proton Drive CLI is not installed."
+    if [[ ! -x "$proton_cli" ]]; then
+      fail "The Proton CLI is not installed."
     fi
 
     phase="checking"
@@ -305,9 +259,7 @@ pkgs.writeShellApplication {
       -type f \
       -print \
       -quit |
-      grep \
-        --quiet \
-        .
+      grep --quiet .
     then
       fail "The local Restic repository is locked."
     fi
@@ -318,11 +270,6 @@ pkgs.writeShellApplication {
       "backups"
 
     ensure_remote_folder \
-      "$remote_repository" \
-      "/my-files/backups/restic" \
-      "fw13"
-
-    ensure_remote_folder \
       "/my-files/backups/restic" \
       "/my-files/backups" \
       "restic"
@@ -330,7 +277,7 @@ pkgs.writeShellApplication {
     ensure_remote_folder \
       "$remote_repository" \
       "/my-files/backups/restic" \
-      "fw13"
+      "${machine-name}"
 
     ensure_remote_folder \
       "$remote_data" \
@@ -347,13 +294,11 @@ pkgs.writeShellApplication {
     do
       if [[ -e "$metadata_path" ]]; then
         batch_name="$(
-          basename \
-            -- "$metadata_path"
+          basename -- "$metadata_path"
         )"
 
         batch_bytes="$(
-          path_bytes \
-            "$metadata_path"
+          path_bytes "$metadata_path"
         )"
 
         printf '%s\t%s\t%s\t%s\n' \
@@ -370,19 +315,16 @@ pkgs.writeShellApplication {
       -maxdepth 1 \
       -type d \
       -print0 |
-    sort \
-      --zero-terminated |
+    sort --zero-terminated |
     while IFS= read -r -d "" data_directory; do
       data_prefix="$(
-        basename \
-          -- "$data_directory"
+        basename -- "$data_directory"
       )"
 
       batch_name="data/$data_prefix"
 
       batch_bytes="$(
-        path_bytes \
-          "$data_directory"
+        path_bytes "$data_directory"
       )"
 
       printf '%s\t%s\t%s\t%s\n' \
@@ -394,9 +336,7 @@ pkgs.writeShellApplication {
     done
 
     total_batches="$(
-      wc \
-        --lines \
-        < "$manifest_file"
+      wc --lines < "$manifest_file"
     )"
 
     total_bytes="$(
@@ -412,10 +352,7 @@ pkgs.writeShellApplication {
     write_state
 
     total_human="$(
-      numfmt \
-        --to=iec-i \
-        --suffix=B \
-        "$total_bytes"
+      numfmt --to=iec-i --suffix=B "$total_bytes"
     )"
 
     notify-send \
@@ -455,6 +392,6 @@ pkgs.writeShellApplication {
       "100% complete — $completed_batches batches totaling $total_human synchronized." \
       || true
 
-    printf 'Proton Drive synchronization completed successfully.\n'
+    printf 'Proton synchronization completed successfully.\n'
   '';
 }

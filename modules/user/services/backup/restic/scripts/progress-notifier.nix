@@ -1,4 +1,4 @@
-{ pkgs }:
+{ backup-unit, pkgs }:
 
 pkgs.writeShellApplication {
   name = "restic-progress-notifier";
@@ -10,7 +10,7 @@ pkgs.writeShellApplication {
   ];
 
   text = ''
-    unit="restic-backups-filen-fw13.service"
+    unit="${backup-unit}"
     next_percent=5
 
     notify_progress() {
@@ -58,33 +58,21 @@ pkgs.writeShellApplication {
     trap cleanup EXIT
 
     while IFS= read -r line <&"$journal_fd"; do
-      if ! jq \
-        --exit-status \
-        . \
-        >/dev/null 2>&1 \
-        <<< "$line"
-      then
+      if ! jq --exit-status . >/dev/null 2>&1 <<< "$line"; then
         continue
       fi
 
       message_type="$(
-        jq \
-          --raw-output \
-          '.message_type // empty' \
-          <<< "$line"
+        jq --raw-output '.message_type // empty' <<< "$line"
       )"
 
       case "$message_type" in
         status)
           percent="$(
-            jq \
-              --raw-output \
-              '((.percent_done // 0) * 100) | floor' \
-              <<< "$line"
+            jq --raw-output '((.percent_done // 0) * 100) | floor' <<< "$line"
           )"
 
-          while (( next_percent <= 95 &&
-                   percent >= next_percent )); do
+          while (( next_percent <= 95 && percent >= next_percent )); do
             notify_progress "$next_percent"
             next_percent="$((next_percent + 5))"
           done
@@ -105,10 +93,7 @@ pkgs.writeShellApplication {
 
         exit_error)
           message="$(
-            jq \
-              --raw-output \
-              '.message // "Restic reported an error."' \
-              <<< "$line"
+            jq --raw-output '.message // "Restic reported an error."' <<< "$line"
           )"
 
           notify_failure "$message"

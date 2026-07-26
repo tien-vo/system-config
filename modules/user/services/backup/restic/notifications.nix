@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ machine-name, pkgs, ... }:
 let
+  filen-backup-unit = "restic-backups-filen-${machine-name}.service";
+
   progress-notifier = import ./scripts/progress-notifier.nix {
+    backup-unit = filen-backup-unit;
     inherit pkgs;
   };
 
@@ -14,9 +17,9 @@ in
   ];
 
   config.systemd.user.services = {
-    restic-progress-filen-fw13 = {
+    "restic-progress-filen-${machine-name}" = {
       Unit = {
-        Description = "Desktop progress notifications for fw13 Restic backup";
+        Description = "Desktop progress notifications for ${machine-name} Filen Restic backup";
 
         After = [
           "graphical-session.target"
@@ -35,15 +38,12 @@ in
 
         After = [
           "graphical-session.target"
-          "mako.service"
         ];
       };
 
       Service = {
         Type = "oneshot";
-
-        ExecStart =
-          "${restic-next-backup}/bin/restic-next-backup --notify";
+        ExecStart = "${restic-next-backup}/bin/restic-next-backup --notify";
       };
     };
   };

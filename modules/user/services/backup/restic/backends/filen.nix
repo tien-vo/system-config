@@ -1,11 +1,16 @@
-{ config, pkgs, ... }:
+{ config, machine-name, pkgs, ... }:
 let
   scope = import ../scope.nix {
     home = config.home.homeDirectory;
   };
 
-  restic-filen-fw13 = pkgs.writeShellApplication({
-    name = "restic-filen-fw13";
+  repository = "rclone:filen:backups/restic/${machine-name}";
+  backup-name = "filen-${machine-name}";
+  backup-unit = "restic-backups-${backup-name}";
+  progress-unit = "restic-progress-${backup-name}";
+
+  restic-filen = pkgs.writeShellApplication {
+    name = "restic-filen-${machine-name}";
 
     runtimeInputs = [
       pkgs.rclone
@@ -20,19 +25,20 @@ let
       export RCLONE_CONFIG_PASS
 
       exec restic \
-        --repo "rclone:filen:backups/restic/fw13" \
+        --repo "${repository}" \
         --password-file "${config.sops.secrets.restic-filen-password.path}" \
         "$@"
     '';
-  });
+  };
 in
 {
   config.home.packages = [
-    restic-filen-fw13
+    restic-filen
   ];
 
-  config.services.restic.backups.filen-fw13 = {
-    repository = "rclone:filen:backups/restic/fw13";
+  config.services.restic.backups.${backup-name} = {
+    inherit repository;
+
     initialize = false;
 
     passwordFile = config.sops.secrets.restic-filen-password.path;
@@ -41,7 +47,7 @@ in
     exclude = scope.excludes;
 
     extraBackupArgs = [
-      "--host=fw13"
+      "--host=${machine-name}"
       "--json"
     ];
 
@@ -55,17 +61,17 @@ in
     };
   };
 
-  config.systemd.user.services.restic-backups-filen-fw13 = {
+  config.systemd.user.services.${backup-unit} = {
     Unit = {
       "X-SwitchMethod" = "keep-old";
 
       Wants = [
-        "restic-progress-filen-fw13.service"
+        "${progress-unit}.service"
       ];
     };
 
     Service = {
-      EnvironmentFile = config.sops.templates."rclone-fw13.env".path;
+      EnvironmentFile = config.sops.templates."rclone-${machine-name}.env".path;
     };
   };
 }

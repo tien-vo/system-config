@@ -1,22 +1,24 @@
-{ config, pkgs, ... }:
+{ config, machine-name, pkgs, ... }:
 let
   scope = import ../scope.nix {
     home = config.home.homeDirectory;
   };
 
-  repository =
-    "${config.xdg.stateHome}/restic/proton-drive/fw13";
+  repository = "${config.xdg.stateHome}/restic/proton/${machine-name}";
+  backup-name = "proton-local-${machine-name}";
+  backup-unit = "restic-backups-${backup-name}";
+  sync-unit = "proton-sync-restic-${machine-name}";
 
-  proton-drive-sync = import ../scripts/proton-drive-sync.nix {
-    inherit config pkgs repository;
+  proton-sync = import ../scripts/proton-sync.nix {
+    inherit config machine-name pkgs repository;
   };
 in
 {
   config.home.packages = [
-    proton-drive-sync
+    proton-sync
   ];
 
-  config.services.restic.backups.proton-local-fw13 = {
+  config.services.restic.backups.${backup-name} = {
     inherit repository;
 
     initialize = true;
@@ -27,7 +29,7 @@ in
     exclude = scope.excludes;
 
     extraBackupArgs = [
-      "--host=fw13"
+      "--host=${machine-name}"
       "--json"
     ];
 
@@ -42,20 +44,19 @@ in
   };
 
   config.systemd.user.services = {
-    restic-backups-proton-local-fw13 = {
+    ${backup-unit} = {
       Unit = {
         "X-SwitchMethod" = "keep-old";
 
         OnSuccess = [
-          "proton-drive-sync-restic-fw13.service"
+          "${sync-unit}.service"
         ];
       };
     };
 
-    proton-drive-sync-restic-fw13 = {
+    ${sync-unit} = {
       Unit = {
-        Description =
-          "Upload the local fw13 Restic repository to Proton Drive";
+        Description = "Upload the local ${machine-name} Restic repository to Proton";
 
         After = [
           "graphical-session.target"
@@ -64,9 +65,7 @@ in
 
       Service = {
         Type = "oneshot";
-
-        ExecStart =
-          "${proton-drive-sync}/bin/proton-drive-sync-restic-fw13";
+        ExecStart = "${proton-sync}/bin/proton-sync-restic-${machine-name}";
       };
     };
   };
