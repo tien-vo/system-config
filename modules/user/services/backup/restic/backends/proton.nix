@@ -5,7 +5,7 @@ let
   };
 
   repository =
-    "${config.xdg.stateHome}/restic/proton-drive/fw13-cli";
+    "${config.xdg.stateHome}/restic/proton-drive/fw13";
 
   proton-drive-sync = import ../scripts/proton-drive-sync.nix {
     inherit config pkgs repository;
