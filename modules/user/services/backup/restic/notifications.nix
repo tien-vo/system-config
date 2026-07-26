@@ -1,4 +1,4 @@
-{ machine-name, pkgs, ... }:
+{ config, machine-name, pkgs, ... }:
 let
   filen-backup-unit = "restic-backups-filen-${machine-name}.service";
 
@@ -10,10 +10,15 @@ let
   restic-next-backup = import ./scripts/restic-next-backup.nix {
     inherit pkgs;
   };
+
+  restic-status = import ./scripts/restic-status.nix {
+    inherit config machine-name pkgs;
+  };
 in
 {
   config.home.packages = [
     restic-next-backup
+    restic-status
   ];
 
   config.systemd.user.services = {
